@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //This sets the status bar menu at the top to white so it's visible
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
 
