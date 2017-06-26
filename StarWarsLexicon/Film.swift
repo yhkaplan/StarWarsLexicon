@@ -9,15 +9,22 @@
 import Foundation
 
 struct Film: SWCategory {
+
+    //Make this conform to error?
+    enum initializationError {
+        case titleParsingError(Error)
+        case episodeIDParsingError(Error)
+    }
     
     internal var uid: String { return "film" + "\(episodeID)" }
+    internal var itemName: String { return title }
     
     var title: String
     var episodeID: Int
     var openingCrawl: String
-//    var director: String
-//    var producer: String
-//    var release_date: Date
+    var director: String
+    var producer: String
+//    var releaseDate: Date
 //    
 //    var species: [String]
 //    var starships: [String]
@@ -29,6 +36,37 @@ struct Film: SWCategory {
 //    var created: Date
 //    var edited: Date
 
-    //Getters and setters needed?
+    init?(json: [String : Any]) {
+        guard let title = json["title"] as? String else {
+            print("Parsing error with title ")//"Error: cannot parse title"
+            return nil
+        }
+        
+        guard let episodeID = json["episode_id"] as? Int else {
+            print("Parsing error with episode id")
+            return nil
+        }
+        
+        guard let openingCrawl = json["opening_crawl"] as? String else {
+            print("Parsing error with opening crawl")
+            return nil
+        }
+        
+        guard let director = json["director"] as? String else {
+            print("Parsing error with director")
+            return nil
+        }
+        
+        guard let producer = json["producer"] as? String else {
+            print("Parsing error with producer")
+            return nil
+        }
+        
+        self.title = title
+        self.episodeID = episodeID
+        self.openingCrawl = openingCrawl
+        self.director = director
+        self.producer = producer
+    }
     
 }

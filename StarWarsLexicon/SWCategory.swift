@@ -10,4 +10,5 @@ import Foundation
 
 protocol SWCategory {
     var uid: String { get }
+    var itemName: String { get }
 }

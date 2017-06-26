@@ -12,13 +12,20 @@ class SWCell: UICollectionViewCell {
     
     @IBOutlet weak var textLbl: UILabel!
     
-    var film: Film!
+    var swItem: SWCategory!
     
-    func configureCell (_ film: Film) {
+    func configureCell<T: SWCategory> (_ swObject: T) {
         //make this accept a generic, then respond with switch to determine the type and configure appropriately
-        self.film = film
         
-        textLbl.text = self.film.title
+        
+        //self.swItem = swObject
+        
+        
+        //Switch or if statement to determine type of swobject
+        
+        //Should this be swObject or a variable stored w/ each cell?
+        textLbl.text = swObject.itemName//TO chance later
+        
     }
     
 }

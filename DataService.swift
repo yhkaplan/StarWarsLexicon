@@ -8,22 +8,18 @@
 
 import Foundation
 
-enum Category: String {
-    case films = "films/"
-    case people = "people/"
-    case planets = "planets/"
-    case species = "species/"
-    case starships = "starships/"
-    case vehicles = "vehicles/"
-}
-
-enum SWAPIError {
-    case invalidJSONData
+enum Category {
+    case film //= "films/"
+    case character //= "people/"
+//    case planets = "planets/"
+//    case species = "species/"
+//    case starships = "starships/"
+//    case vehicles = "vehicles/"
 }
 
 enum Result {
-    case filmSuccess([Film])
-    //case characterSuccess([Character])
+    case filmSuccess([Film], URL?)
+    case characterSuccess([Character], URL?)
     //etc
     case failure(Error)
 }
@@ -35,28 +31,48 @@ class DataService {
         return URLSession(configuration: config)
     }()
     
-    private func processObjectRequest(data: Data?, error: Error?) -> Result {
-        guard let jsonData = data else {
-            return .failure(error!)
-        }
+    func fetchObjects(category: Category, url: URL, completion: @escaping (Result) -> Void) {
         
-        return SWAPI.films(fromJSON: jsonData)
-    }
-    
-    func fetchObjects(completion: @escaping (Result)  -> Void) {
-        
-        let url = URL(string: "https://swapi.co/api/films/")
-        //To change this to refer to "SWAPI.filmBaseURL, SWAPI.planetBaseURL..." later
-        let request = URLRequest(url: url!)
+        let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
-            
-            let result = self.processObjectRequest(data: data, error: error)
-            
-            //This is the whole key to calling the contained expression on the main thread
-            OperationQueue.main.addOperation {
-               completion(result) 
+
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any], let resultsArray = json["results"] as? [[String : Any]] else {
+                //JSON structure is different from expected format
+                print("JSON structure is different from expected format")
+                return
             }
             
+            switch category {
+            case .film:
+                //ISN't RESULTS ARRAY A DICTIONARY???
+                let finalFilms = resultsArray.flatMap { Film(json: $0) }
+                
+                if finalFilms.isEmpty && !resultsArray.isEmpty {
+                    print("Parsing error")
+                }
+                
+                //No more than ten films for now
+                completion(.filmSuccess(finalFilms, nil))
+                
+            case .character:
+                
+                let finalCharacters = resultsArray.flatMap { Character(json: $0) }
+                
+                //Improve error handling
+                if finalCharacters.isEmpty && !resultsArray.isEmpty {
+                    //No characters parsed
+                    print("Parsing error")
+                }
+                
+                //Parse URL
+                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
+                    print("All data retrieved")
+                    completion(.characterSuccess(finalCharacters, nil))
+                    return
+                }
+                
+                completion(.characterSuccess(finalCharacters, nextURL))
+            }
         }
         task.resume()
     }

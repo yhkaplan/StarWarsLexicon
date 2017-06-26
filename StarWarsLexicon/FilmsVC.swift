@@ -8,16 +8,24 @@
 
 import UIKit
 
-class FilmsVC: UITableViewController {
+class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     let dataService = DataService()
-    let swObjectStore = SWObjectStore()
+    var url: URL? = URL(string: "https://swapi.co/api/films/")
     
-    var filmArray = [Film]()
+    private var filmArray = [Film]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         
+        setupStatusBarAndTableView()
+        initializeFilms()
+    }
+    
+    func setupStatusBarAndTableView() {
         //Reload all theming code to separate file/class
         tableView.backgroundColor = UIColor.black
         
@@ -26,33 +34,46 @@ class FilmsVC: UITableViewController {
         let insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+    }
+
+    func initializeFilms() {
+        guard let url = url else {
+            //Throw error
+            return
+        }
         
-        //tableView.delegate = self
-        
-        //All film data operations should be moved to item class that manages saving, deleting, etc
-        
-        dataService.fetchObjects { (result) -> Void in
+        self.dataService.fetchObjects(category: .film, url: url) { (result) -> Void in
             switch result {
-            case let .filmSuccess(films):
-                print("Retrieved \(films.count) films")
-                if !films.isEmpty {
-                    self.filmArray = films
-                    self.tableView.reloadData()
+            case let .filmSuccess(films, nextURL):
+                DispatchQueue.main.async {
+                    if !films.isEmpty {
+                        self.filmArray.append(contentsOf: films)
+                        self.tableView.reloadData()
+                    }
+                    
+                    if let nextURL = nextURL {
+                        self.url = nextURL
+                        self.initializeFilms()
+                    }
                 }
-                print(films)
             case let .failure(error):
-                print("Error with new process: \(error)")
+                print("Error: \(error)")
+                break
+            default:
+                print("Wrong type read")
+                break
             }
         }
     }
     
-    func makeTestData() -> [Film] {
-        var testArray = [Film]()
-        for i in 0...3 {
-            testArray.append(Film(title: "Film \(i)", episodeID: i, openingCrawl: "Once upon a time, in a galaxy far, far away"))
-        }
-        return testArray
-    }
+//    func organizeFilms() {
+//        var newArray = [Film]()
+//        
+//        for film in filmArray.enumerated() {
+//            newArray.insert(film, at: film.episodeID-1)
+//        }
+//        filmArray = newArray
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -67,28 +88,28 @@ class FilmsVC: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.darkGray
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("filmArray.count is \(filmArray.count)")
+        //print("filmArray.count is \(filmArray.count)")
         return filmArray.count
     
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        let film = filmArray[indexPath.row]
-        cell.textLabel?.text = film.title
-        cell.detailTextLabel?.text = "Test here"//Not working
-        
-        cell.textLabel?.textColor = UIColor.white
-        cell.detailTextLabel?.textColor = UIColor.white
-        cell.backgroundColor = UIColor.black
-        
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "FilmCell", for: indexPath) as? FilmCell {
+            let film = filmArray[indexPath.row]
+            cell.configureCell(film: film)
+            return cell
+        } else {
+            return FilmCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
     }
 }

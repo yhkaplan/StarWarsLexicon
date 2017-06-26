@@ -13,32 +13,69 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     @IBOutlet weak var collectionView: UICollectionView!
     
     let dataService = DataService()
-    let swObjectStore = SWObjectStore()
+    var url: URL? = URL(string: "https://swapi.co/api/people/")
     
-    var filmArray = [Film]()
+    private var characterArray: [Character] = [] {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
     
+    //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.dataSource = self
         collectionView.delegate = self
+        //characterStore.initializeAllCharacters()
         
-        filmArray = makeTestData()
+        initializeCharacters()
     }
     
-    func makeTestData() -> [Film] {
-        var testArray = [Film]()
-        for i in 0...100 {
-            testArray.append(Film(title: "Film \(i)", episodeID: i, openingCrawl: "Once upon a time, in a galaxy far, far away"))
+    func initializeCharacters() {
+        
+        guard let url = url else {
+            //throw error
+            return
         }
-        return testArray
+        
+        self.dataService.fetchObjects(category: .character, url: url) { (result) -> Void in
+            
+            //print("Result is \(result)")
+            switch result {
+            case let .characterSuccess(characters, nextURL):
+                
+                DispatchQueue.main.async {
+                    
+                    print("Retrieved \(characters.count) characters")
+                    if !characters.isEmpty {
+                        self.characterArray.append(contentsOf: characters)
+                        self.collectionView.reloadData()
+                        //self.organizeCharactersByName()
+                    }
+                    
+                    if let nextURL = nextURL {
+                        self.url = nextURL
+                        print("The next URl is \(nextURL)")
+                        self.initializeCharacters()
+                    }
+                    
+                }
+            case let .failure(error):
+                print("Error: \(error)")
+                break
+            default:
+                print("Error: wrong data read")
+                break
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWCell", for: indexPath) as? SWCell {
         
-        cell.configureCell(filmArray[indexPath.row])
+        cell.configureCell(characterArray[indexPath.row])
         
             return cell
         } else {
@@ -47,6 +84,6 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filmArray.count
+        return characterArray.count
     }
 }

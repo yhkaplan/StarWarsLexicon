@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313AF221F00A90D006EA7EC /* CircularImage.swift */; };
 		A3257B0A1EC1E36D0067C282 /* SWCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3257B091EC1E36D0067C282 /* SWCategory.swift */; };
 		A3257B0C1EC1E53C0067C282 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3257B0B1EC1E53C0067C282 /* Film.swift */; };
+		A331AD7A1EFE3FA1004DBC51 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331AD791EFE3FA1004DBC51 /* FilmCell.swift */; };
 		A35BF9951EE3F73700758C0E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35BF9941EE3F73600758C0E /* Character.swift */; };
 		A3A4CFB91EE297BB00DB97C2 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A4CFB81EE297BB00DB97C2 /* CollectionVC.swift */; };
 		A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */; };
@@ -19,14 +21,14 @@
 		A3AAB9361EBF2EE900AE53E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3AAB9341EBF2EE900AE53E5 /* LaunchScreen.storyboard */; };
 		A3AAB93E1EBF2F6600AE53E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AAB93D1EBF2F6600AE53E5 /* Constants.swift */; };
 		A3AAB9401EBF302800AE53E5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AAB93F1EBF302800AE53E5 /* DataService.swift */; };
-		A3AAB9421EBF3ADD00AE53E5 /* SWObjectStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AAB9411EBF3ADD00AE53E5 /* SWObjectStore.swift */; };
-		A3DE96371EDEE2C800C7A00C /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DE96361EDEE2C800C7A00C /* SWAPI.swift */; };
 		A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A313AF221F00A90D006EA7EC /* CircularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
 		A3257B091EC1E36D0067C282 /* SWCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCategory.swift; sourceTree = "<group>"; };
 		A3257B0B1EC1E53C0067C282 /* Film.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		A331AD791EFE3FA1004DBC51 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
 		A35BF9941EE3F73600758C0E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		A3A4CFB81EE297BB00DB97C2 /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCell.swift; sourceTree = "<group>"; };
@@ -39,8 +41,6 @@
 		A3AAB9371EBF2EE900AE53E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3AAB93D1EBF2F6600AE53E5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		A3AAB93F1EBF302800AE53E5 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataService.swift; path = ../DataService.swift; sourceTree = "<group>"; };
-		A3AAB9411EBF3ADD00AE53E5 /* SWObjectStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWObjectStore.swift; path = ../SWObjectStore.swift; sourceTree = "<group>"; };
-		A3DE96361EDEE2C800C7A00C /* SWAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
 		A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */,
+				A331AD791EFE3FA1004DBC51 /* FilmCell.swift */,
+				A313AF221F00A90D006EA7EC /* CircularImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -88,8 +90,6 @@
 			children = (
 				A35BF9931EE3F71500758C0E /* SWCategories */,
 				A3AAB93F1EBF302800AE53E5 /* DataService.swift */,
-				A3AAB9411EBF3ADD00AE53E5 /* SWObjectStore.swift */,
-				A3DE96361EDEE2C800C7A00C /* SWAPI.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,16 +201,16 @@
 			files = (
 				A3AAB92E1EBF2EE900AE53E5 /* FilmsVC.swift in Sources */,
 				A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */,
+				A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */,
 				A3257B0A1EC1E36D0067C282 /* SWCategory.swift in Sources */,
 				A35BF9951EE3F73700758C0E /* Character.swift in Sources */,
 				A3AAB92C1EBF2EE900AE53E5 /* AppDelegate.swift in Sources */,
 				A3A4CFB91EE297BB00DB97C2 /* CollectionVC.swift in Sources */,
-				A3DE96371EDEE2C800C7A00C /* SWAPI.swift in Sources */,
 				A3AAB93E1EBF2F6600AE53E5 /* Constants.swift in Sources */,
-				A3AAB9421EBF3ADD00AE53E5 /* SWObjectStore.swift in Sources */,
 				A3AAB9401EBF302800AE53E5 /* DataService.swift in Sources */,
 				A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */,
 				A3257B0C1EC1E53C0067C282 /* Film.swift in Sources */,
+				A331AD7A1EFE3FA1004DBC51 /* FilmCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
