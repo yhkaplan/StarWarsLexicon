@@ -10,7 +10,12 @@
 		A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313AF221F00A90D006EA7EC /* CircularImage.swift */; };
 		A3257B0A1EC1E36D0067C282 /* SWCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3257B091EC1E36D0067C282 /* SWCategory.swift */; };
 		A3257B0C1EC1E53C0067C282 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3257B0B1EC1E53C0067C282 /* Film.swift */; };
+		A328525C1F00F60600619637 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328525B1F00F60600619637 /* Vehicle.swift */; };
+		A328525E1F0121BC00619637 /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328525D1F0121BC00619637 /* Species.swift */; };
+		A32852601F01264400619637 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328525F1F01264400619637 /* Planet.swift */; };
 		A331AD7A1EFE3FA1004DBC51 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331AD791EFE3FA1004DBC51 /* FilmCell.swift */; };
+		A34FCD481F0263A0001008EB /* CellBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34FCD471F0263A0001008EB /* CellBackgroundView.swift */; };
+		A356F4DA1F0281CF006AA594 /* Starjedi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A356F4D91F0281CF006AA594 /* Starjedi.ttf */; };
 		A35BF9951EE3F73700758C0E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35BF9941EE3F73600758C0E /* Character.swift */; };
 		A3A4CFB91EE297BB00DB97C2 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A4CFB81EE297BB00DB97C2 /* CollectionVC.swift */; };
 		A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */; };
@@ -21,6 +26,7 @@
 		A3AAB9361EBF2EE900AE53E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3AAB9341EBF2EE900AE53E5 /* LaunchScreen.storyboard */; };
 		A3AAB93E1EBF2F6600AE53E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AAB93D1EBF2F6600AE53E5 /* Constants.swift */; };
 		A3AAB9401EBF302800AE53E5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AAB93F1EBF302800AE53E5 /* DataService.swift */; };
+		A3B10A711F00EBFC007BBD35 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B10A701F00EBFC007BBD35 /* Starship.swift */; };
 		A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +34,12 @@
 		A313AF221F00A90D006EA7EC /* CircularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
 		A3257B091EC1E36D0067C282 /* SWCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCategory.swift; sourceTree = "<group>"; };
 		A3257B0B1EC1E53C0067C282 /* Film.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		A328525B1F00F60600619637 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		A328525D1F0121BC00619637 /* Species.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
+		A328525F1F01264400619637 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		A331AD791EFE3FA1004DBC51 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
+		A34FCD471F0263A0001008EB /* CellBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellBackgroundView.swift; sourceTree = "<group>"; };
+		A356F4D91F0281CF006AA594 /* Starjedi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Starjedi.ttf; path = StarWarsLexicon/Assets.xcassets/Starjedi.dataset/Starjedi.ttf; sourceTree = "<group>"; };
 		A35BF9941EE3F73600758C0E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		A3A4CFB81EE297BB00DB97C2 /* CollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCell.swift; sourceTree = "<group>"; };
@@ -41,6 +52,7 @@
 		A3AAB9371EBF2EE900AE53E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3AAB93D1EBF2F6600AE53E5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		A3AAB93F1EBF302800AE53E5 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataService.swift; path = ../DataService.swift; sourceTree = "<group>"; };
+		A3B10A701F00EBFC007BBD35 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +73,10 @@
 				A3257B091EC1E36D0067C282 /* SWCategory.swift */,
 				A3257B0B1EC1E53C0067C282 /* Film.swift */,
 				A35BF9941EE3F73600758C0E /* Character.swift */,
+				A3B10A701F00EBFC007BBD35 /* Starship.swift */,
+				A328525B1F00F60600619637 /* Vehicle.swift */,
+				A328525F1F01264400619637 /* Planet.swift */,
+				A328525D1F0121BC00619637 /* Species.swift */,
 			);
 			name = SWCategories;
 			sourceTree = "<group>";
@@ -81,6 +97,7 @@
 				A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */,
 				A331AD791EFE3FA1004DBC51 /* FilmCell.swift */,
 				A313AF221F00A90D006EA7EC /* CircularImage.swift */,
+				A34FCD471F0263A0001008EB /* CellBackgroundView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -97,6 +114,7 @@
 		A3AAB91F1EBF2EE900AE53E5 = {
 			isa = PBXGroup;
 			children = (
+				A356F4D91F0281CF006AA594 /* Starjedi.ttf */,
 				A3AAB92A1EBF2EE900AE53E5 /* StarWarsLexicon */,
 				A3AAB9291EBF2EE900AE53E5 /* Products */,
 			);
@@ -186,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A356F4DA1F0281CF006AA594 /* Starjedi.ttf in Resources */,
 				A3AAB9361EBF2EE900AE53E5 /* LaunchScreen.storyboard in Resources */,
 				A3AAB9331EBF2EE900AE53E5 /* Assets.xcassets in Resources */,
 				A3AAB9311EBF2EE900AE53E5 /* Main.storyboard in Resources */,
@@ -201,15 +220,20 @@
 			files = (
 				A3AAB92E1EBF2EE900AE53E5 /* FilmsVC.swift in Sources */,
 				A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */,
+				A3B10A711F00EBFC007BBD35 /* Starship.swift in Sources */,
 				A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */,
+				A328525C1F00F60600619637 /* Vehicle.swift in Sources */,
 				A3257B0A1EC1E36D0067C282 /* SWCategory.swift in Sources */,
 				A35BF9951EE3F73700758C0E /* Character.swift in Sources */,
 				A3AAB92C1EBF2EE900AE53E5 /* AppDelegate.swift in Sources */,
+				A34FCD481F0263A0001008EB /* CellBackgroundView.swift in Sources */,
 				A3A4CFB91EE297BB00DB97C2 /* CollectionVC.swift in Sources */,
 				A3AAB93E1EBF2F6600AE53E5 /* Constants.swift in Sources */,
 				A3AAB9401EBF302800AE53E5 /* DataService.swift in Sources */,
+				A32852601F01264400619637 /* Planet.swift in Sources */,
 				A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */,
 				A3257B0C1EC1E53C0067C282 /* Film.swift in Sources */,
+				A328525E1F0121BC00619637 /* Species.swift in Sources */,
 				A331AD7A1EFE3FA1004DBC51 /* FilmCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

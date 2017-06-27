@@ -16,7 +16,7 @@ struct Film: SWCategory {
         case episodeIDParsingError(Error)
     }
     
-    internal var uid: String { return "film" + "\(episodeID)" }
+    internal var uid: String { return "film_\(title)" }
     internal var itemName: String { return title }
     
     var title: String

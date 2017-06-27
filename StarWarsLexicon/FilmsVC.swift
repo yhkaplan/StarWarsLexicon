@@ -27,13 +27,14 @@ class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func setupStatusBarAndTableView() {
         //Reload all theming code to separate file/class
-        tableView.backgroundColor = UIColor.black
-        
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        
-        let insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
+//        tableView.backgroundColor = UIColor.black
+//        
+//        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+//        
+//        let insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0)
+//        tableView.contentInset = insets
+//        tableView.scrollIndicatorInsets = insets
+        tableView.isHidden = true
     }
 
     func initializeFilms() {
@@ -49,6 +50,7 @@ class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if !films.isEmpty {
                         self.filmArray.append(contentsOf: films)
                         self.tableView.reloadData()
+                        self.tableView.isHidden = false
                     }
                     
                     if let nextURL = nextURL {
@@ -110,6 +112,6 @@ class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return 79.0
     }
 }

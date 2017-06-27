@@ -10,7 +10,7 @@ import Foundation
 
 struct Character: SWCategory {
     
-    internal var uid: String { return "character" + "\(name)" }
+    internal var uid: String { return "character_\(name)" }
     internal var itemName: String { return name }
     
     var name: String
@@ -24,7 +24,7 @@ struct Character: SWCategory {
     var birthYear: String
     var gender: String
     
-    //homeworld, films, species, vehicles, starships, created, edited, url
+    //homeworld, films, species, vehicles, starships
     
     init?(json: [String : Any]) {
         guard let name = json["name"] as? String else {

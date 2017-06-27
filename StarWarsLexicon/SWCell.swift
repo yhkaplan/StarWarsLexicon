@@ -11,10 +11,16 @@ import UIKit
 class SWCell: UICollectionViewCell {
     
     @IBOutlet weak var textLbl: UILabel!
+    @IBOutlet weak var cellView: UIView!
     
     var swItem: SWCategory!
     
     func configureCell<T: SWCategory> (_ swObject: T) {
+        //Add hex converter function
+        //self.backgroundColor = hex252525
+        // set cornerRadius to
+        //cellView.backgroundColor
+        
         //make this accept a generic, then respond with switch to determine the type and configure appropriately
         
         

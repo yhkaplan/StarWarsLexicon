@@ -8,26 +8,24 @@
 
 import UIKit
 
-class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchField: UITextField!
     
     let dataService = DataService()
     var url: URL? = URL(string: "https://swapi.co/api/people/")
     
-    private var characterArray: [Character] = [] {
-        didSet{
-            collectionView.reloadData()
-        }
-    }
+    private var characterArray = [Character]()
     
     //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
+        
         collectionView.dataSource = self
         collectionView.delegate = self
-        //characterStore.initializeAllCharacters()
         
         initializeCharacters()
     }
@@ -69,6 +67,10 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 break
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 170.0, height: 45.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

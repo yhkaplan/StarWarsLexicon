@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Starjedi.ttf">
+            <string>StarJedi</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Characters-->
         <scene sceneID="w0q-Dz-bZX">
@@ -19,13 +24,13 @@
                         <viewControllerLayoutGuide type="bottom" id="exl-iB-qy7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VbH-Oj-yrw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKE-eT-O8p">
-                                <rect key="frame" x="0.0" y="65" width="375" height="553"/>
+                                <rect key="frame" x="12" y="128" width="351" height="490"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hj4-pS-fC0">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Zn-3F-2gR">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -33,27 +38,36 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SWCell" id="897-7E-XOH" customClass="SWCell" customModule="StarWarsLexicon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfT-QM-AW6">
-                                                    <rect key="frame" x="0.0" y="19" width="50" height="11"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Co5-c4-gfo" customClass="CellBackgroundView" customModule="StarWarsLexicon" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="45"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luke Skywalker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nfT-QM-AW6">
+                                                    <rect key="frame" x="8" y="12.5" width="154" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.16531457180904252" green="0.16531457180904252" blue="0.16531457180904252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="nfT-QM-AW6" firstAttribute="centerY" secondItem="897-7E-XOH" secondAttribute="centerY" id="0pP-1l-UHY"/>
-                                            <constraint firstItem="nfT-QM-AW6" firstAttribute="leading" secondItem="897-7E-XOH" secondAttribute="leading" id="1ia-Xe-Nvs"/>
-                                            <constraint firstAttribute="trailing" secondItem="nfT-QM-AW6" secondAttribute="trailing" id="3Ca-R6-kMD"/>
+                                            <constraint firstItem="Co5-c4-gfo" firstAttribute="top" secondItem="897-7E-XOH" secondAttribute="top" id="0rw-0s-dqC"/>
+                                            <constraint firstItem="Co5-c4-gfo" firstAttribute="leading" secondItem="897-7E-XOH" secondAttribute="leading" id="Jui-B2-xRD"/>
+                                            <constraint firstItem="nfT-QM-AW6" firstAttribute="leading" secondItem="897-7E-XOH" secondAttribute="leadingMargin" id="KYw-Oe-MKq"/>
+                                            <constraint firstAttribute="bottom" secondItem="Co5-c4-gfo" secondAttribute="bottom" id="Wxo-KZ-DIl"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="nfT-QM-AW6" secondAttribute="trailing" id="jlT-xZ-Eub"/>
+                                            <constraint firstAttribute="trailing" secondItem="Co5-c4-gfo" secondAttribute="trailing" id="z0W-Xr-0aS"/>
                                         </constraints>
+                                        <size key="customSize" width="170" height="45"/>
                                         <connections>
+                                            <outlet property="cellView" destination="Co5-c4-gfo" id="RKV-1X-9ub"/>
                                             <outlet property="textLbl" destination="nfT-QM-AW6" id="A2d-nw-ADc"/>
                                         </connections>
                                     </collectionViewCell>
@@ -66,21 +80,50 @@
                                     <constraint firstAttribute="height" constant="65" id="dRR-RS-wmG"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXO-4w-CGV" customClass="CellBackgroundView" customModule="StarWarsLexicon" customModuleProvider="target">
+                                <rect key="frame" x="12" y="73" width="351" height="45"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-fw-2lC">
+                                        <rect key="frame" x="16" y="11.5" width="319" height="21"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="UHd-tQ-NeL"/>
+                                    <constraint firstItem="hVY-fw-2lC" firstAttribute="centerY" secondItem="MXO-4w-CGV" secondAttribute="centerY" id="ZSF-9y-GNO"/>
+                                    <constraint firstAttribute="trailing" secondItem="hVY-fw-2lC" secondAttribute="trailing" constant="16" id="iAH-YX-dDO"/>
+                                    <constraint firstItem="hVY-fw-2lC" firstAttribute="leading" secondItem="MXO-4w-CGV" secondAttribute="leading" constant="16" id="xpH-Kj-kjZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="b5G-hi-umt" firstAttribute="leading" secondItem="VbH-Oj-yrw" secondAttribute="leading" id="4Bi-o1-0VJ"/>
                             <constraint firstAttribute="trailing" secondItem="b5G-hi-umt" secondAttribute="trailing" id="8ug-E6-tfi"/>
-                            <constraint firstItem="EKE-eT-O8p" firstAttribute="top" secondItem="b5G-hi-umt" secondAttribute="bottom" id="M4N-yE-jTR"/>
+                            <constraint firstItem="EKE-eT-O8p" firstAttribute="top" secondItem="MXO-4w-CGV" secondAttribute="bottom" constant="10" id="AhS-Kj-iB8"/>
                             <constraint firstItem="b5G-hi-umt" firstAttribute="top" secondItem="VbH-Oj-yrw" secondAttribute="top" id="WJD-eY-s6r"/>
-                            <constraint firstItem="EKE-eT-O8p" firstAttribute="leading" secondItem="VbH-Oj-yrw" secondAttribute="leading" id="fkr-qm-AcB"/>
-                            <constraint firstAttribute="trailing" secondItem="EKE-eT-O8p" secondAttribute="trailing" id="tzQ-Yf-M4u"/>
-                            <constraint firstItem="exl-iB-qy7" firstAttribute="top" secondItem="EKE-eT-O8p" secondAttribute="bottom" id="z8d-5h-Zwu"/>
+                            <constraint firstAttribute="trailing" secondItem="MXO-4w-CGV" secondAttribute="trailing" constant="12" id="Z4W-Hp-1Co"/>
+                            <constraint firstItem="EKE-eT-O8p" firstAttribute="leading" secondItem="VbH-Oj-yrw" secondAttribute="leading" constant="12" id="fkr-qm-AcB"/>
+                            <constraint firstItem="MXO-4w-CGV" firstAttribute="top" secondItem="b5G-hi-umt" secondAttribute="bottom" constant="8" id="rzY-QM-XWh"/>
+                            <constraint firstItem="exl-iB-qy7" firstAttribute="top" secondItem="EKE-eT-O8p" secondAttribute="bottom" id="tg6-y8-wiW"/>
+                            <constraint firstAttribute="trailing" secondItem="EKE-eT-O8p" secondAttribute="trailing" constant="12" id="tzQ-Yf-M4u"/>
+                            <constraint firstItem="MXO-4w-CGV" firstAttribute="leading" secondItem="VbH-Oj-yrw" secondAttribute="leading" constant="12" id="vGb-Xm-6zK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Characters" id="LY2-1v-KV5"/>
+                    <tabBarItem key="tabBarItem" title="Characters" image="Vader" selectedImage="Vader" id="LY2-1v-KV5">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="collectionView" destination="EKE-eT-O8p" id="t8y-os-Yqb"/>
+                        <outlet property="searchField" destination="hVY-fw-2lC" id="LxC-sW-Hjk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efm-Rc-2lr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,19 +139,12 @@
                         <viewControllerLayoutGuide type="bottom" id="okf-sS-vcR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cn9-Zk-UfF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JE2-tB-tzM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="f9y-hG-8WY"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zbb-75-QcQ">
                                 <rect key="frame" x="0.0" y="65" width="375" height="553"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.73725490196078436" green="0.73333333333333328" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -119,7 +155,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FGV-CN-RNV" customClass="CircularImage" customModule="StarWarsLexicon" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FGV-CN-RNV" customClass="CircularImage" customModule="StarWarsLexicon" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="9.5" width="60" height="60.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="gY1-oV-Lqb"/>
@@ -166,26 +202,50 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JE2-tB-tzM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StarWars Lexicon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ais-EK-2Bx">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="32"/>
+                                        <fontDescription key="fontDescription" name="StarJedi" family="Star Jedi" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Ais-EK-2Bx" firstAttribute="leading" secondItem="JE2-tB-tzM" secondAttribute="leading" id="ArO-Ml-sZw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ais-EK-2Bx" secondAttribute="trailing" id="QbK-PU-Djz"/>
+                                    <constraint firstAttribute="height" constant="45" id="f9y-hG-8WY"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ais-EK-2Bx" secondAttribute="bottom" constant="12" id="k10-em-g16"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="JE2-tB-tzM" firstAttribute="leading" secondItem="cn9-Zk-UfF" secondAttribute="leading" id="0iK-Os-mSn"/>
                             <constraint firstItem="zbb-75-QcQ" firstAttribute="top" secondItem="JE2-tB-tzM" secondAttribute="bottom" id="7K2-9A-KCB"/>
                             <constraint firstAttribute="trailing" secondItem="zbb-75-QcQ" secondAttribute="trailing" id="9jl-Qr-wfG"/>
                             <constraint firstAttribute="trailing" secondItem="JE2-tB-tzM" secondAttribute="trailing" id="IdE-Ee-JvD"/>
-                            <constraint firstItem="JE2-tB-tzM" firstAttribute="top" secondItem="cn9-Zk-UfF" secondAttribute="top" id="Imu-fD-ta9"/>
                             <constraint firstItem="zbb-75-QcQ" firstAttribute="leading" secondItem="cn9-Zk-UfF" secondAttribute="leading" id="c0A-2l-Jji"/>
                             <constraint firstItem="okf-sS-vcR" firstAttribute="top" secondItem="zbb-75-QcQ" secondAttribute="bottom" id="sJb-7V-opj"/>
+                            <constraint firstItem="JE2-tB-tzM" firstAttribute="top" secondItem="IEJ-Sz-tFN" secondAttribute="bottom" id="tkY-Y7-QWm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Films" id="jQL-Jl-i6y"/>
+                    <tabBarItem key="tabBarItem" title="Films" image="Film" selectedImage="Film" id="jQL-Jl-i6y">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="zbb-75-QcQ" id="hJi-UL-vQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bG-NA-Mvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724" y="929"/>
+            <point key="canvasLocation" x="1724" y="956"/>
         </scene>
         <!--Film DetailVC-->
         <scene sceneID="Mfv-vI-qlZ">
@@ -196,7 +256,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LJd-rR-HVi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="drL-oq-T7a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5e-Tz-ypL">
@@ -310,16 +370,17 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rrA-Bt-U3R" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="mXi-Bp-env">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="mXi-Bp-env">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.3025470890410959" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8fe-3F-DOD" kind="relationship" relationship="viewControllers" id="aH5-vv-DTL"/>
                         <segue destination="cvu-sF-7fO" kind="relationship" relationship="viewControllers" id="4aI-Sh-vn2"/>
+                        <segue destination="8fe-3F-DOD" kind="relationship" relationship="viewControllers" id="aH5-vv-DTL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAI-b7-KFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,4 +388,8 @@
             <point key="canvasLocation" x="784.79999999999995" y="497.00149925037488"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Film" width="30" height="30"/>
+        <image name="Vader" width="31" height="30"/>
+    </resources>
 </document>

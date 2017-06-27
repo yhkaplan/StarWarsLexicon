@@ -27,5 +27,6 @@ class FilmCell: UITableViewCell {
         filmTitleLbl.text = film.title
         filmNumberLbl.text = "Film \(film.episodeID)"
         //Image file
+        filmCoverImg.image = UIImage(named: "\(film.episodeID)")
     }
 }
