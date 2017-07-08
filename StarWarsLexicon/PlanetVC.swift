@@ -1,24 +1,23 @@
 //
-//  CollectionVC.swift
+//  PlanetVC.swift
 //  StarWarsLexicon
 //
-//  Created by Joshua Kaplan on 2017/06/03.
+//  Created by Joshua Kaplan on 2017/06/28.
 //  Copyright © 2017年 Joshua Kaplan. All rights reserved.
 //
 
 import UIKit
 
-class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchField: UITextField!
     
     let dataService = DataService()
-    var url: URL? = URL(string: "https://swapi.co/api/people/")
+    var url: URL? = URL(string: "https://swapi.co/api/planets/")
     
-    private var characterArray = [Character]()
+    private var planetArray = [Planet]()
     
-    //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,37 +26,32 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        initializeCharacters()
+        initializePlanets()
     }
-    
-    func initializeCharacters() {
-        
+
+    func initializePlanets(){
         guard let url = url else {
-            //throw error
+            //Error
             return
         }
         
-        self.dataService.fetchObjects(category: .character, url: url) { (result) -> Void in
-            
-            //print("Result is \(result)")
+        self.dataService.fetchObjects(category: .planet, url: url) { (result) -> Void in
             switch result {
-            case let .characterSuccess(characters, nextURL):
+            case let .planetSuccess(planets, nextURL):
                 
                 DispatchQueue.main.async {
-                    
-                    print("Retrieved \(characters.count) characters")
-                    if !characters.isEmpty {
-                        self.characterArray.append(contentsOf: characters)
+                    print("Retrieved \(planets.count) planets")
+                    if !planets.isEmpty {
+                        self.planetArray.append(contentsOf: planets)
                         self.collectionView.reloadData()
-                        //self.organizeCharactersByName()
+                        //self.organizePlanetsByName()
                     }
                     
                     if let nextURL = nextURL {
                         self.url = nextURL
-                        print("The next URl is \(nextURL)")
-                        self.initializeCharacters()
+                        print("The next url is \(nextURL)")
+                        self.initializePlanets()
                     }
-                    
                 }
             case let .failure(error):
                 print("Error: \(error)")
@@ -71,10 +65,11 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showCharacter"?:
-            if let characterDetailVC = segue.destination as? CharacterDetailVC {
-                if let character = sender as? Character {
-                    characterDetailVC.character = character
+        case "showPlanet"?:
+            if let planetDetailVC = segue.destination as? PlanetDetailVC {
+                if let planet = sender as? Planet {
+                    print("Planet set")
+                    planetDetailVC.detailPlanet = planet
                 }
             }
         default:
@@ -83,11 +78,11 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var character: Character!
+        var planet: Planet!
         
-        character = characterArray[indexPath.row]
+        planet = planetArray[indexPath.row]
         
-        performSegue(withIdentifier: "showCharacter", sender: character)
+        performSegue(withIdentifier: "showPlanet", sender: planet)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -95,18 +90,16 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWCell", for: indexPath) as? SWCell {
-        
-        cell.configureCell(characterArray[indexPath.row])
-        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanetCell", for: indexPath) as? PlanetCell {
+            
+            cell.configureCell(planetArray[indexPath.row])
             return cell
         } else {
             return UICollectionViewCell()
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characterArray.count
+        return planetArray.count
     }
 }

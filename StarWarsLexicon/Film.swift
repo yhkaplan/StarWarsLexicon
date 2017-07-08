@@ -24,21 +24,17 @@ struct Film: SWCategory {
     var openingCrawl: String
     var director: String
     var producer: String
-//    var releaseDate: Date
+    var releaseDate: Date
 //    
 //    var species: [String]
 //    var starships: [String]
 //    var vehicles: [String]
 //    var characters: [String]
 //    var planets: [String]
-//    
-//    var url: URL
-//    var created: Date
-//    var edited: Date
 
     init?(json: [String : Any]) {
         guard let title = json["title"] as? String else {
-            print("Parsing error with title ")//"Error: cannot parse title"
+            print("Parsing error with title ")
             return nil
         }
         
@@ -62,11 +58,20 @@ struct Film: SWCategory {
             return nil
         }
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        guard let releaseDateString = json["release_date"] as? String, let releaseDate = formatter.date(from: releaseDateString) else {
+            print("Parsing error with release date")
+            return nil
+        }
+        
         self.title = title
         self.episodeID = episodeID
         self.openingCrawl = openingCrawl
         self.director = director
         self.producer = producer
+        self.releaseDate = releaseDate
     }
-    
 }

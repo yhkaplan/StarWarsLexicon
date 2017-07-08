@@ -14,16 +14,29 @@ class FilmDetailVC: UIViewController {
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var episodeIDLbl: UILabel!
-    @IBOutlet weak var episodeLbl: UILabel!
+    @IBOutlet weak var directorLbl: UILabel!
+    @IBOutlet weak var releaseDateLbl: UILabel!
+    
     @IBOutlet weak var openingCrawlTextView: UITextView!
+    @IBOutlet weak var filmCoverImageView: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         titleLbl.text = film.title
         episodeIDLbl.text = "\(film.episodeID)"
-        episodeLbl.text = film.uid
-        openingCrawlTextView.text = "Opening Crawl: " + film.openingCrawl
+        directorLbl.text = film.director
+        
+        let formatter = DateFormatter()
+        //formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateStyle = .medium
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US")
+        let releaseDateString = formatter.string(from: film.releaseDate)
+        releaseDateLbl.text = releaseDateString
+        
+        openingCrawlTextView.text = "Opening Crawl: \n" + film.openingCrawl
+        filmCoverImageView.image = UIImage(named: "\(film.episodeID)")
     }
     
 

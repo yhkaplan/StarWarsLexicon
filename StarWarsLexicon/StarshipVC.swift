@@ -1,24 +1,23 @@
 //
-//  CollectionVC.swift
+//  StarshipVC.swift
 //  StarWarsLexicon
 //
-//  Created by Joshua Kaplan on 2017/06/03.
+//  Created by Joshua Kaplan on 2017/06/28.
 //  Copyright © 2017年 Joshua Kaplan. All rights reserved.
 //
 
 import UIKit
 
-class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchField: UITextField!
     
     let dataService = DataService()
-    var url: URL? = URL(string: "https://swapi.co/api/people/")
+    var url: URL? = URL(string: "https://swapi.co/api/starships/")
     
-    private var characterArray = [Character]()
+    private var starshipArray = [Starship]()
     
-    //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,37 +26,32 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        initializeCharacters()
+        initializeStarships()
     }
-    
-    func initializeCharacters() {
-        
+
+    func initializeStarships() {
         guard let url = url else {
-            //throw error
+            //Error
             return
         }
         
-        self.dataService.fetchObjects(category: .character, url: url) { (result) -> Void in
-            
-            //print("Result is \(result)")
+        self.dataService.fetchObjects(category: .starship, url: url) { (result) -> Void in
             switch result {
-            case let .characterSuccess(characters, nextURL):
+            case let .starshipSuccess(starships, nextURL):
                 
                 DispatchQueue.main.async {
-                    
-                    print("Retrieved \(characters.count) characters")
-                    if !characters.isEmpty {
-                        self.characterArray.append(contentsOf: characters)
+                    print("Retrieved \(starships.count) starships")
+                    if !starships.isEmpty {
+                        self.starshipArray.append(contentsOf: starships)
                         self.collectionView.reloadData()
-                        //self.organizeCharactersByName()
+                        //self.organizeStarshipsByName()
                     }
                     
                     if let nextURL = nextURL {
                         self.url = nextURL
-                        print("The next URl is \(nextURL)")
-                        self.initializeCharacters()
+                        print("The next url is \(nextURL)")
+                        self.initializeStarships()
                     }
-                    
                 }
             case let .failure(error):
                 print("Error: \(error)")
@@ -71,10 +65,10 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showCharacter"?:
-            if let characterDetailVC = segue.destination as? CharacterDetailVC {
-                if let character = sender as? Character {
-                    characterDetailVC.character = character
+        case "showStarship"?:
+            if let starshipDetailVC = segue.destination as? StarshipAndVehicleDetailVC {
+                if let starship = sender as? Starship {
+                    starshipDetailVC.starship = starship
                 }
             }
         default:
@@ -83,30 +77,28 @@ class CollectionVC: UIViewController, UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var character: Character!
+        var starship: Starship!
         
-        character = characterArray[indexPath.row]
-        
-        performSegue(withIdentifier: "showCharacter", sender: character)
+        starship = starshipArray[indexPath.row]
+        performSegue(withIdentifier: "showStarship", sender: starship)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170.0, height: 45.0)
+        return CGSize(width: 170.0, height: 60.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SWCell", for: indexPath) as? SWCell {
-        
-        cell.configureCell(characterArray[indexPath.row])
-        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarshipCell", for: indexPath) as? StarshipCell {
+            
+            cell.configureCell(starshipArray[indexPath.row])
             return cell
         } else {
             return UICollectionViewCell()
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characterArray.count
+        return starshipArray.count
     }
 }

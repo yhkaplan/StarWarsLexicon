@@ -9,18 +9,21 @@
 import Foundation
 
 enum Category {
-    case film //= "films/"
-    case character //= "people/"
-//    case planets = "planets/"
-//    case species = "species/"
-//    case starships = "starships/"
-//    case vehicles = "vehicles/"
+    case film
+    case character
+    case starship
+    case planet
+    case species
+    case vehicle
 }
 
 enum Result {
     case filmSuccess([Film], URL?)
     case characterSuccess([Character], URL?)
-    //etc
+    case starshipSuccess([Starship], URL?)
+    case planetSuccess([Planet], URL?)
+    case speciesSuccess([Species], URL?)
+    case vehicleSuccess([Vehicle], URL?)
     case failure(Error)
 }
 
@@ -42,29 +45,24 @@ class DataService {
                 return
             }
             
+            guard !resultsArray.isEmpty else {
+                completion(.failure("API error" as! Error))//Revise this
+                return
+            }
+            
             switch category {
             case .film:
                 //ISN't RESULTS ARRAY A DICTIONARY???
                 let finalFilms = resultsArray.flatMap { Film(json: $0) }
-                
-                if finalFilms.isEmpty && !resultsArray.isEmpty {
-                    print("Parsing error")
-                }
+                //Assumption: because flatmap returns no nil items and final is not optional, no check for empty array required
+                //Guard let preferable??
                 
                 //No more than ten films for now
                 completion(.filmSuccess(finalFilms, nil))
                 
             case .character:
-                
                 let finalCharacters = resultsArray.flatMap { Character(json: $0) }
                 
-                //Improve error handling
-                if finalCharacters.isEmpty && !resultsArray.isEmpty {
-                    //No characters parsed
-                    print("Parsing error")
-                }
-                
-                //Parse URL
                 guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
                     print("All data retrieved")
                     completion(.characterSuccess(finalCharacters, nil))
@@ -72,6 +70,50 @@ class DataService {
                 }
                 
                 completion(.characterSuccess(finalCharacters, nextURL))
+                
+            case .starship:
+                let finalStarships = resultsArray.flatMap { Starship(json: $0) }
+                
+                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
+                    print("All data retrieved")
+                    completion(.starshipSuccess(finalStarships, nil))
+                    return
+                }
+                
+                print(finalStarships)
+                
+                completion(.starshipSuccess(finalStarships, nextURL))
+                
+            case .planet:
+                let finalPlanets = resultsArray.flatMap { Planet(json: $0) }
+                
+                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
+                    print("All data retrieved")
+                    completion(.planetSuccess(finalPlanets, nil))
+                    return
+                }
+                
+                completion(.planetSuccess(finalPlanets, nextURL))
+            case .species:
+                let finalSpecies = resultsArray.flatMap { Species(json: $0) }
+                
+                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
+                    print("All data retrieved")
+                    completion(.speciesSuccess(finalSpecies, nil))
+                    return
+                }
+                
+                completion(.speciesSuccess(finalSpecies, nextURL))
+            case .vehicle:
+                let finalVehicles = resultsArray.flatMap { Vehicle(json: $0) }
+                
+                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
+                    print("All data retrieved")
+                    completion(.vehicleSuccess(finalVehicles, nil))
+                    return
+                }
+                
+                completion(.vehicleSuccess(finalVehicles, nextURL))
             }
         }
         task.resume()

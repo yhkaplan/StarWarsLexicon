@@ -21,6 +21,7 @@ class FilmCell: UITableViewCell {
         
         //Set arrows to visible
         //disclosure indicator visible
+        self.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0)
         
         self.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         

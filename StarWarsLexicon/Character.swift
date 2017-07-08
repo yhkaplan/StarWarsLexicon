@@ -15,8 +15,8 @@ struct Character: SWCategory {
     
     var name: String
     
-    var height: String
-    var mass: String
+    var height: Int?
+    var mass: Int?
     
     var hairColor: String
     var skinColor: String
@@ -29,17 +29,6 @@ struct Character: SWCategory {
     init?(json: [String : Any]) {
         guard let name = json["name"] as? String else {
             print("Parsing error with character name")
-            return nil
-        }
-        
-        guard let height = json["height"] as? String else {
-            print("Parsing error with character height")
-            return nil
-        }
-        
-        
-        guard let mass = json["mass"] as? String else {
-            print("Parsing error with character mass")
             return nil
         }
         
@@ -69,8 +58,12 @@ struct Character: SWCategory {
         }
         
         self.name = name
-        self.height = height
-        self.mass = mass
+        if let heightString = json["height"] as? String, let height = Int(heightString) {
+            self.height = height
+        }
+        if let massString = json["mass"] as? String, let mass = Int(massString) {
+            self.mass = mass
+        }
         self.hairColor = hairColor
         self.skinColor = skinColor
         self.eyeColor = eyeColor

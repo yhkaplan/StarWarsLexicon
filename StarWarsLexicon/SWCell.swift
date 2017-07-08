@@ -16,22 +16,7 @@ class SWCell: UICollectionViewCell {
     var swItem: SWCategory!
     
     func configureCell<T: SWCategory> (_ swObject: T) {
-        //Add hex converter function
-        //self.backgroundColor = hex252525
-        // set cornerRadius to
-        //cellView.backgroundColor
-        
-        //make this accept a generic, then respond with switch to determine the type and configure appropriately
-        
-        
-        //self.swItem = swObject
-        
-        
-        //Switch or if statement to determine type of swobject
-        
-        //Should this be swObject or a variable stored w/ each cell?
-        textLbl.text = swObject.itemName//TO chance later
-        
+        textLbl.text = swObject.itemName//TO change later
     }
     
 }

@@ -13,6 +13,7 @@ class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     let dataService = DataService()
     var url: URL? = URL(string: "https://swapi.co/api/films/")
+    var selectedIndexPath = IndexPath()
     
     private var filmArray = [Film]()
     
@@ -25,15 +26,17 @@ class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         initializeFilms()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        print("selectedIndexPath = \(selectedIndexPath)")
+        if !selectedIndexPath.isEmpty {
+            tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0)
+        }
+    }
+    
     func setupStatusBarAndTableView() {
         //Reload all theming code to separate file/class
-//        tableView.backgroundColor = UIColor.black
-//        
-//        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-//        
-//        let insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0)
-//        tableView.contentInset = insets
-//        tableView.scrollIndicatorInsets = insets
+        
+        //widen! navigationItem.titleView?.leadingAnchor
         tableView.isHidden = true
     }
 
@@ -92,6 +95,8 @@ class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.darkGray
+        selectedIndexPath = indexPath
+        //tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
