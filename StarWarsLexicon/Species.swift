@@ -9,13 +9,15 @@
 import Foundation
 
 struct Species: SWCategory {
-    internal var uid: String { return "species_\(name)" }
+    
+    internal var category: Category { return .species }
     internal var itemName: String { return name }
     
     var name: String
     var classification: String
     var designation: String
     var language: String
+    var itemURL: URL
     //Comma separated strings
     var eyeColors: String
     var hairColors: String
@@ -49,6 +51,11 @@ struct Species: SWCategory {
             return nil
         }
         
+        guard let urlString = json["url"] as? String, let url = URL(string: urlString) else {
+            print("Parsing error with species url")
+            return nil
+        }
+        
         guard let eyeColors = json["eye_colors"] as? String else {
             print("Parsing error with species eye colors")
             return nil
@@ -78,6 +85,7 @@ struct Species: SWCategory {
         self.classification = classification
         self.designation = designation
         self.language = language
+        self.itemURL = url
         self.eyeColors = eyeColors
         self.hairColors = hairColors
         self.skinColors = skinColors

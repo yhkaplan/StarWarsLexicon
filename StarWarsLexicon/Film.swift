@@ -16,7 +16,7 @@ struct Film: SWCategory {
         case episodeIDParsingError(Error)
     }
     
-    internal var uid: String { return "film_\(title)" }
+    internal var category: Category { return .film }
     internal var itemName: String { return title }
     
     var title: String
@@ -25,6 +25,7 @@ struct Film: SWCategory {
     var director: String
     var producer: String
     var releaseDate: Date
+    var itemURL: URL
 //    
 //    var species: [String]
 //    var starships: [String]
@@ -58,6 +59,11 @@ struct Film: SWCategory {
             return nil
         }
         
+        guard let urlString = json["url"] as? String, let url = URL(string: urlString) else {
+            print("Parsing error with url")
+            return nil
+        }
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -72,6 +78,7 @@ struct Film: SWCategory {
         self.openingCrawl = openingCrawl
         self.director = director
         self.producer = producer
+        self.itemURL = url
         self.releaseDate = releaseDate
     }
 }

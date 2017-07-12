@@ -1,29 +1,29 @@
 //
-//  PlanetVC.swift
+//  VehicleVC.swift
 //  StarWarsLexicon
 //
-//  Created by Joshua Kaplan on 2017/06/28.
+//  Created by Joshua Kaplan on 2017/07/09.
 //  Copyright © 2017年 Joshua Kaplan. All rights reserved.
 //
 
 import UIKit
 
-class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
-    var url: URL? = URL(string: "https://swapi.co/api/planets/")
+    var url: URL? = URL(string: "https://swapi.co/api/vehicles/")
     var searchMode = false
     
-    private var planetArray = [Planet]()
-    private var filteredPlanetArray = [Planet]()
+    private var vehicleArray = [Vehicle]()
+    private var filteredVehicleArray = [Vehicle]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tapGestureRecognizer.isEnabled = false
         
         collectionView.dataSource = self
@@ -32,39 +32,35 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         
         searchBar.returnKeyType = UIReturnKeyType.done
         
-//        for i in 0...30 {
-//            let newPlanet = Planet(name: "planetplanetplanet\(i)")
-//            self.planetArray.append(newPlanet)
-//        }
-//        self.collectionView.reloadData()
-        
-        initializePlanets()
+        initializeVehicles()
     }
-    
-    //MARK: DataService controller
 
-    func initializePlanets(){
+    //MARK: DataService controller
+    
+    func initializeVehicles() {
+        
         guard let url = url else {
-            //Error
+            //throw an error
             return
         }
         
-        self.dataService.fetchObjects(category: .planet, url: url) { (result) -> Void in
+        self.dataService.fetchObjects(category: .vehicle, url: url) { (result) -> Void in
             switch result {
-            case let .planetSuccess(planets, nextURL):
+            case let .vehicleSuccess(vehicles, nextURL):
                 
                 DispatchQueue.main.async {
-                    print("Retrieved \(planets.count) planets")
-                    if !planets.isEmpty {
-                        self.planetArray.append(contentsOf: planets)
+                    
+                    print("Retrieved \(vehicles.count) vehicles")
+                    if !vehicles.isEmpty {
+                        self.vehicleArray.append(contentsOf: vehicles)
                         self.collectionView.reloadData()
-                        //self.organizePlanetsByName()
+                        //self.organizeVehiclesByName()
                     }
                     
                     if let nextURL = nextURL {
                         self.url = nextURL
-                        print("The next url is \(nextURL)")
-                        self.initializePlanets()
+                        print("The next URL is \(nextURL)")
+                        self.initializeVehicles()
                     }
                 }
             case let .failure(error):
@@ -88,11 +84,10 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showPlanet"?:
-            if let planetDetailVC = segue.destination as? PlanetDetailVC {
-                if let planet = sender as? Planet {
-                    print("Planet set")
-                    planetDetailVC.detailPlanet = planet
+        case "showVehicle"?:
+            if let vehicleDetailVC = segue.destination as? StarshipAndVehicleDetailVC {
+                if let vehicle = sender as? Vehicle {
+                    vehicleDetailVC.vehicle = vehicle
                 }
             }
         default:
@@ -100,13 +95,12 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    //MARK: Search Bar Functions
+    //MARK: Search bar 
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchTerm = searchBar.text, searchTerm != "" {
             searchMode = true
-            
-            filteredPlanetArray = planetArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
+            filteredVehicleArray = vehicleArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
             collectionView.reloadData()
         } else {
             searchMode = false
@@ -122,30 +116,31 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         view.endEditing(true)
     }
     
-    //MARK: Collection View Functions
+    //MARK: Collection view functions
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var planet: Planet!
+        var vehicle: Vehicle!
         
         if searchMode {
-            planet = filteredPlanetArray[indexPath.row]
+            vehicle = filteredVehicleArray[indexPath.row]
         } else {
-            planet = planetArray[indexPath.row]
+            vehicle = vehicleArray[indexPath.row]
         }
-        performSegue(withIdentifier: "showPlanet", sender: planet)
+        performSegue(withIdentifier: "showVehicle", sender: vehicle)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170.0, height: 45.0)
+        return CGSize(width: 170.0, height: 60.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanetCell", for: indexPath) as? SWCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCell", for: indexPath) as? SWCell {
             
             if searchMode {
-                cell.configureCell(filteredPlanetArray[indexPath.row])
+                cell.configureCell(filteredVehicleArray[indexPath.row])
             } else {
-                cell.configureCell(planetArray[indexPath.row])
+                cell.configureCell(vehicleArray[indexPath.row])
             }
             return cell
         } else {
@@ -155,8 +150,8 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if searchMode {
-            return filteredPlanetArray.count
+            return filteredVehicleArray.count
         }
-        return planetArray.count
+        return vehicleArray.count
     }
 }

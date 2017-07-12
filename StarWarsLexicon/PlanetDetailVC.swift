@@ -30,14 +30,14 @@ class PlanetDetailVC: UIViewController {
 
         if let planet = detailPlanet {
 
-            nameLbl.text = planet.name
+            nameLbl.text = planet.name.capitalized
             if let population = planet.population {
                 populationLbl.text = "\(population)"
             } else {
                 populationLbl.text = nilLabel
             }
-            climateLbl.text = planet.climate
-            terrainLbl.text = planet.terrain
+            climateLbl.text = planet.climate.capitalized
+            terrainLbl.text = planet.terrain.capitalized
             if let diameter = planet.diameter {
                 diameterLbl.text = "\(diameter)"
             } else {

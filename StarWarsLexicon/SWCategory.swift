@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SWCategory {
-    var uid: String { get }
+    var category: Category { get }
     var itemName: String { get }
+    var itemURL: URL { get }
 }

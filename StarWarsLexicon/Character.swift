@@ -10,7 +10,7 @@ import Foundation
 
 struct Character: SWCategory {
     
-    internal var uid: String { return "character_\(name)" }
+    internal var category: Category { return .character }
     internal var itemName: String { return name }
     
     var name: String
@@ -23,8 +23,10 @@ struct Character: SWCategory {
     var eyeColor: String
     var birthYear: String
     var gender: String
+    var itemURL: URL
     
     //homeworld, films, species, vehicles, starships
+    var filmURLArray: [URL?]
     
     init?(json: [String : Any]) {
         guard let name = json["name"] as? String else {
@@ -57,17 +59,30 @@ struct Character: SWCategory {
             return nil
         }
         
+        guard let urlString = json["url"] as? String, let url = URL(string: urlString) else {
+            print("Parsing error with url")
+            return nil
+        }
+        
         self.name = name
+        self.hairColor = hairColor
+        self.skinColor = skinColor
+        self.eyeColor = eyeColor
+        self.birthYear = birthYear
+        self.gender = gender
+        self.itemURL = url
+        
         if let heightString = json["height"] as? String, let height = Int(heightString) {
             self.height = height
         }
         if let massString = json["mass"] as? String, let mass = Int(massString) {
             self.mass = mass
         }
-        self.hairColor = hairColor
-        self.skinColor = skinColor
-        self.eyeColor = eyeColor
-        self.birthYear = birthYear
-        self.gender = gender
+        if let filmURLStringArray = json["films"] as? [String] {
+            let filmURLArray = filmURLStringArray.map({ URL(string: $0)})
+            self.filmURLArray = filmURLArray
+        } else {
+            self.filmURLArray = []
+        }
     }
 }

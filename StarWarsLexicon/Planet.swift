@@ -9,12 +9,14 @@
 import Foundation
 
 struct Planet: SWCategory {
-    internal var uid: String { return "planet_\(name)" }
+    
+    internal var category: Category {return .planet }
     internal var itemName: String { return name }
     
     var name: String
     var climate: String
     var terrain: String
+    var itemURL: URL
     
     var diameter: Int?
     var rotationPeriod: Int? //rename #ofhours in day?
@@ -27,7 +29,8 @@ struct Planet: SWCategory {
 //    var films: [Film]
     
     init?(json: [String : Any]) {
-        guard let name = json["name"] as? String else {
+        
+        guard let name = json["name"] as? String, name != "unknown" else {
             print("Parsing error with planet name")
             return nil
         }
@@ -41,15 +44,16 @@ struct Planet: SWCategory {
             print("Parsing error with planet terrain")
             return nil
         }
-        
-        guard name != "unknown" else {
-            print("Data error: planet name not defined")
+    
+        guard let urlString = json["url"] as? String, let url = URL(string: urlString) else {
+            print("Parsing error with planet url")
             return nil
         }
         
         self.name = name
         self.climate = climate
         self.terrain = terrain
+        self.itemURL = url
         
         if let diameterString = json["diameter"] as? String, let diameter = Int(diameterString) {
             self.diameter = diameter

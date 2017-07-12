@@ -9,19 +9,22 @@
 import Foundation
 
 struct Vehicle: SWCategory {
-    internal var uid: String { return "vehicle_\(name)"}
+    
+    internal var category: Category { return .vehicle }
     internal var itemName: String { return name }
 
     var name: String
     var model: String
     var vehicleClass: String
     var manufacturer: String
+    var itemURL: URL
     
-    var length: Int
-    var costInCredits: Int
-    var numberOfCrewMembers: Int
-    var numberOfPassengers: Int
-    var maximumAtmosphericSpeed: Int
+    //The variables below are treated as strings in the API
+    var costInCredits: Double?
+    var length: Double?
+    var numberOfCrewMembers: Int?
+    var numberOfPassengers: Int?
+    var maximumAtmosphericSpeed: Double?
     
     //The following parameters are outside the scope of this implementation
     //cargoCapacity
@@ -51,28 +54,8 @@ struct Vehicle: SWCategory {
             return nil
         }
         
-        guard let lengthString = json["length"] as? String, let length = Int(lengthString) else {
-            print("Parsing error with vehicle length")
-            return nil
-        }
-        
-        guard let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Int(costInCreditsString) else {
-            print("Parsing error with vehicle cost in credits")
-            return nil
-        }
-        
-        guard let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Int(numberOfCrewMembersString) else {
-            print("Parsing error with vehicle number of crew numbers")
-            return nil
-        }
-        
-        guard let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Int(numberOfPassengersString) else {
-            print("Parsing error with vehicle number of passengers")
-            return nil
-        }
-        
-        guard let maximumAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maximumAtmosphericSpeed = Int(maximumAtmosphericSpeedString) else {
-            print("Parsing error with vehicle maximum atmospheric speed")
+        guard let urlString = json["url"] as? String, let url = URL(string: urlString) else {
+            print("Parsing error with vehicle url")
             return nil
         }
         
@@ -80,10 +63,26 @@ struct Vehicle: SWCategory {
         self.model = model
         self.vehicleClass = vehicleClass
         self.manufacturer = manufacturer
-        self.length = length
-        self.costInCredits = costInCredits
-        self.numberOfCrewMembers = numberOfCrewMembers
-        self.numberOfPassengers = numberOfPassengers
-        self.maximumAtmosphericSpeed = maximumAtmosphericSpeed
+        self.itemURL = url
+        
+        if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
+            self.costInCredits = costInCredits
+        }
+        
+        if let lengthString = json["length"] as? String, let length = Double(lengthString) {
+            self.length = length
+        }
+        
+        if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Int(numberOfCrewMembersString) {
+            self.numberOfCrewMembers = numberOfCrewMembers
+        }
+        
+        if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Int(numberOfPassengersString) {
+            self.numberOfPassengers = numberOfPassengers
+        }
+        
+        if let maximumAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maximumAtmosphericSpeed = Double(maximumAtmosphericSpeedString) {
+            self.maximumAtmosphericSpeed = maximumAtmosphericSpeed
+        }
     }
 }

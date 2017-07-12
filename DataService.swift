@@ -24,6 +24,7 @@ enum Result {
     case planetSuccess([Planet], URL?)
     case speciesSuccess([Species], URL?)
     case vehicleSuccess([Vehicle], URL?)
+    case relatedFilmSuccess(Film)
     case failure(Error)
 }
 
@@ -33,6 +34,36 @@ class DataService {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
+    
+    func fetchRelatedFilm(from filmURL: URL, completion: @escaping (Result) -> Void) {
+        
+        let request = URLRequest(url: filmURL)
+        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+            
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
+                //JSON structure is different from expected format
+                print("JSON structure is different from expected format")
+                return
+            }
+            
+            guard !json.isEmpty else {
+                print("Data error")
+                return
+            }
+            
+            if let film = Film(json: json) {
+                completion(.relatedFilmSuccess(film))
+            } else {
+                print("Data error")
+                return
+            }
+        }
+        task.resume()
+    }
     
     func fetchObjects(category: Category, url: URL, completion: @escaping (Result) -> Void) {
         
