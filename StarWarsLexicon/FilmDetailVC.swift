@@ -28,7 +28,6 @@ class FilmDetailVC: UIViewController {
         directorLbl.text = film.director
         
         let formatter = DateFormatter()
-        //formatter.dateFormat = "yyyy-MM-dd"
         formatter.dateStyle = .medium
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale(identifier: "en_US")

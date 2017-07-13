@@ -69,38 +69,26 @@ struct Starship: SWCategory {
         
         if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
             self.costInCredits = costInCredits
-        } //else {
-            //self.costInCredits = nil
-        //}
+        } 
         
         if let lengthString = json["length"] as? String, let length = Double(lengthString) {
             self.length = length
-        } //else {
-            //self.length = nil
-        //}
+        }
         
         if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Int(numberOfCrewMembersString) {
             self.numberOfCrewMembers = numberOfCrewMembers
-        } //else {
-//            self.numberOfCrewMembers = nil
-//        }
+        }
         
         if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Int(numberOfPassengersString) {
             self.numberOfPassengers = numberOfPassengers
-        } //else {
-//            self.numberOfPassengers = nil
-//        }
+        }
         
         if let maxAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maxAtmosphericSpeed = Double(maxAtmosphericSpeedString) {
             self.maxAtmosphericSpeed = maxAtmosphericSpeed
-        } //else {
-//            self.maxAtmosphericSpeed = nil
-//        }
+        }
         
         if let hyperdriveRatingString = json["hyperdrive_rating"] as? String, let hyperdriveRating = Float(hyperdriveRatingString) {
             self.hyperdriveRating = hyperdriveRating
-        } //else {
-//            self.hyperdriveRating = nil
-//        }
+        }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FilmsVC.swift
+//  FilmVC.swift
 //  StarWarsLexicon
 //
 //  Created by Joshua Kaplan on 2017/05/07.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilmsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FilmVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     let dataService = DataService()

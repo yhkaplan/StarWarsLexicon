@@ -33,11 +33,6 @@ class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         searchBar.returnKeyType = UIReturnKeyType.done
         
         initializeStarships()
-//        for i in 0...30 {
-//            let newStarship = Starship(name: "starship starship starship starship\(i)")
-//            self.starshipArray.append(newStarship)
-//        }
-//        self.collectionView.reloadData()
     }
 
     //MARK: DataService controller

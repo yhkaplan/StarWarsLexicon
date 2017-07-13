@@ -24,7 +24,16 @@ enum Result {
     case planetSuccess([Planet], URL?)
     case speciesSuccess([Species], URL?)
     case vehicleSuccess([Vehicle], URL?)
-    case relatedFilmSuccess(Film)
+    case failure(Error)
+}
+
+enum relatedFilmResult {
+    case success(Film)
+    case failure(Error)
+}
+
+enum homeworldResult {
+    case success(Planet)
     case failure(Error)
 }
 
@@ -35,7 +44,7 @@ class DataService {
         return URLSession(configuration: config)
     }()
     
-    func fetchRelatedFilm(from filmURL: URL, completion: @escaping (Result) -> Void) {
+    func fetchRelatedFilm(from filmURL: URL, completion: @escaping (relatedFilmResult) -> Void) {
         
         let request = URLRequest(url: filmURL)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
@@ -56,9 +65,37 @@ class DataService {
             }
             
             if let film = Film(json: json) {
-                completion(.relatedFilmSuccess(film))
+                completion(.success(film))
             } else {
                 print("Data error")
+                return
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchHomeworld(from planetURL: URL, completion: @escaping (homeworldResult) -> Void) {
+        
+        let request = URLRequest(url: planetURL)
+        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
+                print("JSON structure is different from expected format")
+                return
+            }
+            
+            guard !json.isEmpty else {
+                print("Data error")
+                return
+            }
+            
+            if let homeworld = Planet(json: json) {
+                completion(.success(homeworld))
+            } else {
+                print("Parsing error")
                 return
             }
         }

@@ -25,8 +25,11 @@ struct Character: SWCategory {
     var gender: String
     var itemURL: URL
     
-    //homeworld, films, species, vehicles, starships
+    var homeworldURL: URL?
+    //"Species" also exists but will not be implemented at this time
     var filmURLArray: [URL?]
+    var vehicleURLArray: [URL?]
+    var starshipURLArray: [URL?]
     
     init?(json: [String : Any]) {
         guard let name = json["name"] as? String else {
@@ -75,14 +78,35 @@ struct Character: SWCategory {
         if let heightString = json["height"] as? String, let height = Int(heightString) {
             self.height = height
         }
+        
         if let massString = json["mass"] as? String, let mass = Int(massString) {
             self.mass = mass
         }
-        if let filmURLStringArray = json["films"] as? [String] {
-            let filmURLArray = filmURLStringArray.map({ URL(string: $0)})
+        
+        if let homeworldString = json["homeworld"] as? String {
+            let homeworldURL = URL(string: homeworldString)
+            self.homeworldURL = homeworldURL
+        }
+        
+        if let filmStringArray = json["films"] as? [String] {
+            let filmURLArray = filmStringArray.map{ URL(string: $0) }
             self.filmURLArray = filmURLArray
         } else {
             self.filmURLArray = []
+        }
+        
+        if let vehicleStringArray = json["vehicles"] as? [String] {
+            let vehicleURLArray = vehicleStringArray.map{ URL(string: $0) }
+            self.vehicleURLArray = vehicleURLArray
+        } else {
+            self.vehicleURLArray = []
+        }
+        
+        if let starshipStringArray = json["starships"] as? [String] {
+            let starshipURLArray = starshipStringArray.map{ URL(string: $0) }
+            self.starshipURLArray = starshipURLArray
+        } else {
+            self.starshipURLArray = []
         }
     }
 }

@@ -32,12 +32,6 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
         
         searchBar.returnKeyType = UIReturnKeyType.done
         
-//        for i in 0...30 {
-//            let newPlanet = Planet(name: "planetplanetplanet\(i)")
-//            self.planetArray.append(newPlanet)
-//        }
-//        self.collectionView.reloadData()
-        
         initializePlanets()
     }
     

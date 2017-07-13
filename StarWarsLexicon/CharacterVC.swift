@@ -25,6 +25,7 @@ class CharacterVC: UIViewController, UICollectionViewDelegate, UICollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tapGestureRecognizer.cancelsTouchesInView = false
         tapGestureRecognizer.isEnabled = false
         
         collectionView.dataSource = self
