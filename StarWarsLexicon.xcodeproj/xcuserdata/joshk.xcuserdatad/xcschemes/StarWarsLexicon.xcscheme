@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A387D4501F1C58E400874EF1"
+               BuildableName = "StarWarsLexiconTests.xctest"
+               BlueprintName = "StarWarsLexiconTests"
+               ReferencedContainer = "container:StarWarsLexicon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A387D45E1F1C58F400874EF1"
+               BuildableName = "StarWarsLexiconUITests.xctest"
+               BlueprintName = "StarWarsLexiconUITests"
+               ReferencedContainer = "container:StarWarsLexicon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
