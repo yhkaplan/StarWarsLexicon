@@ -8,8 +8,12 @@
 
 import Foundation
 
-protocol SWCategory {
+protocol SWCategory: Equatable {
     var category: Category { get }
     var itemName: String { get }
     var itemURL: URL { get }
+}
+
+func ==<T: SWCategory>(lhs: T, rhs: T) -> Bool {
+    return lhs.itemURL == rhs.itemURL
 }

@@ -37,6 +37,11 @@ enum homeworldResult {
     case failure(Error)
 }
 
+enum CharacterResult {
+    case success(Character)
+    case failure(Error)
+}
+
 class DataService {
     
     private let session: URLSession = {
@@ -98,6 +103,50 @@ class DataService {
                 print("Parsing error")
                 return
             }
+        }
+        task.resume()
+    }
+    
+    func fetchCharacter(at url: URL, completion: @escaping (CharacterResult) -> Void) {
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+            
+            if let error = error {
+                //completion(.failure(error))
+                print(error)
+            }
+            
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
+                //JSON structure is different from expected format
+                print("JSON structure is different from expected format")
+                return
+            }
+            
+            guard !json.isEmpty else {
+                print("Data error")
+                return
+            }
+            
+            if let character = Character(json: json) {
+                completion(.success(character))
+            } else {
+                print("Data error")
+                return
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchItemCount(_ url: URL, completion: @escaping (Int?) -> Void) {
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+        
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any], let itemCount = json["count"] as? Int else {
+                print("JSON structure differed so count could not be established")
+                return
+            }
+            completion(itemCount)
+        
         }
         task.resume()
     }

@@ -135,11 +135,11 @@ class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarshipCell", for: indexPath) as? SWCell {
             
-            if searchMode {
-                cell.configureCell(filteredStarshipArray[indexPath.row])
-            } else {
-                cell.configureCell(starshipArray[indexPath.row])
-            }
+//            if searchMode {
+//                cell.configureCell(filteredStarshipArray[indexPath.row])
+//            } else {
+//                cell.configureCell(starshipArray[indexPath.row])
+//            }
             return cell
         } else {
             return UICollectionViewCell()

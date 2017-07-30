@@ -137,11 +137,11 @@ class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCell", for: indexPath) as? SWCell {
             
-            if searchMode {
-                cell.configureCell(filteredVehicleArray[indexPath.row])
-            } else {
-                cell.configureCell(vehicleArray[indexPath.row])
-            }
+//            if searchMode {
+//                cell.configureCell(filteredVehicleArray[indexPath.row])
+//            } else {
+//                cell.configureCell(vehicleArray[indexPath.row])
+//            }
             return cell
         } else {
             return UICollectionViewCell()

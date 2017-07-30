@@ -10,27 +10,63 @@ import UIKit
 
 class SWCell: UICollectionViewCell {
     
-    func configureCell<T: SWCategory> (_ swObject: T) {
+    let textLbl = UILabel()
+    let activitySpinner = UIActivityIndicatorView()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
         generateCellBackgroundView()
         
-        let textLbl = UILabel()
-        self.addSubview(textLbl)
+        configureTextLbl()
+        textLbl.isHidden = true
         
-        textLbl.textColor = UIColor.white
-        textLbl.textAlignment = .center
-        //set font size, number of lines, etc based on type
-        if swObject.category == .starship || swObject.category == .vehicle {
+        configureActivitySpinner()
+        activitySpinner.startAnimating()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        textLbl.isHidden = true
+        activitySpinner.startAnimating()
+    }
+    
+    func configureCell<T: SWCategory> (_ item: T) {
+        activitySpinner.stopAnimating()
+        textLbl.isHidden = false
+        
+        if item.category == .starship || item.category == .vehicle {
             textLbl.numberOfLines = 0
             textLbl.font = UIFont.systemFont(ofSize: 15.0)
         }
         
-        textLbl.text = swObject.itemName
+        textLbl.text = item.itemName
+    }
+    
+    private func configureTextLbl() {
+        self.addSubview(textLbl)
+
+        textLbl.textColor = UIColor.white
+        textLbl.textAlignment = .center
         
         textLbl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             textLbl.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             textLbl.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 4.0),
             textLbl.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -4.0)
+            ])
+    }
+    
+    private func configureActivitySpinner() {
+        self.addSubview(activitySpinner)
+        activitySpinner.translatesAutoresizingMaskIntoConstraints = false
+        
+        activitySpinner.activityIndicatorViewStyle = .whiteLarge
+        //May be possible to refactor this so that these constraints can be reused for text label
+        NSLayoutConstraint.activate([
+            activitySpinner.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            activitySpinner.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
             ])
     }
     

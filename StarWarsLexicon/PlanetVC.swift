@@ -136,11 +136,11 @@ class PlanetVC: UIViewController, UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanetCell", for: indexPath) as? SWCell {
             
-            if searchMode {
-                cell.configureCell(filteredPlanetArray[indexPath.row])
-            } else {
-                cell.configureCell(planetArray[indexPath.row])
-            }
+//            if searchMode {
+//                cell.configureCell(filteredPlanetArray[indexPath.row])
+//            } else {
+//                cell.configureCell(planetArray[indexPath.row])
+//            }
             return cell
         } else {
             return UICollectionViewCell()
