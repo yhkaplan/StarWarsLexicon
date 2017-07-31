@@ -8,18 +8,18 @@
 
 import UIKit
 
-class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class StarshipVC: UIViewController, StarshipVCDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
-    var url: URL? = URL(string: "https://swapi.co/api/starships/")
+    var starshipManager: StarshipManager?
     var searchMode = false
     
-    private var starshipArray = [Starship]()
-    private var filteredStarshipArray = [Starship]()
+    var cellCount = 20//0
+    let starshipSegueName = "showStarship"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,46 +29,16 @@ class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
+        starshipManager = StarshipManager(starshipVCDelegate: self)
         
         searchBar.returnKeyType = UIReturnKeyType.done
         
-        initializeStarships()
+        starshipManager?.getStarshipCount()
     }
 
-    //MARK: DataService controller
-    
-    func initializeStarships() {
-        guard let url = url else {
-            //Error
-            return
-        }
-        
-        self.dataService.fetchObjects(category: .starship, url: url) { (result) -> Void in
-            switch result {
-            case let .starshipSuccess(starships, nextURL):
-                
-                DispatchQueue.main.async {
-                    print("Retrieved \(starships.count) starships")
-                    if !starships.isEmpty {
-                        self.starshipArray.append(contentsOf: starships)
-                        self.collectionView.reloadData()
-                        //self.organizeStarshipsByName()
-                    }
-                    
-                    if let nextURL = nextURL {
-                        self.url = nextURL
-                        print("The next url is \(nextURL)")
-                        self.initializeStarships()
-                    }
-                }
-            case let .failure(error):
-                print("Error: \(error)")
-                break
-            default:
-                print("Error: wrong data read")
-                break
-            }
-        }
+    func updateCount(_ starshipCount: Int) {
+        cellCount = starshipCount
+        collectionView.reloadData()
     }
     
     //MARK: Keyboard dismissal
@@ -82,7 +52,7 @@ class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showStarship"?:
+        case starshipSegueName?:
             if let starshipDetailVC = segue.destination as? StarshipAndVehicleDetailVC {
                 if let starship = sender as? Starship {
                     starshipDetailVC.starship = starship
@@ -92,13 +62,57 @@ class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             preconditionFailure("Unexpected segue identifier")
         }
     }
+}
     
-    //MARK: Search Bar Functions
+//MARK: Collection View Functions
+
+extension StarshipVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 170.0, height: 60.0)
+    }
+}
+
+extension StarshipVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        starshipManager?.getStarship(at: indexPath.row, completion: { (starship) in
+            if let starship = starship {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: self.starshipSegueName, sender: starship)
+                }
+            }
+        })
+    }
+}
+
+extension StarshipVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarshipCell", for: indexPath) as? SWCell {
+            
+            starshipManager?.getStarship(at: indexPath.row, completion: { (starship) in
+                if let starship = starship {
+                    DispatchQueue.main.async {
+                        //cell.configureCell(starship)
+                    }
+                }
+            })
+            return cell //Is this return in the right place?
+        } else {
+            return UICollectionViewCell()
+        }
+    }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cellCount
+    }
+}
+
+//MARK: Search Bar Functions
+extension StarshipVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchTerm = searchBar.text, searchTerm != "" {
             searchMode = true
-            filteredStarshipArray = starshipArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
+//            filteredStarshipArray = starshipArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
             collectionView.reloadData()
         } else {
             searchMode = false
@@ -112,44 +126,5 @@ class StarshipVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
-    }
-    
-    //MARK: Collection View Functions
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var starship: Starship!
-        
-        if searchMode {
-            starship = filteredStarshipArray[indexPath.row]
-        } else {
-            starship = starshipArray[indexPath.row]
-        }
-        performSegue(withIdentifier: "showStarship", sender: starship)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170.0, height: 60.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarshipCell", for: indexPath) as? SWCell {
-            
-//            if searchMode {
-//                cell.configureCell(filteredStarshipArray[indexPath.row])
-//            } else {
-//                cell.configureCell(starshipArray[indexPath.row])
-//            }
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if searchMode {
-            return filteredStarshipArray.count
-        }
-        return starshipArray.count
     }
 }

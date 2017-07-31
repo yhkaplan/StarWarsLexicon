@@ -44,19 +44,19 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
             self.skinColorLbl.text = character.skinColor.capitalized
             self.hairColorLbl.text = character.hairColor.capitalized
             self.genderLbl.text = character.gender.capitalized
-            if let height = character.height {
-                heightLbl.text = "\(height)"
-            } else {
-                heightLbl.text = nilLabel
-            }
-            if let mass = character.mass {
-                massLbl.text = "\(mass)"
-            } else {
-                massLbl.text = nilLabel
-            }
-            
-            initializeHomeworld()
-            initializeRelatedFilms()
+//            if let height = character.height {
+//                heightLbl.text = "\(height)"
+//            } else {
+//                heightLbl.text = nilLabel
+//            }
+//            if let mass = character.mass {
+//                massLbl.text = "\(mass)"
+//            } else {
+//                massLbl.text = nilLabel
+//            }
+//            
+//            initializeHomeworld()
+//            initializeRelatedFilms()
         }
     }
     
@@ -66,51 +66,51 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
         }
     }
     
-    func initializeHomeworld() {
-        if let homeworldURL = character.homeworldURL {
-            dataService.fetchHomeworld(from: homeworldURL, completion: { (result) in
-                switch result {
-                case let .success(homeworld):
-                    DispatchQueue.main.async {
-                        print("Homeworld is \(homeworld)")
-                        self.homeworld = homeworld
-                        //update label and show link UI
-                        self.homeworldLbl.text = homeworld.name + "➡︎"
-                        //activate invisible button link
-                        self.homeworldButton.isEnabled = true
-                    }
-                case let .failure(error):
-                    print("Error: \(error)")
-                    break
-                }
-            })
-        } 
-    }
+//    func initializeHomeworld() {
+//        if let homeworldURL = character.homeworldURL {
+//            dataService.fetchHomeworld(from: homeworldURL, completion: { (result) in
+//                switch result {
+//                case let .success(homeworld):
+//                    DispatchQueue.main.async {
+//                        print("Homeworld is \(homeworld)")
+//                        self.homeworld = homeworld
+//                        //update label and show link UI
+//                        self.homeworldLbl.text = homeworld.name + "➡︎"
+//                        //activate invisible button link
+//                        self.homeworldButton.isEnabled = true
+//                    }
+//                case let .failure(error):
+//                    print("Error: \(error)")
+//                    break
+//                }
+//            })
+//        } 
+//    }
     
-    func initializeRelatedFilms() {
-        //guard for 1. empty url arrays and 2. urls that are nil
-        if character.filmURLArray.isEmpty {
-            //Display message saying not found in films
-        } else {
-            for filmURL in character.filmURLArray {
-                if let filmURL = filmURL {
-                    dataService.fetchRelatedFilm(from: filmURL, completion: { (result) in
-                        switch result {
-                        case let .success(relatedFilm):
-                            DispatchQueue.main.async {
-                                print("Retrieved \(relatedFilm)")
-                                self.relatedFilmArray.append(relatedFilm)
-                                self.filmCollectionView.reloadData()
-                            }
-                        case let .failure(error):
-                            print("Error: \(error)")
-                            break
-                        }
-                    })
-                }
-            }
-        }
-    }
+//    func initializeRelatedFilms() {
+//        //guard for 1. empty url arrays and 2. urls that are nil
+//        if character.filmURLArray.isEmpty {
+//            //Display message saying not found in films
+//        } else {
+//            for filmURL in character.filmURLArray {
+//                if let filmURL = filmURL {
+//                    dataService.fetchRelatedFilm(from: filmURL, completion: { (result) in
+//                        switch result {
+//                        case let .success(relatedFilm):
+//                            DispatchQueue.main.async {
+//                                print("Retrieved \(relatedFilm)")
+//                                self.relatedFilmArray.append(relatedFilm)
+//                                self.filmCollectionView.reloadData()
+//                            }
+//                        case let .failure(error):
+//                            print("Error: \(error)")
+//                            break
+//                        }
+//                    })
+//                }
+//            }
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {

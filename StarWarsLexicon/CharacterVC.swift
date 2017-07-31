@@ -16,13 +16,11 @@ class CharacterVC: UIViewController, CharacterVCDelegate {
     @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
-    var itemManager: ItemManager?
-    var url: URL? = URL(string: "https://swapi.co/api/people/")
+    var characterManager: CharacterManager?
     var searchMode = false
     
-    private var characterArray = [Character]()
-    private var filteredCharacterArray = [Character]()
-    var cellCount = 0
+    var cellCount = 20//0
+    let characterSegueName = "showCharacter"
     
     //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
@@ -34,12 +32,12 @@ class CharacterVC: UIViewController, CharacterVCDelegate {
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
-        itemManager = ItemManager(characterVCDelegate: self)
+        characterManager = CharacterManager(characterVCDelegate: self)
         
         searchBar.returnKeyType = UIReturnKeyType.done
         
-        //This method informs itemManager that it should initialize for character type, grabbing the count for maximum number of characters
-        itemManager?.itemCount(for: .character)
+        //This method informs characterManager that it should grab the count for maximum number of characters
+        characterManager?.getCharacterCount()
     }
     
     func updateCount(_ characterCount: Int) {
@@ -58,7 +56,7 @@ class CharacterVC: UIViewController, CharacterVCDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showCharacter"?:
+        case characterSegueName?:
             if let characterDetailVC = segue.destination as? CharacterDetailVC {
                 if let character = sender as? Character {
                     characterDetailVC.character = character
@@ -80,10 +78,10 @@ extension CharacterVC: UICollectionViewDelegateFlowLayout {
 
 extension CharacterVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        itemManager?.get(.character, at: indexPath.row, completion: { (character) in
+        characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
             if let character = character {
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "showCharacter", sender: character)
+                    self.performSegue(withIdentifier: self.characterSegueName, sender: character)
                 }
             }
         })
@@ -95,14 +93,14 @@ extension CharacterVC: UICollectionViewDataSource {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCell", for: indexPath) as? SWCell {
         
-            itemManager?.get(.character, at: indexPath.row, completion: { (character) in
+            characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
                 if let character = character {
                     DispatchQueue.main.async {
-                      cell.configureCell(character)
+                      //cell.configureCell(character)
                     }
                 }
             })
-            return cell
+            return cell //Is this return in the right place?
         } else {
             return UICollectionViewCell()
         }

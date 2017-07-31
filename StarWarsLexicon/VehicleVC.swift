@@ -8,18 +8,18 @@
 
 import UIKit
 
-class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class VehicleVC: UIViewController, VehicleVCDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
-    var url: URL? = URL(string: "https://swapi.co/api/vehicles/")
+    var vehicleManager: VehicleManager?
     var searchMode = false
     
-    private var vehicleArray = [Vehicle]()
-    private var filteredVehicleArray = [Vehicle]()
+    var cellCount = 20//0
+    let vehicleSegueName = "showVehicle"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,48 +29,16 @@ class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
+        vehicleManager = VehicleManager(vehicleVCDelegate: self)
         
         searchBar.returnKeyType = UIReturnKeyType.done
         
-        initializeVehicles()
+        vehicleManager?.getVehicleCount()
     }
-
-    //MARK: DataService controller
     
-    func initializeVehicles() {
-        
-        guard let url = url else {
-            //throw an error
-            return
-        }
-        
-        self.dataService.fetchObjects(category: .vehicle, url: url) { (result) -> Void in
-            switch result {
-            case let .vehicleSuccess(vehicles, nextURL):
-                
-                DispatchQueue.main.async {
-                    
-                    print("Retrieved \(vehicles.count) vehicles")
-                    if !vehicles.isEmpty {
-                        self.vehicleArray.append(contentsOf: vehicles)
-                        self.collectionView.reloadData()
-                        //self.organizeVehiclesByName()
-                    }
-                    
-                    if let nextURL = nextURL {
-                        self.url = nextURL
-                        print("The next URL is \(nextURL)")
-                        self.initializeVehicles()
-                    }
-                }
-            case let .failure(error):
-                print("Error: \(error)")
-                break
-            default:
-                print("Error: wrong data read")
-                break
-            }
-        }
+    func updateCount(_ vehicleCount: Int) {
+        cellCount = vehicleCount
+        collectionView.reloadData()
     }
     
     //MARK: Keyboard dismissal
@@ -84,7 +52,7 @@ class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showVehicle"?:
+        case vehicleSegueName?:
             if let vehicleDetailVC = segue.destination as? StarshipAndVehicleDetailVC {
                 if let vehicle = sender as? Vehicle {
                     vehicleDetailVC.vehicle = vehicle
@@ -94,13 +62,57 @@ class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             preconditionFailure("Unexpected segue identifier")
         }
     }
+}
+
+//MARK: Collection view functions
+extension VehicleVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 170.0, height: 60.0)
+    }
+}
+
+extension VehicleVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        vehicleManager?.getVehicle(at: indexPath.row, completion: { (vehicle) in
+            if let vehicle = vehicle {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: self.vehicleSegueName, sender: vehicle)
+                }
+            }
+        })
+    }
+}
+
+extension VehicleVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCell", for: indexPath) as? SWCell {
+            
+            vehicleManager?.getVehicle(at: indexPath.row, completion: { (vehicle) in
+                if let vehicle = vehicle {
+                    DispatchQueue.main.async {
+                        cell.configureCell(vehicle)
+                    }
+                }
+            })
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
     
-    //MARK: Search bar 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cellCount
+    }
+}
+
+extension VehicleVC: UISearchBarDelegate {
+    //MARK: Search bar
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchTerm = searchBar.text, searchTerm != "" {
             searchMode = true
-            filteredVehicleArray = vehicleArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
+//            filteredVehicleArray = vehicleArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
             collectionView.reloadData()
         } else {
             searchMode = false
@@ -114,44 +126,5 @@ class VehicleVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
-    }
-    
-    //MARK: Collection view functions
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var vehicle: Vehicle!
-        
-        if searchMode {
-            vehicle = filteredVehicleArray[indexPath.row]
-        } else {
-            vehicle = vehicleArray[indexPath.row]
-        }
-        performSegue(withIdentifier: "showVehicle", sender: vehicle)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170.0, height: 60.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VehicleCell", for: indexPath) as? SWCell {
-            
-//            if searchMode {
-//                cell.configureCell(filteredVehicleArray[indexPath.row])
-//            } else {
-//                cell.configureCell(vehicleArray[indexPath.row])
-//            }
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if searchMode {
-            return filteredVehicleArray.count
-        }
-        return vehicleArray.count
     }
 }

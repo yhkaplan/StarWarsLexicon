@@ -31,15 +31,17 @@ class SWCell: UICollectionViewCell {
         textLbl.isHidden = true
         activitySpinner.startAnimating()
     }
-    
-    func configureCell<T: SWCategory> (_ item: T) {
+
+    //    func configureCell<T: SWCategory> (_ item: T) {
+    //Turning of generics for testing purposes
+    func configureCell (_ item: Vehicle) {
         activitySpinner.stopAnimating()
         textLbl.isHidden = false
         
-        if item.category == .starship || item.category == .vehicle {
-            textLbl.numberOfLines = 0
-            textLbl.font = UIFont.systemFont(ofSize: 15.0)
-        }
+//        if item.category == .starship || item.category == .vehicle {
+//            textLbl.numberOfLines = 0
+//            textLbl.font = UIFont.systemFont(ofSize: 15.0)
+//        }
         
         textLbl.text = item.itemName
     }

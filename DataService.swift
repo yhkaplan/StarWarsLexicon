@@ -17,16 +17,6 @@ enum Category {
     case vehicle
 }
 
-enum Result {
-    case filmSuccess([Film], URL?)
-    case characterSuccess([Character], URL?)
-    case starshipSuccess([Starship], URL?)
-    case planetSuccess([Planet], URL?)
-    case speciesSuccess([Species], URL?)
-    case vehicleSuccess([Vehicle], URL?)
-    case failure(Error)
-}
-
 enum relatedFilmResult {
     case success(Film)
     case failure(Error)
@@ -38,7 +28,7 @@ enum homeworldResult {
 }
 
 enum CharacterResult {
-    case success(Character)
+    case success([String : Any])
     case failure(Error)
 }
 
@@ -107,32 +97,30 @@ class DataService {
         task.resume()
     }
     
-    func fetchCharacter(at url: URL, completion: @escaping (CharacterResult) -> Void) {
+    func fetchItem(at url: URL, completion: @escaping (CharacterResult) -> Void) {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             
             if let error = error {
-                //completion(.failure(error))
+                completion(.failure(error))
                 print(error)
             }
             
             guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
                 //JSON structure is different from expected format
                 print("JSON structure is different from expected format")
+                //completion(.failure(Error("JSON off")))
                 return
             }
             
             guard !json.isEmpty else {
                 print("Data error")
+                completion(.failure("No JSON" as! Error))
                 return
             }
             
-            if let character = Character(json: json) {
-                completion(.success(character))
-            } else {
-                print("Data error")
-                return
-            }
+            completion(.success(json))
+            
         }
         task.resume()
     }
@@ -147,91 +135,6 @@ class DataService {
             }
             completion(itemCount)
         
-        }
-        task.resume()
-    }
-    
-    func fetchObjects(category: Category, url: URL, completion: @escaping (Result) -> Void) {
-        
-        let request = URLRequest(url: url)
-        let task = session.dataTask(with: request) { (data, response, error) -> Void in
-
-            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any], let resultsArray = json["results"] as? [[String : Any]] else {
-                //JSON structure is different from expected format
-                print("JSON structure is different from expected format")
-                return
-            }
-            
-            guard !resultsArray.isEmpty else {
-                completion(.failure("API error" as! Error))//Revise this
-                return
-            }
-            
-            switch category {
-            case .film:
-                //ISN't RESULTS ARRAY A DICTIONARY???
-                let finalFilms = resultsArray.flatMap { Film(json: $0) }
-                //Assumption: because flatmap returns no nil items and final is not optional, no check for empty array required
-                //Guard let preferable??
-                
-                //No more than ten films for now
-                completion(.filmSuccess(finalFilms, nil))
-                
-            case .character:
-                let finalCharacters = resultsArray.flatMap { Character(json: $0) }
-                
-                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
-                    print("All data retrieved")
-                    completion(.characterSuccess(finalCharacters, nil))
-                    return
-                }
-                
-                completion(.characterSuccess(finalCharacters, nextURL))
-                
-            case .starship:
-                let finalStarships = resultsArray.flatMap { Starship(json: $0) }
-                
-                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
-                    print("All data retrieved")
-                    completion(.starshipSuccess(finalStarships, nil))
-                    return
-                }
-                
-                print(finalStarships)
-                
-                completion(.starshipSuccess(finalStarships, nextURL))
-                
-            case .planet:
-                let finalPlanets = resultsArray.flatMap { Planet(json: $0) }
-                
-                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
-                    print("All data retrieved")
-                    completion(.planetSuccess(finalPlanets, nil))
-                    return
-                }
-                
-                completion(.planetSuccess(finalPlanets, nextURL))
-            case .species:
-                let finalSpecies = resultsArray.flatMap { Species(json: $0) }
-                
-                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
-                    print("All data retrieved")
-                    completion(.speciesSuccess(finalSpecies, nil))
-                    return
-                }
-                
-                completion(.speciesSuccess(finalSpecies, nextURL))
-            case .vehicle:
-                let finalVehicles = resultsArray.flatMap { Vehicle(json: $0) }
-                
-                guard let urlString = json["next"] as? String, let nextURL = URL(string: urlString) else {
-                    print("All data retrieved")
-                    completion(.vehicleSuccess(finalVehicles, nil))
-                    return
-                }
-                
-                completion(.vehicleSuccess(finalVehicles, nextURL))
-            }
         }
         task.resume()
     }

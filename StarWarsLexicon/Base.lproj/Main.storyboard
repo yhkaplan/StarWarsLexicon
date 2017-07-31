@@ -473,10 +473,14 @@
                                                         <constraint firstAttribute="height" constant="40" id="wGj-XL-TsB"/>
                                                     </constraints>
                                                 </stackView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7jd-Un-40k">
+                                                    <rect key="frame" x="153" y="22" width="37" height="37"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="I6b-uV-RLr" firstAttribute="centerY" secondItem="LIr-bF-Vof" secondAttribute="centerY" id="IVb-Ii-dnW"/>
+                                                <constraint firstItem="7jd-Un-40k" firstAttribute="centerX" secondItem="LIr-bF-Vof" secondAttribute="centerX" id="Saq-Lk-uHj"/>
                                                 <constraint firstItem="FGV-CN-RNV" firstAttribute="centerY" secondItem="LIr-bF-Vof" secondAttribute="centerY" id="nr3-Ux-cBg"/>
                                                 <constraint firstItem="FGV-CN-RNV" firstAttribute="leading" secondItem="LIr-bF-Vof" secondAttribute="leadingMargin" constant="8" id="o9o-1e-dmk"/>
                                                 <constraint firstItem="I6b-uV-RLr" firstAttribute="leading" secondItem="FGV-CN-RNV" secondAttribute="trailing" constant="8" id="r8u-Lh-cwA"/>
@@ -484,7 +488,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="7jd-Un-40k" firstAttribute="centerY" secondItem="IcV-HO-FyW" secondAttribute="centerY" id="31m-ia-VyD"/>
+                                        </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="7jd-Un-40k" id="I3W-2m-5yh"/>
                                             <outlet property="filmCoverImg" destination="FGV-CN-RNV" id="K6a-pe-KI9"/>
                                             <outlet property="filmNumberLbl" destination="oNv-YT-DOx" id="svi-Xa-LFh"/>
                                             <outlet property="filmTitleLbl" destination="ECx-bj-xAj" id="2AM-00-pwy"/>
@@ -1476,8 +1484,8 @@
         <image name="Vader" width="31" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KA5-1g-Xo9"/>
-        <segue reference="aMs-AE-ueD"/>
         <segue reference="Mht-bL-Naa"/>
+        <segue reference="KZP-T7-AXd"/>
+        <segue reference="KA5-1g-Xo9"/>
     </inferredMetricsTieBreakers>
 </document>
