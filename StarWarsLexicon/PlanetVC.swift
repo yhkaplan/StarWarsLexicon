@@ -78,9 +78,9 @@ extension PlanetVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         planetManager?.getPlanet(at: indexPath.row, completion: { (planet) in
             if let planet = planet {
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
                     self.performSegue(withIdentifier: self.planetSegueName, sender: planet)
-                }
+                //}
             }
         })
     }
@@ -94,7 +94,7 @@ extension PlanetVC: UICollectionViewDataSource {
             planetManager?.getPlanet(at: indexPath.row, completion: { (planet) in
                 if let planet = planet {
                     DispatchQueue.main.async {
-                        //cell.configureCell(planet)
+                        cell.configureCell(planet)
                     }
                 }
             })

@@ -13,7 +13,6 @@ class FilmVC: UIViewController, FilmVCDelegate {
     @IBOutlet weak var tableView: UITableView!
     let dataService = DataService()
     var filmManager: FilmManager?
-    var selectedIndexPath = IndexPath()
     
     var rowCount = 7//0
     let filmSegueName = "showFilm"
@@ -25,27 +24,13 @@ class FilmVC: UIViewController, FilmVCDelegate {
         
         filmManager = FilmManager(filmVCDelegate: self)
         filmManager?.getFilmCount()
+        //Call sortByEpisode function here once implemented
     }
     
     func updateCount(_ filmCount: Int) {
         rowCount = filmCount
         tableView.reloadData()
     }
-//
-//    override func viewDidDisappear(_ animated: Bool) {
-//        print("selectedIndexPath = \(selectedIndexPath)")
-//        if !selectedIndexPath.isEmpty {
-//            tableView.cellForRow(at: selectedIndexPath)?.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0)
-//        }
-//    }
-//    
-//    func setupStatusBarAndTableView() {
-//        //Reload all theming code to separate file/class
-//        
-//        //widen! navigationItem.titleView?.leadingAnchor
-//        tableView.isHidden = true
-//    }
-//
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -53,10 +38,8 @@ class FilmVC: UIViewController, FilmVCDelegate {
             if let row = tableView.indexPathForSelectedRow?.row {
                 filmManager?.getFilm(at: row, completion: { (film) in
                     if let film = film {
-                        DispatchQueue.main.async {
                             let filmDetailVC = segue.destination as! FilmDetailVC
                             filmDetailVC.film = film
-                        }
                     }
                 })
             }
@@ -64,16 +47,9 @@ class FilmVC: UIViewController, FilmVCDelegate {
             preconditionFailure("Unexpected segue identifier")
         }
     }
-    
 }
 
 extension FilmVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.darkGray
-        selectedIndexPath = indexPath
-        //tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-    }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 79.0
     }
@@ -90,7 +66,6 @@ extension FilmVC: UITableViewDataSource {
                 if let film = film {
                     DispatchQueue.main.async {
                         cell.configureCell(film: film)
-                        //return cell
                     }
                 }
             })

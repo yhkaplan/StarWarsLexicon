@@ -31,38 +31,38 @@ class PlanetDetailVC: UIViewController {
         if let planet = detailPlanet {
 
             nameLbl.text = planet.name.capitalized
-            if let population = planet.population {
-                populationLbl.text = "\(population)"
-            } else {
-                populationLbl.text = nilLabel
-            }
+//            if let population = planet.population {
+//                populationLbl.text = "\(population)"
+//            } else {
+//                populationLbl.text = nilLabel
+//            }
             climateLbl.text = planet.climate.capitalized
             terrainLbl.text = planet.terrain.capitalized
-            if let diameter = planet.diameter {
-                diameterLbl.text = "\(diameter)"
-            } else {
-                diameterLbl.text = nilLabel
-            }
-            if let gravity = planet.gravity {
-                gravityLbl.text = "\(gravity)"
-            } else {
-                gravityLbl.text = nilLabel
-            }
-            if let surfaceWater = planet.surfaceWater {
-                surfaceWaterLbl.text = "\(surfaceWater)"
-            } else {
-                surfaceWaterLbl.text = nilLabel
-            }
-            if let rotationPeriod = planet.rotationPeriod {
-                rotationPeriodLbl.text = "\(rotationPeriod)"
-            } else {
-                rotationPeriodLbl.text = nilLabel
-            }
-            if let orbitalPeriod = planet.orbitalPeriod {
-                orbitalPeriodLbl.text = "\(orbitalPeriod)"
-            } else {
-                orbitalPeriodLbl.text = nilLabel
-            }
+//            if let diameter = planet.diameter {
+//                diameterLbl.text = "\(diameter)"
+//            } else {
+//                diameterLbl.text = nilLabel
+//            }
+//            if let gravity = planet.gravity {
+//                gravityLbl.text = "\(gravity)"
+//            } else {
+//                gravityLbl.text = nilLabel
+//            }
+//            if let surfaceWater = planet.surfaceWater {
+//                surfaceWaterLbl.text = "\(surfaceWater)"
+//            } else {
+//                surfaceWaterLbl.text = nilLabel
+//            }
+//            if let rotationPeriod = planet.rotationPeriod {
+//                rotationPeriodLbl.text = "\(rotationPeriod)"
+//            } else {
+//                rotationPeriodLbl.text = nilLabel
+//            }
+//            if let orbitalPeriod = planet.orbitalPeriod {
+//                orbitalPeriodLbl.text = "\(orbitalPeriod)"
+//            } else {
+//                orbitalPeriodLbl.text = nilLabel
+//            }
         }
     }
 }

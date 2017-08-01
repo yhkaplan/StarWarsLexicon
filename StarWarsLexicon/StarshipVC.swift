@@ -76,9 +76,9 @@ extension StarshipVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         starshipManager?.getStarship(at: indexPath.row, completion: { (starship) in
             if let starship = starship {
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
                     self.performSegue(withIdentifier: self.starshipSegueName, sender: starship)
-                }
+                //}
             }
         })
     }
@@ -92,7 +92,7 @@ extension StarshipVC: UICollectionViewDataSource {
             starshipManager?.getStarship(at: indexPath.row, completion: { (starship) in
                 if let starship = starship {
                     DispatchQueue.main.async {
-                        //cell.configureCell(starship)
+                        cell.configureCell(starship)
                     }
                 }
             })

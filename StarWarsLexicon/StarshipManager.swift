@@ -30,7 +30,18 @@ class StarshipManager {
     init(starshipVCDelegate: StarshipVCDelegate) {
         self.starshipVCDelegate = starshipVCDelegate
         
-        //Add CoreData initializers here
+        //CoreData initializers
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            starships = try managedContext.fetch(Starship.fetchRequest())
+        } catch let error as NSError {
+            print(error)
+        }
     }
     
     func getStarshipCount() {
@@ -47,12 +58,99 @@ class StarshipManager {
         }
     }
     
+    //There appears to be a large number of starships that don't actually load properly on the APIs end
+    //Think of workaround using pages containing items
     private func addStarship(_ json: [String : Any], to index: Int) -> Starship? {
-        if let starship = Starship(json: json) {
+        
+        guard let name = json["name"] as? String else {
+            print("Parsing error with starship name")
+            return nil
+        }
+        
+        guard let model = json["model"] as? String else {
+            print("Parsing error with starship model")
+            return nil
+        }
+        
+        guard let starshipClass = json["starship_class"] as? String else {
+            print("Parsing error with starship class")
+            return nil
+        }
+        
+        guard let manufacturer = json["manufacturer"] as? String else {
+            print("Parsing error with starship manufacturer")
+            return nil
+        }
+        
+        guard let url = json["url"] as? String else {
+            print("Parsing error with starship url")
+            return nil
+        }
+        
+        //JSON guards cleared, so test for CoreData prerequisite
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let starship = Starship(entity: Starship.entity(), insertInto: managedContext)
+        
+        starship.name = name
+        starship.model = model
+        starship.starshipClass = starshipClass
+        starship.manufacturer = manufacturer
+        starship.itemURL = url
+        
+        starship.itemName = name
+        starship.category = "starship"
+        
+        if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
+            starship.costInCredits = costInCredits
+        } else {
+            starship.costInCredits = Double(0)
+        }
+        
+        if let lengthString = json["length"] as? String, let length = Double(lengthString) {
+            starship.length = length
+        } else {
+            starship.length = Double(0)
+        }
+        
+        if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Double(numberOfCrewMembersString) {
+            starship.numberOfCrewMembers = numberOfCrewMembers
+        } else {
+            starship.numberOfCrewMembers = Double(0)
+        }
+        
+        if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Double(numberOfPassengersString) {
+            starship.numberOfPassengers = numberOfPassengers
+        } else {
+            starship.numberOfPassengers = Double(0)
+        }
+        
+        if let maxAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maxAtmosphericSpeed = Double(maxAtmosphericSpeedString) {
+            starship.maxAtmosphericSpeed = maxAtmosphericSpeed
+        } else {
+            starship.maxAtmosphericSpeed = Double(0)
+        }
+        
+        if let hyperdriveRatingString = json["hyperdrive_rating"] as? String, let hyperdriveRating = Double(hyperdriveRatingString) {
+            starship.hyperdriveRating = hyperdriveRating
+        } else {
+            starship.hyperdriveRating = Double(0)
+        }
+        
+        print(starship.description)
+        
+        do {
+            try managedContext.save()
             starships[index] = starship
             return starship
+        } catch let error as NSError {
+            print("Could not save \(error), \(error)")
+            print("Could not save starship at index \(index)")
+            return nil
         }
-        return nil
     }
     
     func getStarship(at index: Int, completion: @escaping (Starship?) -> Void) {

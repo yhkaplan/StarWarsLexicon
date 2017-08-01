@@ -31,7 +31,7 @@ class FilmDetailVC: UIViewController {
         formatter.dateStyle = .medium
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale(identifier: "en_US")
-        let releaseDateString = formatter.string(from: film.releaseDate)
+        let releaseDateString = formatter.string(from: film.releaseDate as Date)
         releaseDateLbl.text = releaseDateString
         
         openingCrawlTextView.text = "Opening Crawl: \n" + film.openingCrawl

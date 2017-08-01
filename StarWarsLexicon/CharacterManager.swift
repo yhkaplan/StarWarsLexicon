@@ -150,7 +150,7 @@ class CharacterManager {
             return nil
         }
 
-        //Attempt conversation from json to NSManaged object
+        //JSON guards cleared so CoreData is available
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
@@ -185,7 +185,7 @@ class CharacterManager {
         if let homeworldURL = json["homeworld"] as? String {
             character.homeworldURL = homeworldURL
         } else {
-            character.homeworldURL = "w"
+            character.homeworldURL = "unknown"
         }
 
         //print(character.description)

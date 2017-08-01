@@ -75,9 +75,9 @@ extension VehicleVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vehicleManager?.getVehicle(at: indexPath.row, completion: { (vehicle) in
             if let vehicle = vehicle {
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
                     self.performSegue(withIdentifier: self.vehicleSegueName, sender: vehicle)
-                }
+                //}
             }
         })
     }

@@ -14,7 +14,65 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="skinColor" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Film" representedClassName=".Film" syncable="YES">
+        <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="director" attributeType="String" syncable="YES"/>
+        <attribute name="episodeID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="itemName" attributeType="String" syncable="YES"/>
+        <attribute name="itemURL" attributeType="String" syncable="YES"/>
+        <attribute name="openingCrawl" attributeType="String" syncable="YES"/>
+        <attribute name="producer" attributeType="String" syncable="YES"/>
+        <attribute name="releaseDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Planet" representedClassName=".Planet" syncable="YES">
+        <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="climate" attributeType="String" syncable="YES"/>
+        <attribute name="diameter" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gravity" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="itemName" attributeType="String" syncable="YES"/>
+        <attribute name="itemURL" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="orbitalPeriod" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="population" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rotationPeriod" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="surfaceWater" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="terrain" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Starship" representedClassName=".Starship" syncable="YES">
+        <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="costInCredits" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hyperdriveRating" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="itemName" attributeType="String" syncable="YES"/>
+        <attribute name="itemURL" attributeType="String" syncable="YES"/>
+        <attribute name="length" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="manufacturer" attributeType="String" syncable="YES"/>
+        <attribute name="maxAtmosphericSpeed" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="model" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfCrewMembers" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfPassengers" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="starshipClass" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Vehicle" representedClassName=".Vehicle" syncable="YES">
+        <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="costInCredits" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="itemName" attributeType="String" syncable="YES"/>
+        <attribute name="itemURL" attributeType="String" syncable="YES"/>
+        <attribute name="length" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="manufacturer" attributeType="String" syncable="YES"/>
+        <attribute name="maximumAtmosphericSpeed" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="model" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfCrewMembers" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfPassengers" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="vehicleClass" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Character" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Film" positionX="-63" positionY="72" width="128" height="180"/>
+        <element name="Planet" positionX="-18" positionY="162" width="128" height="225"/>
+        <element name="Starship" positionX="-54" positionY="108" width="128" height="240"/>
+        <element name="Vehicle" positionX="-36" positionY="153" width="128" height="225"/>
     </elements>
 </model>

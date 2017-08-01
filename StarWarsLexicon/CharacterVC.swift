@@ -80,9 +80,9 @@ extension CharacterVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
             if let character = character {
-                DispatchQueue.main.async {
+                //DispatchQueue.main.async {
                     self.performSegue(withIdentifier: self.characterSegueName, sender: character)
-                }
+                //}
             }
         })
     }
@@ -96,7 +96,7 @@ extension CharacterVC: UICollectionViewDataSource {
             characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
                 if let character = character {
                     DispatchQueue.main.async {
-                      //cell.configureCell(character)
+                      cell.configureCell(character)
                     }
                 }
             })

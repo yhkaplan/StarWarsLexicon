@@ -59,12 +59,12 @@ class DataService {
                 return
             }
             
-            if let film = Film(json: json) {
-                completion(.success(film))
-            } else {
-                print("Data error")
-                return
-            }
+//            if let film = Film(json: json) {
+//                completion(.success(film))
+//            } else {
+//                print("Data error")
+//                return
+//            }
         }
         task.resume()
     }
@@ -87,12 +87,12 @@ class DataService {
                 return
             }
             
-            if let homeworld = Planet(json: json) {
-                completion(.success(homeworld))
-            } else {
-                print("Parsing error")
-                return
-            }
+//            if let homeworld = Planet(json: json) {
+//                completion(.success(homeworld))
+//            } else {
+//                print("Parsing error")
+//                return
+//            }
         }
         task.resume()
     }

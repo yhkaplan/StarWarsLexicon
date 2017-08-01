@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SWCell: UICollectionViewCell {
     
@@ -34,14 +35,14 @@ class SWCell: UICollectionViewCell {
 
     //    func configureCell<T: SWCategory> (_ item: T) {
     //Turning of generics for testing purposes
-    func configureCell (_ item: Vehicle) {
+    func configureCell<T: NSManagedObject> (_ item: T) where T: SWCategory {
         activitySpinner.stopAnimating()
         textLbl.isHidden = false
         
-//        if item.category == .starship || item.category == .vehicle {
-//            textLbl.numberOfLines = 0
-//            textLbl.font = UIFont.systemFont(ofSize: 15.0)
-//        }
+        if item.category == "starship" || item.category == "vehicle" {
+            textLbl.numberOfLines = 0
+            textLbl.font = UIFont.systemFont(ofSize: 15.0)
+        }
         
         textLbl.text = item.itemName
     }

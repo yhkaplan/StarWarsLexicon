@@ -28,7 +28,17 @@ class FilmManager {
     init(filmVCDelegate: FilmVCDelegate) {
         self.filmVCDelegate = filmVCDelegate
         
-        //CoreData methods
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            films = try managedContext.fetch(Film.fetchRequest())
+        } catch let error as NSError {
+            print(error)
+        }
     }
     
     func getFilmCount() {
@@ -47,12 +57,82 @@ class FilmManager {
         }
     }
     
+    private func convertToDate(from string: String) -> NSDate? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        return formatter.date(from: string) as NSDate?
+    }
+    
     private func addFilm(_ json: [String : Any], to index: Int) -> Film? {
-        if let film = Film(json: json) {
+        
+        guard let title = json["title"] as? String else {
+            print("Parsing error with title ")
+            return nil
+        }
+        
+        guard let episodeID = json["episode_id"] as? Int16 else {
+            print("Parsing error with episode id")
+            return nil
+        }
+        
+        guard let openingCrawl = json["opening_crawl"] as? String else {
+            print("Parsing error with opening crawl")
+            return nil
+        }
+        
+        guard let director = json["director"] as? String else {
+            print("Parsing error with director")
+            return nil
+        }
+        
+        guard let producer = json["producer"] as? String else {
+            print("Parsing error with producer")
+            return nil
+        }
+        
+        guard let url = json["url"] as? String else {
+            print("Parsing error with url")
+            return nil
+        }
+        
+        guard let releaseDateString = json["release_date"] as? String, let releaseDate = convertToDate(from: releaseDateString) else {
+            print("Parsing error with release date")
+            return nil
+        }
+        
+        //JSON guards cleared, so test for CoreData prerequisite
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let film = Film(entity: Film.entity(), insertInto: managedContext)
+        
+        film.title = title
+        film.episodeID = episodeID
+        film.openingCrawl = openingCrawl
+        film.director = director
+        film.producer = producer
+        film.itemURL = url
+        film.releaseDate = releaseDate
+        
+        film.category = "film"
+        film.itemName = title
+        
+        //print(film.description)
+        
+        do {
+            try managedContext.save()
             films[index] = film
             return film
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
+            print("Could not save film at index \(index)")
+            return nil
         }
-        return nil
     }
     
     func getFilm(at index: Int, completion: @escaping (Film?) -> Void) {
