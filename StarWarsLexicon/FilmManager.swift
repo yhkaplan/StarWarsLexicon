@@ -27,7 +27,7 @@ class FilmManager {
     
     init(filmVCDelegate: FilmVCDelegate) {
         self.filmVCDelegate = filmVCDelegate
-        
+
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -42,7 +42,7 @@ class FilmManager {
     }
     
     func getFilmCount() {
-        if let url = URL(string: "https://swapi.co/api/films/") {
+        if let url = URL(string: baseURLString + URLComponentsStrings.film) {
             dataService.fetchItemCount(url, completion: { (count) in
                 DispatchQueue.main.async {
                     if let count = count {
@@ -103,7 +103,35 @@ class FilmManager {
             return nil
         }
         
-        //JSON guards cleared, so test for CoreData prerequisite
+        //MARK: - Checks for other objects. This url data is then passed to other areas
+        
+        guard let characterURLStrings = json["characters"] as? [String] else {
+            print("Parsing error with character URLs")
+            return nil
+        }
+        
+        guard let planetURLStrings = json["planets"] as? [String] else {
+            print("Parsing error with planet URLs")
+            return nil
+        }
+        
+        guard let starshipURLStrings = json["starships"] as? [String] else {
+            print("Parsing error with starship URLs")
+            return nil
+        }
+        
+        guard let vehicleURLStrings = json["vehicles"] as? [String] else {
+            print("Parsing error with vehicle URLs")
+            return nil
+        }
+        
+        //Appending new info APIService singleton, using a custom method to avoid duplicates
+        APIService.sharedInstance.appendURLStringArray(characterURLStrings, to: .character)
+        APIService.sharedInstance.appendURLStringArray(planetURLStrings, to: .planet)
+        APIService.sharedInstance.appendURLStringArray(starshipURLStrings, to: .starship)
+        APIService.sharedInstance.appendURLStringArray(vehicleURLStrings, to: .vehicle)
+        
+        //MARK: - JSON guards cleared, so test for CoreData prerequisite
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
         }
@@ -144,23 +172,30 @@ class FilmManager {
         if let film = films[index] {
             completion(film)
         } else {
-            if let url = URL(string: "https://swapi.co/api/films/\(index+1)/") {
-                print("Download url is \(url)")
-                dataService.fetchItem(at: url, completion: { (result) in
-                    switch result {
-                    case let .success(filmJSON):
-                        if let film = self.addFilm(filmJSON, to: index) {
-                            completion(film)
-                        } else {
-                            print("JSON parsing error")
-                            completion(nil)
-                        }
-                    case let .failure(error):
-                        print(error)
-                    }
-                })
+            let urlString = APIService.sharedInstance.generateFilmURLString(for: index)
+            //This is to check if URL is equal to the url of any other items in the array before downloading
+            let doublesArray = films.filter{ urlString == $0?.itemURL }
+            
+            guard doublesArray.count == 0, let url = URL(string: urlString) else {
+                completion(nil)
+                return
             }
+            
+            print("Download url is \(url)")
+            dataService.fetchItem(at: url, completion: { (result) in
+                switch result {
+                case let .success(filmJSON):
+                    if let film = self.addFilm(filmJSON, to: index) {
+                        completion(film)
+                    } else {
+                        print("JSON parsing error")
+                        completion(nil)
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            })
+            completion(nil)
         }
-        completion(nil)
     }
 }

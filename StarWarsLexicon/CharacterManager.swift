@@ -9,57 +9,46 @@
 import UIKit
 import CoreData
 
-//Add unit test to make sure that all View Controllers refer to the same object
-
-/* Reason to make this a class: multiple view controllers can share a reference to the same instance. 
- If a struct had been used instead, difference instances of ItemManager would have been referenced.*/
-
-protocol CharacterVCDelegate {
-    func updateCount(_ characterCount: Int)
-}
-
 class CharacterManager {
     let dataService = DataService()
+
+    private var characterURLCache = [String]()
+    private var characterURLCount: Int { return characterURLCache.count }
     
     private var characters = [Character?]()
-    var characterVCDelegate: CharacterVCDelegate
-    
-    var characterCount = 0 {
-        didSet {
-            characterVCDelegate.updateCount(characterCount)
-        }
+    var characterCount: Int {
+        return characters.count
     }
-    
-
-    
-    //deinit: saves to disk, calling save method
-    //If there are still objects equal to nil in character array, then handle them
-//    deinit {
-//        let charactersToBeSaved: [Character] = characters.map {
-//            if let character = $0 { return character }
-//        }
-//        
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//        
-//        let managedContext = appDelegate.persistentContainer.viewContext
-//        
-//        do {
-//            try managedContext.save()
-//        } catch let error as NSError {
-//            print("Could not save \(error), \(error.userInfo)")
-//        }
-//        
-//    }
     
     //Make sure to persists cell count as well!
     
     //init: loads from CoreData
-    init(characterVCDelegate: CharacterVCDelegate) {
-        self.characterVCDelegate = characterVCDelegate
-        //Make sure to persists cell count as well!
+    init() {
+        characterURLCache = APIService.sharedInstance.getURLStringCache(for: .character)
+
+        //Make sure to persist cell count as well!
         
+        //This just retreives existing data from Core Data stack if it exists
+        //Consider using an array of tuples to make sure characters array and characterURLCache have same count...
+        loadLocalCharacters()
+        
+        //If one or more character urls exists than saved character objects, start from the index of that difference
+        //Say for example 2 characters were added and so character array only has items from 0-47,
+        //then characterURLCount (50) - countDifference (2) would equal 48, which is exactly where we want to append to
+        
+        //Furthermore, in the case that there is no internet connection and characterURLCount is 0,
+        //then 0 - 80 for example would be -80, so there would be no need to expand the character array
+        let countDifference = characterURLCount - characterCount
+        
+        if countDifference > 0 {
+            for _ in 0..<countDifference {
+                characters.append(nil)
+            }
+        }
+    }
+
+    //This just retreives existing data from Core Data stack if it exists
+    private func loadLocalCharacters() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -71,42 +60,6 @@ class CharacterManager {
             characters = try managedContext.fetch(Character.fetchRequest())
         } catch let error as NSError {
             print(error)
-        }
-    }
-    
-    //Relocate this to API service w/ all URL methods!!!
-    func url(for category: Category) -> URL? {
-        switch category {
-        case .film:
-            return URL(string: "")
-        case .character:
-            return URL(string: "https://swapi.co/api/people/")
-        case .starship:
-            return URL(string: "")
-        case .planet:
-            return URL(string: "")
-        case .species:
-            return URL(string: "")
-        case .vehicle:
-            return URL(string: "")
-        }
-    }
-    
-    func getCharacterCount() {
-        if let url = URL(string: "https://swapi.co/api/people/") {
-            dataService.fetchItemCount(url) { (count) in
-                DispatchQueue.main.async {
-                    if let count = count {
-                        //When count updates, this optional array must be reset and then set to the same length
-                        for _ in 0..<count {
-                            self.characters.append(nil)
-                        }
-                        
-                        //property observer calls updateCount method in VC
-                        self.characterCount = count
-                    }
-                }
-            }
         }
     }
     
@@ -202,8 +155,8 @@ class CharacterManager {
     }
     
     //One character is not downloading correctly: 17 Details not found
+    //Put this on main thread??
     func getCharacter(at index: Int, completion: @escaping (Character?) -> Void) {
-        
         guard index < characters.count, index >= 0 else {
             completion(nil)
             return
@@ -215,29 +168,33 @@ class CharacterManager {
         
         //If not, use NW request to download, then add to local cache, then return
         } else {
-            //Download data with helper function
-            if let url = URL(string: "https://swapi.co/api/people/\(index+1)/") {
-                print("Data download URL is \(url)")
-                dataService.fetchItem(at: url, completion: { (result) in
-                    switch result {
-                    case let .success(characterJSON):
-                        //DispatchQueue.main.async {
-                        //print(characterJSON)
-                        if let character = self.addCharacter(characterJSON, to: index) {
-                            completion(character)
-                        } else {
-                            print("JSON parsing error")
-                            completion(nil)
-                        }
-                        //}
-                    case let .failure(error):
-                        print(error)
-                    }
-                })
+            //This is to check if URL is equal to the url of any other items in the array before downloading
+            //Double should theoretically never appear at this stage
+            let urlString = characterURLCache[index]
+
+            guard let url = URL(string: urlString) else {
+                completion(nil)
+                return
             }
+            
+            dataService.fetchItem(at: url, completion: { (result) in
+                switch result {
+                
+                //Success cases
+                case let .success(characterJSON):
+                    if let character = self.addCharacter(characterJSON, to: index) {
+                        completion(character)
+               
+                //Error cases
+                    } else {
+                        print("JSON parsing error")
+                        completion(nil)
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            })
+            completion(nil)
         }
-        completion(nil)
     }
-    
-    //search: returned a filtered version of the data processed by CoreData filter
 }

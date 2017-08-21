@@ -16,6 +16,7 @@ class FilmVC: UIViewController, FilmVCDelegate {
     
     var rowCount = 7//0
     let filmSegueName = "showFilm"
+    let filmCellReuseIdentifier = "FilmCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ extension FilmVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "FilmCell", for: indexPath) as? FilmCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: filmCellReuseIdentifier, for: indexPath) as? FilmCell {
             filmManager?.getFilm(at: indexPath.row, completion: { (film) in
                 if let film = film {
                     DispatchQueue.main.async {

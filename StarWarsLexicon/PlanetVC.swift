@@ -8,44 +8,27 @@
 
 import UIKit
 
-class PlanetVC: UIViewController, PlanetVCDelegate {
+class PlanetVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
     var planetManager: PlanetManager?
     var searchMode = false
     
-    var cellCount = 20//0
     let planetSegueName = "showPlanet"
+    let planetCellReuseIdentifier = "PlanetCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tapGestureRecognizer.isEnabled = false
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
-        planetManager = PlanetManager(planetVCDelegate: self)
+        planetManager = PlanetManager()
         
         searchBar.returnKeyType = UIReturnKeyType.done
-        
-        planetManager?.getPlanetCount()
-    }
-    
-    func updateCount(_ planetCount: Int) {
-        cellCount = planetCount
-        collectionView.reloadData()
-    }
-    
-    //MARK: Keyboard dismissal
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        searchBar.resignFirstResponder()
-        tapGestureRecognizer.isEnabled = false
     }
     
     //MARK: Segue function
@@ -55,7 +38,7 @@ class PlanetVC: UIViewController, PlanetVCDelegate {
         case planetSegueName?:
             if let planetDetailVC = segue.destination as? PlanetDetailVC {
                 if let planet = sender as? Planet {
-                    print("Planet set")
+                    //print("Planet set")
                     planetDetailVC.detailPlanet = planet
                 }
             }
@@ -64,8 +47,8 @@ class PlanetVC: UIViewController, PlanetVCDelegate {
         }
     }
 }
-    //MARK: Collection View Functions
-    
+
+//MARK: Collection View Functions
 extension PlanetVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -89,7 +72,7 @@ extension PlanetVC: UICollectionViewDelegate {
 extension PlanetVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanetCell", for: indexPath) as? SWCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: planetCellReuseIdentifier, for: indexPath) as? SWCell {
             
             planetManager?.getPlanet(at: indexPath.row, completion: { (planet) in
                 if let planet = planet {
@@ -105,7 +88,7 @@ extension PlanetVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+        return planetManager?.planetCount ?? 0
     }
 }
 
@@ -124,7 +107,7 @@ extension PlanetVC: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        tapGestureRecognizer.isEnabled = true
+//        tapGestureRecognizer.isEnabled = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

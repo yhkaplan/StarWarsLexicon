@@ -156,24 +156,32 @@ class VehicleManager {
         if let vehicle = vehicles[index] {
             completion(vehicle)
         } else {
-            if let url = URL(string: "https://swapi.co/api/vehicles/\(index+1)/") {
-                print("Download url is \(url)")
-                dataService.fetchItem(at: url, completion: { (result) in
-                    switch result {
-                    case let .success(vehicleJSON):
-                        //switch to main thread?
-                        if let vehicle = self.addVehicle(vehicleJSON, to: index) {
-                            completion(vehicle)
-                        } else {
-                            print("JSON parsing error")
-                            completion(nil)
-                        }
-                    case let .failure(error):
-                        print(error)
-                    }
-                })
+            let urlString =  "https://swapi.co/api/vehicles/\(index+1)/"
+            //This is to check if URL is equal to the url of any other items in the array before downloading
+            let doublesArray = vehicles.filter{ urlString == $0?.itemURL }
+            
+            guard doublesArray.count == 0, let url = URL(string: urlString) else {
+                completion(nil)
+                return
             }
+            
+            print("Download url is \(url)")
+            dataService.fetchItem(at: url, completion: { (result) in
+                switch result {
+                case let .success(vehicleJSON):
+                    //switch to main thread?
+                    if let vehicle = self.addVehicle(vehicleJSON, to: index) {
+                        completion(vehicle)
+                    } else {
+                        print("JSON parsing error")
+                        completion(nil)
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            })
+            completion(nil)
         }
-        completion(nil)
     }
+    
 }

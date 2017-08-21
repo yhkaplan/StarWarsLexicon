@@ -41,11 +41,6 @@
                                     <constraint firstItem="EoQ-OK-ecJ" firstAttribute="leading" secondItem="MXO-4w-CGV" secondAttribute="leading" id="dWq-db-fgM"/>
                                     <constraint firstAttribute="trailing" secondItem="EoQ-OK-ecJ" secondAttribute="trailing" id="sNu-Qi-9Op"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="vJV-hk-t9k" appends="YES" id="LtY-4C-CnA"/>
-                                    <outletCollection property="gestureRecognizers" destination="vJV-hk-t9k" appends="YES" id="pOm-L7-9bP"/>
-                                    <outletCollection property="gestureRecognizers" destination="vJV-hk-t9k" appends="YES" id="5t4-Sg-b5a"/>
-                                </connections>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKE-eT-O8p">
                                 <rect key="frame" x="12" y="129" width="351" height="489"/>
@@ -80,24 +75,15 @@
                             <constraint firstItem="MXO-4w-CGV" firstAttribute="top" secondItem="mTH-HI-6VI" secondAttribute="bottom" constant="10" id="uAe-nd-jux"/>
                             <constraint firstItem="MXO-4w-CGV" firstAttribute="leading" secondItem="VbH-Oj-yrw" secondAttribute="leading" constant="12" id="vGb-Xm-6zK"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="vJV-hk-t9k" appends="YES" id="pio-VX-2gp"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Characters" id="owX-rl-nOu"/>
                     <connections>
                         <outlet property="collectionView" destination="EKE-eT-O8p" id="t8y-os-Yqb"/>
                         <outlet property="searchBar" destination="EoQ-OK-ecJ" id="s8t-qy-qAF"/>
-                        <outlet property="tapGestureRecognizer" destination="vJV-hk-t9k" id="oZG-gR-1ut"/>
                         <segue destination="hmV-yc-QPC" kind="show" identifier="showCharacter" id="IC6-HU-CQw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efm-Rc-2lr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="vJV-hk-t9k">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="8fe-3F-DOD" id="ANZ-4B-DJp"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2662" y="161"/>
         </scene>
@@ -1073,24 +1059,15 @@
                             <constraint firstItem="HmD-9P-GqC" firstAttribute="top" secondItem="cng-lc-OYh" secondAttribute="bottom" constant="10" id="qV4-DH-daq"/>
                             <constraint firstAttribute="trailing" secondItem="HmD-9P-GqC" secondAttribute="trailing" constant="12" id="tVu-Kt-5cp"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="KZl-vl-ym1" appends="YES" id="s6f-IF-Zyo"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Planets" id="7wh-Iw-Ujd"/>
                     <connections>
                         <outlet property="collectionView" destination="HmD-9P-GqC" id="41F-WM-e6m"/>
                         <outlet property="searchBar" destination="6hN-MC-YhP" id="o5k-Ta-6Cr"/>
-                        <outlet property="tapGestureRecognizer" destination="KZl-vl-ym1" id="ztO-7w-iO0"/>
                         <segue destination="vAD-F6-Slm" kind="show" identifier="showPlanet" id="IFJ-qu-xmN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoW-Ry-iwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="KZl-vl-ym1">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="rrE-iJ-3ka" id="Ad5-Tx-Pev"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2661.5999999999999" y="-535.68215892053979"/>
         </scene>
@@ -1485,7 +1462,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Mht-bL-Naa"/>
+        <segue reference="IFJ-qu-xmN"/>
         <segue reference="KZP-T7-AXd"/>
-        <segue reference="KA5-1g-Xo9"/>
     </inferredMetricsTieBreakers>
 </document>

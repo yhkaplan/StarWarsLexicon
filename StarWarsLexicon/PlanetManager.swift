@@ -9,25 +9,32 @@
 import UIKit
 import CoreData
 
-protocol PlanetVCDelegate {
-    func updateCount(_ planetCount: Int)
-}
-
 class PlanetManager {
     let dataService = DataService()
     
-    private var planets = [Planet?]()
-    var planetVCDelegate: PlanetVCDelegate
+    private var planetURLCache = [String]()
+    private var planetURLCount: Int { return planetURLCache.count }
     
-    var planetCount = 0 {
-        didSet {
-            planetVCDelegate.updateCount(planetCount)
+    private var planets = [Planet?]()
+    var planetCount: Int {
+        return planets.count
+    }
+    
+    init() {
+        planetURLCache = APIService.sharedInstance.getURLStringCache(for: .planet)
+        
+        loadLocalPlanets()
+        
+        let countDifference = planetURLCount - planetCount
+        
+        if countDifference > 0 {
+            for _ in 0..<countDifference {
+                planets.append(nil)
+            }
         }
     }
     
-    init(planetVCDelegate: PlanetVCDelegate) {
-        self.planetVCDelegate = planetVCDelegate
-        
+    private func loadLocalPlanets() {
         //CoreData initializers
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -43,23 +50,8 @@ class PlanetManager {
         }
     }
     
-    func getPlanetCount() {
-        if let url = URL(string: "https://swapi.co/api/planets/") {
-            dataService.fetchItemCount(url, completion: { (count) in
-                if let count = count {
-                    for _ in 0..<count {
-                        self.planets.append(nil)
-                    }
-                    
-                    self.planetCount = count
-                }
-            })
-        }
-    }
-    
     private func addPlanet(_ json: [String : Any], to index: Int) -> Planet? {
         
-        //One planet shows up as unknown so the following might be necessary (name != "unknown")
         guard let name = json["name"] as? String else {
             print("Parsing error with planet name")
             return nil
@@ -155,23 +147,29 @@ class PlanetManager {
         if let planet = planets[index] {
             completion(planet)
         } else {
-            if let url = URL(string: "https://swapi.co/api/planets/\(index+1)/") {
-                print("Download URL is \(url)")
-                dataService.fetchItem(at: url, completion: { (result) in
-                    switch result {
-                    case let .success(planetJSON):
-                        if let planet = self.addPlanet(planetJSON, to: index) {
-                            completion(planet)
-                        } else {
-                            print("JSON parsing error")
-                            completion(nil)
-                        }
-                    case let .failure(error):
-                        print(error)
-                    }
-                })
+            
+            let urlString =  planetURLCache[index]
+            
+            guard let url = URL(string: urlString) else {
+                completion(nil)
+                return
             }
+            
+            //print("Download URL is \(url)")
+            dataService.fetchItem(at: url, completion: { (result) in
+                switch result {
+                case let .success(planetJSON):
+                    if let planet = self.addPlanet(planetJSON, to: index) {
+                        completion(planet)
+                    } else {
+                        print("JSON parsing error")
+                        completion(nil)
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            })
+            completion(nil)
         }
-        completion(nil)
     }
 }

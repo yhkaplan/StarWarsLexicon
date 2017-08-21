@@ -9,47 +9,29 @@
 import UIKit
 
 //Conforms to too many things: must seperate out
-class CharacterVC: UIViewController, CharacterVCDelegate {
+class CharacterVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
     var characterManager: CharacterManager?
+//    var characterURLCache = [String]()
     var searchMode = false
     
-    var cellCount = 20//0
     let characterSegueName = "showCharacter"
+    let characterCellReuseIdentifier = "CharacterCell"
     
     //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tapGestureRecognizer.cancelsTouchesInView = false
-        tapGestureRecognizer.isEnabled = false
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
-        characterManager = CharacterManager(characterVCDelegate: self)
+        characterManager = CharacterManager()
         
         searchBar.returnKeyType = UIReturnKeyType.done
-        
-        //This method informs characterManager that it should grab the count for maximum number of characters
-        characterManager?.getCharacterCount()
-    }
-    
-    func updateCount(_ characterCount: Int) {
-        cellCount = characterCount
-        collectionView.reloadData()
-    }
-    
-    //MARK: Keyboard dismissal
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        searchBar.resignFirstResponder()
-        tapGestureRecognizer.isEnabled = false
     }
     
     //MARK: Segue function
@@ -91,7 +73,7 @@ extension CharacterVC: UICollectionViewDelegate {
 extension CharacterVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCell", for: indexPath) as? SWCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: characterCellReuseIdentifier, for: indexPath) as? SWCell {
         
             characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
                 if let character = character {
@@ -107,7 +89,7 @@ extension CharacterVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+        return characterManager?.characterCount ?? 0
     }
 }
 
@@ -126,7 +108,7 @@ extension CharacterVC: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        tapGestureRecognizer.isEnabled = true
+        //tapGestureRecognizer.isEnabled = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

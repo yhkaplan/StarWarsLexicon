@@ -12,16 +12,5 @@ import CoreData
 @objc protocol SWCategory {
     var category: String { get }
     var itemName: String { get }
-    //var itemURL: URL { get }
+    var itemURL: String { get }
 }
-
-//extension SWCategory where Self: NSManagedObject {
-//    let fetchRequest: NSFetchRequest<Self> = NSFetchRequest(entityName: Self.entity().name!)
-//    
-//    
-//}
-
-//Cannot currently get protocol to conform to equatable
-//func ==<T: SWCategory>(lhs: T, rhs: T) -> Bool {
-//    return lhs.itemURL == rhs.itemURL
-//}

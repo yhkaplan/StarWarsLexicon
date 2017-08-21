@@ -11,8 +11,9 @@ import UIKit
 class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var character: Character!
-    private var relatedFilmArray = [Film]()
-    private var homeworld: Planet?
+//    let planetManager = PlanetManager() //This is to retreive homeworld
+    var relatedFilmArray = [Film]()
+    //private var homeworld: Planet?
     
     let dataService = DataService()
     
@@ -57,35 +58,16 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
 //            
 //            initializeHomeworld()
 //            initializeRelatedFilms()
+//            if let homeworld = planetManager.
         }
     }
     
-    @IBAction func showHomeworld(_ sender: UIButton) {
-        if let homeworld = homeworld {
-            performSegue(withIdentifier: "showHomeworld", sender: homeworld)
-        }
-    }
-    
-//    func initializeHomeworld() {
-//        if let homeworldURL = character.homeworldURL {
-//            dataService.fetchHomeworld(from: homeworldURL, completion: { (result) in
-//                switch result {
-//                case let .success(homeworld):
-//                    DispatchQueue.main.async {
-//                        print("Homeworld is \(homeworld)")
-//                        self.homeworld = homeworld
-//                        //update label and show link UI
-//                        self.homeworldLbl.text = homeworld.name + "➡︎"
-//                        //activate invisible button link
-//                        self.homeworldButton.isEnabled = true
-//                    }
-//                case let .failure(error):
-//                    print("Error: \(error)")
-//                    break
-//                }
-//            })
-//        } 
+//    @IBAction func showHomeworld(_ sender: UIButton) {
+//        if let homeworld = homeworld {
+//            performSegue(withIdentifier: "showHomeworld", sender: homeworld)
+//        }
 //    }
+    
     
 //    func initializeRelatedFilms() {
 //        //guard for 1. empty url arrays and 2. urls that are nil
@@ -131,7 +113,8 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
             preconditionFailure("Unexpected segue identifier")
         }
     }
-    
+
+    //Relocate to embedded view!
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedFilm = relatedFilmArray[indexPath.row]
         performSegue(withIdentifier: "showRelatedFilm", sender: selectedFilm)
