@@ -16,9 +16,7 @@ class PlanetManager {
     private var planetURLCount: Int { return planetURLCache.count }
     
     private var planets = [Planet?]()
-    var planetCount: Int {
-        return planets.count
-    }
+    var planetCount: Int { return planets.count }
     
     init() {
         planetURLCache = APIService.sharedInstance.getURLStringCache(for: .planet)

@@ -9,27 +9,30 @@
 import UIKit
 import CoreData
 
-protocol VehicleVCDelegate {
-    func updateCount(_ vehicleCount: Int)
-}
-
-//Suffers same parsing issues as starship manager
-
 class VehicleManager {
     let dataService = DataService()
     
-    private var vehicles = [Vehicle?]()
-    var vehicleVCDelegate: VehicleVCDelegate
+    private var vehicleURLCache = [String]()
+    private var vehicleURLCount: Int { return vehicleURLCache.count }
     
-    var vehicleCount = 0 {
-        didSet {
-            vehicleVCDelegate.updateCount(vehicleCount)
+    private var vehicles = [Vehicle?]()
+    var vehicleCount: Int { return vehicles.count }
+    
+    init() {
+        vehicleURLCache = APIService.sharedInstance.getURLStringCache(for: .vehicle)
+        
+        loadLocalVehicles()
+        
+        let countDifference = vehicleURLCount - vehicleCount
+        
+        if countDifference > 0 {
+            for _ in 0..<countDifference {
+                vehicles.append(nil)
+            }
         }
     }
     
-    init(vehicleVCDelegate: VehicleVCDelegate) {
-        self.vehicleVCDelegate = vehicleVCDelegate
-        
+    private func loadLocalVehicles() {
         //CoreData initializers
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -41,20 +44,6 @@ class VehicleManager {
             vehicles = try managedContext.fetch(Vehicle.fetchRequest())
         } catch let error as NSError {
             print(error)
-        }
-    }
-    
-    func getVehicleCount() {
-        if let url = URL(string: "https://swapi.co/api/vehicles/") {
-            dataService.fetchItemCount(url, completion: { (count) in
-                if let count = count {
-                    for _ in 0..<count {
-                        self.vehicles.append(nil)
-                    }
-                    
-                    self.vehicleCount = count
-                }
-            })
         }
     }
     
@@ -134,7 +123,7 @@ class VehicleManager {
             vehicle.maximumAtmosphericSpeed = Double(0)
         }
         
-        print(vehicle.description)
+        //print(vehicle.description)
         
         do {
             try managedContext.save()
@@ -156,16 +145,14 @@ class VehicleManager {
         if let vehicle = vehicles[index] {
             completion(vehicle)
         } else {
-            let urlString =  "https://swapi.co/api/vehicles/\(index+1)/"
-            //This is to check if URL is equal to the url of any other items in the array before downloading
-            let doublesArray = vehicles.filter{ urlString == $0?.itemURL }
+            let urlString =  vehicleURLCache[index]
             
-            guard doublesArray.count == 0, let url = URL(string: urlString) else {
+            guard let url = URL(string: urlString) else {
                 completion(nil)
                 return
             }
             
-            print("Download url is \(url)")
+            //print("Download url is \(url)")
             dataService.fetchItem(at: url, completion: { (result) in
                 switch result {
                 case let .success(vehicleJSON):

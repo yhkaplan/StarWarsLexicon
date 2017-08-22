@@ -16,9 +16,7 @@ class CharacterManager {
     private var characterURLCount: Int { return characterURLCache.count }
     
     private var characters = [Character?]()
-    var characterCount: Int {
-        return characters.count
-    }
+    var characterCount: Int { return characters.count }
     
     //Make sure to persists cell count as well!
     

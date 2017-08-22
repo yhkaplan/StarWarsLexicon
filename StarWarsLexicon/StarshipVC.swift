@@ -8,44 +8,27 @@
 
 import UIKit
 
-class StarshipVC: UIViewController, StarshipVCDelegate {
+class StarshipVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     let dataService = DataService()
     var starshipManager: StarshipManager?
     var searchMode = false
     
-    var cellCount = 20//0
     let starshipSegueName = "showStarship"
+    let starshipCellReuseIdentifier = "StarshipCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tapGestureRecognizer.isEnabled = false
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         searchBar.delegate = self
-        starshipManager = StarshipManager(starshipVCDelegate: self)
+        starshipManager = StarshipManager()
         
         searchBar.returnKeyType = UIReturnKeyType.done
-        
-        starshipManager?.getStarshipCount()
-    }
-
-    func updateCount(_ starshipCount: Int) {
-        cellCount = starshipCount
-        collectionView.reloadData()
-    }
-    
-    //MARK: Keyboard dismissal
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        searchBar.resignFirstResponder()
-        tapGestureRecognizer.isEnabled = false
     }
     
     //MARK: Segue function
@@ -87,7 +70,7 @@ extension StarshipVC: UICollectionViewDelegate {
 extension StarshipVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarshipCell", for: indexPath) as? SWCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: starshipCellReuseIdentifier, for: indexPath) as? SWCell {
             
             starshipManager?.getStarship(at: indexPath.row, completion: { (starship) in
                 if let starship = starship {
@@ -103,7 +86,7 @@ extension StarshipVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+        return starshipManager?.starshipCount ?? 0
     }
 }
 
@@ -121,7 +104,7 @@ extension StarshipVC: UISearchBarDelegate {
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        tapGestureRecognizer.isEnabled = true
+        //tapGestureRecognizer.isEnabled = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

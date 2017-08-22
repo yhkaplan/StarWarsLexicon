@@ -9,27 +9,30 @@
 import UIKit
 import CoreData
 
-protocol StarshipVCDelegate {
-    func updateCount(_ starshipCount: Int)
-}
-
-//Not parsing starships properly!!
-
 class StarshipManager {
     let dataService = DataService()
     
-    private var starships = [Starship?]()
-    var starshipVCDelegate: StarshipVCDelegate
+    private var starshipURLCache = [String]()
+    private var starshipURLCount: Int { return starshipURLCache.count }
     
-    var starshipCount = 0 {
-        didSet {
-            starshipVCDelegate.updateCount(starshipCount)
+    private var starships = [Starship?]()
+    var starshipCount: Int { return starships.count }
+    
+    init() {
+        starshipURLCache = APIService.sharedInstance.getURLStringCache(for: .starship)
+        
+        loadLocalStarships()
+        
+        let countDifference = starshipURLCount - starshipCount
+        
+        if countDifference > 0 {
+            for _ in 0..<countDifference {
+                starships.append(nil)
+            }
         }
     }
     
-    init(starshipVCDelegate: StarshipVCDelegate) {
-        self.starshipVCDelegate = starshipVCDelegate
-        
+    private func loadLocalStarships() {
         //CoreData initializers
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -41,20 +44,6 @@ class StarshipManager {
             starships = try managedContext.fetch(Starship.fetchRequest())
         } catch let error as NSError {
             print(error)
-        }
-    }
-    
-    func getStarshipCount() {
-        if let url = URL(string: "https://swapi.co/api/starships/") {
-            dataService.fetchItemCount(url, completion: { (count) in
-                if let count = count {
-                    for _ in 0..<count {
-                        self.starships.append(nil)
-                    }
-                    
-                    self.starshipCount = count
-                }
-            })
         }
     }
     
@@ -140,7 +129,7 @@ class StarshipManager {
             starship.hyperdriveRating = Double(0)
         }
         
-        print(starship.description)
+        //print(starship.description)
         
         do {
             try managedContext.save()
@@ -162,16 +151,14 @@ class StarshipManager {
         if let starship = starships[index] {
             completion(starship)
         } else {
-            let urlString = "https://swapi.co/api/starships/\(index+1)/"
-            //This is to check if URL is equal to the url of any other items in the array before downloading
-            let doublesArray = starships.filter{ urlString == $0?.itemURL }
+            let urlString = starshipURLCache[index]
             
-            guard doublesArray.count == 0, let url = URL(string: urlString) else {
+            guard let url = URL(string: urlString) else {
                 completion(nil)
                 return
             }
             
-            print("Download url is \(url)")
+            //print("Download url is \(url)")
             dataService.fetchItem(at: url, completion: { (result) in
                 switch result {
                 case let .success(starshipJSON):
