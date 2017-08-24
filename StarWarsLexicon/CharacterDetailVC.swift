@@ -45,17 +45,17 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
             self.skinColorLbl.text = character.skinColor.capitalized
             self.hairColorLbl.text = character.hairColor.capitalized
             self.genderLbl.text = character.gender.capitalized
-//            if let height = character.height {
-//                heightLbl.text = "\(height)"
-//            } else {
-//                heightLbl.text = nilLabel
-//            }
-//            if let mass = character.mass {
-//                massLbl.text = "\(mass)"
-//            } else {
-//                massLbl.text = nilLabel
-//            }
-//            
+            if character.height > 0 {
+                heightLbl.text = "\(character.height)"
+            } else {
+                heightLbl.text = nilLabel
+            }
+            if character.mass > 0 {
+                massLbl.text = "\(character.mass)"
+            } else {
+                massLbl.text = nilLabel
+            }
+//
 //            initializeHomeworld()
 //            initializeRelatedFilms()
 //            if let homeworld = planetManager.

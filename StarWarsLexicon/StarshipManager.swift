@@ -47,8 +47,6 @@ class StarshipManager {
         }
     }
     
-    //There appears to be a large number of starships that don't actually load properly on the APIs end
-    //Think of workaround using pages containing items
     private func addStarship(_ json: [String : Any], to index: Int) -> Starship? {
         
         guard let name = json["name"] as? String else {
@@ -96,37 +94,37 @@ class StarshipManager {
         if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
             starship.costInCredits = costInCredits
         } else {
-            starship.costInCredits = Double(0)
+            starship.costInCredits = Double(-1)
         }
         
         if let lengthString = json["length"] as? String, let length = Double(lengthString) {
             starship.length = length
         } else {
-            starship.length = Double(0)
+            starship.length = Double(-1)
         }
         
         if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Double(numberOfCrewMembersString) {
             starship.numberOfCrewMembers = numberOfCrewMembers
         } else {
-            starship.numberOfCrewMembers = Double(0)
+            starship.numberOfCrewMembers = Double(-1)
         }
         
         if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Double(numberOfPassengersString) {
             starship.numberOfPassengers = numberOfPassengers
         } else {
-            starship.numberOfPassengers = Double(0)
+            starship.numberOfPassengers = Double(-1)
         }
         
         if let maxAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maxAtmosphericSpeed = Double(maxAtmosphericSpeedString) {
             starship.maxAtmosphericSpeed = maxAtmosphericSpeed
         } else {
-            starship.maxAtmosphericSpeed = Double(0)
+            starship.maxAtmosphericSpeed = Double(-1)
         }
         
         if let hyperdriveRatingString = json["hyperdrive_rating"] as? String, let hyperdriveRating = Double(hyperdriveRatingString) {
             starship.hyperdriveRating = hyperdriveRating
         } else {
-            starship.hyperdriveRating = Double(0)
+            starship.hyperdriveRating = Double(-1)
         }
         
         //print(starship.description)

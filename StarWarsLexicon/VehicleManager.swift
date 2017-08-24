@@ -96,35 +96,36 @@ class VehicleManager {
         if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
             vehicle.costInCredits = costInCredits
         } else {
-            vehicle.costInCredits = Double(0)
+            vehicle.costInCredits = Double(-1)
         }
         
         if let lengthString = json["length"] as? String, let length = Double(lengthString) {
             vehicle.length = length
         } else {
-            vehicle.length = Double(0)
+            vehicle.length = Double(-1)
         }
         
         if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Int64(numberOfCrewMembersString) {
             vehicle.numberOfCrewMembers = numberOfCrewMembers
         } else {
-            vehicle.numberOfCrewMembers = Int64(0)
+            vehicle.numberOfCrewMembers = Int64(-1)
         }
         
         if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Int64(numberOfPassengersString) {
             vehicle.numberOfPassengers = numberOfPassengers
         } else {
-            vehicle.numberOfPassengers = Int64(0)
+            vehicle.numberOfPassengers = Int64(-1)
         }
         
         if let maxAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maxAtmosphericSpeed = Double(maxAtmosphericSpeedString) {
             vehicle.maximumAtmosphericSpeed = maxAtmosphericSpeed
         } else {
-            vehicle.maximumAtmosphericSpeed = Double(0)
+            vehicle.maximumAtmosphericSpeed = Double(-1)
         }
         
         //print(vehicle.description)
         
+        //vehicle 62 crashing, not reproducible
         do {
             try managedContext.save()
             vehicles[index] = vehicle

@@ -124,19 +124,19 @@ class CharacterManager {
         if let heightString = json["height"] as? String, let height = Int16(heightString) {
             character.height = height
         } else {
-            character.height = Int16(0)
+            character.height = Int16(-1)
         }
 
         if let massString = json["mass"] as? String, let mass = Int32(massString) {
             character.mass = mass
         } else {
-            character.mass = Int32(0)
+            character.mass = Int32(-1)
         }
 
         if let homeworldURL = json["homeworld"] as? String {
             character.homeworldURL = homeworldURL
         } else {
-            character.homeworldURL = "unknown"
+            character.homeworldURL = "Unknown"
         }
 
         //print(character.description)

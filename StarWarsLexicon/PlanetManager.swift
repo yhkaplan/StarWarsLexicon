@@ -90,37 +90,37 @@ class PlanetManager {
         if let diameterString = json["diameter"] as? String, let diameter = Double(diameterString) {
             planet.diameter = diameter
         } else {
-            planet.diameter = Double(0)
+            planet.diameter = Double(-1)
         }
         
         if let rotationPeriodString = json["rotation_period"] as? String, let rotationPeriod = Double(rotationPeriodString) {
             planet.rotationPeriod = rotationPeriod
         } else {
-            planet.rotationPeriod = Double(0)
+            planet.rotationPeriod = Double(-1)
         }
         
         if let orbitalPeriodString = json["orbital_period"] as? String, let orbitalPeriod = Int16(orbitalPeriodString) {
             planet.orbitalPeriod = orbitalPeriod
         } else {
-            planet.orbitalPeriod = Int16(0)
+            planet.orbitalPeriod = Int16(-1)
         }
         
         if let gravityString = json["gravity"] as? String, let gravity = Double(gravityString) {
             planet.gravity = gravity
         } else {
-            planet.gravity = Double(0)
+            planet.gravity = Double(-1)
         }
         
         if let populationString = json["population"] as? String, let population = Double(populationString) {
             planet.population = population
         } else {
-            planet.population = Double(0)
+            planet.population = Double(-1)
         }
         
         if let surfaceWaterString = json["surface_water"] as? String, let surfaceWater = Double(surfaceWaterString) {
             planet.surfaceWater = surfaceWater
         } else {
-            planet.surfaceWater = Double(0)
+            planet.surfaceWater = Double(-1)
         }
         
         //print(planet.description)

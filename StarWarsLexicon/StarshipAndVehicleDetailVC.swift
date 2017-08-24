@@ -35,36 +35,36 @@ class StarshipAndVehicleDetailVC: UIViewController {
             modelLbl.text = starship.model.capitalized
             classLbl.text = starship.starshipClass.capitalized
             manufacturerLbl.text = starship.manufacturer.capitalized
-////            if let cost = starship.costInCredits {
-//                costLbl.text = "\(cost) credits"
-////            } else {
-////                costLbl.text = nilLabel
-////            }
-//            if let length = starship.length {
-//                lengthLbl.text = "\(length) meters"
-//            } else {
-//                lengthLbl.text = nilLabel
-//            }
-//            if let numberOfCrewMembers = starship.numberOfCrewMembers {
-//                numberOfCrewMembersLbl.text = "\(numberOfCrewMembers)"
-//            } else {
-//                numberOfCrewMembersLbl.text = nilLabel
-//            }
-//            if let numberOfPassengers = starship.numberOfPassengers {
-//                numberOfPassengersLbl.text = "\(numberOfPassengers)"
-//            } else {
-//                numberOfPassengersLbl.text = nilLabel
-//            }
-//            if let maxAtmosphericSpeed = starship.maxAtmosphericSpeed {
-//                maxAtmosphericSpeedLbl.text = "\(maxAtmosphericSpeed)"
-//            } else {
-//                maxAtmosphericSpeedLbl.text = nilLabel
-//            }
-//            if let hyperdriveRating = starship.hyperdriveRating {
-//                hyperdriveRatingLbl.text = "\(hyperdriveRating)"
-//            } else {
-//                hyperdriveRatingLbl.text = nilLabel
-//            }
+            if starship.costInCredits >= 0 {
+                costLbl.text = "\(starship.costInCredits) credits"
+            } else {
+                costLbl.text = nilLabel
+            }
+            if starship.length >= 0 {
+                lengthLbl.text = "\(starship.length) meters"
+            } else {
+                lengthLbl.text = nilLabel
+            }
+            if starship.numberOfCrewMembers >= 0 {
+                numberOfCrewMembersLbl.text = "\(starship.numberOfCrewMembers)"
+            } else {
+                numberOfCrewMembersLbl.text = nilLabel
+            }
+            if starship.numberOfPassengers >= 0 {
+                numberOfPassengersLbl.text = "\(starship.numberOfPassengers)"
+            } else {
+                numberOfPassengersLbl.text = nilLabel
+            }
+            if starship.maxAtmosphericSpeed >= 0 {
+                maxAtmosphericSpeedLbl.text = "\(starship.maxAtmosphericSpeed)"
+            } else {
+                maxAtmosphericSpeedLbl.text = nilLabel
+            }
+            if starship.hyperdriveRating >= 0 {
+                hyperdriveRatingLbl.text = "\(starship.hyperdriveRating)"
+            } else {
+                hyperdriveRatingLbl.text = nilLabel
+            }
             
         } else if let vehicle = vehicle {
             //Hide hyperdrive labels
@@ -75,31 +75,31 @@ class StarshipAndVehicleDetailVC: UIViewController {
             modelLbl.text = vehicle.model.capitalized
             classLbl.text = vehicle.vehicleClass.capitalized
             manufacturerLbl.text = vehicle.manufacturer.capitalized
-//            if let cost = vehicle.costInCredits {
-//                costLbl.text = "\(cost) credits"
-//            } else {
-//                costLbl.text = nilLabel
-//            }
-//            if let length = vehicle.length {
-//                lengthLbl.text = "\(length) meters"
-//            } else {
-//                lengthLbl.text = nilLabel
-//            }
-//            if let numberOfCrewMembers = vehicle.numberOfCrewMembers {
-//                numberOfCrewMembersLbl.text = "\(numberOfCrewMembers)"
-//            } else {
-//                numberOfCrewMembersLbl.text = nilLabel
-//            }
-//            if let numberOfPassengers = vehicle.numberOfPassengers {
-//                numberOfPassengersLbl.text = "\(numberOfPassengers)"
-//            } else {
-//                numberOfPassengersLbl.text = nilLabel
-//            }
-//            if let maximumAtmosphericSpeed = vehicle.maximumAtmosphericSpeed {
-//                maxAtmosphericSpeedLbl.text = "\(maximumAtmosphericSpeed)"
-//            } else {
-//                maxAtmosphericSpeedLbl.text = nilLabel
-//            }
+            if vehicle.costInCredits >= 0 {
+                costLbl.text = "\(vehicle.costInCredits) credits"
+            } else {
+                costLbl.text = nilLabel
+            }
+            if vehicle.length >= 0 {
+                lengthLbl.text = "\(vehicle.length) meters"
+            } else {
+                lengthLbl.text = nilLabel
+            }
+            if vehicle.numberOfCrewMembers >= 0 {
+                numberOfCrewMembersLbl.text = "\(vehicle.numberOfCrewMembers)"
+            } else {
+                numberOfCrewMembersLbl.text = nilLabel
+            }
+            if vehicle.numberOfPassengers >= 0 {
+                numberOfPassengersLbl.text = "\(vehicle.numberOfPassengers)"
+            } else {
+                numberOfPassengersLbl.text = nilLabel
+            }
+            if vehicle.maximumAtmosphericSpeed >= 0 {
+                maxAtmosphericSpeedLbl.text = "\(vehicle.maximumAtmosphericSpeed)"
+            } else {
+                maxAtmosphericSpeedLbl.text = nilLabel
+            }
         }
     }
 }
