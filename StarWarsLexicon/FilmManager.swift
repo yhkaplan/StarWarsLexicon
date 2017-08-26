@@ -17,27 +17,29 @@ class FilmManager {
     let dataService = DataService()
     
     private var films = [Film?]()
-    var filmVCDelegate: FilmVCDelegate
+    var filmVCDelegate: FilmVCDelegate?
     
     var filmCount = 0 {
         didSet {
-            filmVCDelegate.updateCount(filmCount)
+            filmVCDelegate?.updateCount(filmCount)
         }
     }
     
-    init(filmVCDelegate: FilmVCDelegate) {
-        self.filmVCDelegate = filmVCDelegate
+    init(filmVCDelegate: FilmVCDelegate? = nil) {
+        if filmVCDelegate != nil {
+            self.filmVCDelegate = filmVCDelegate
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        do {
-            films = try managedContext.fetch(Film.fetchRequest())
-        } catch let error as NSError {
-            print(error)
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            do {
+                films = try managedContext.fetch(Film.fetchRequest())
+            } catch let error as NSError {
+                print(error)
+            }
         }
     }
     
@@ -197,5 +199,40 @@ class FilmManager {
             })
             completion(nil)
         }
+    }
+    
+    //MARK: - For fetching films to set relationships
+    
+    func getFilmWithURL(_ urlString: String, completion: @escaping (Film?) -> Void) {
+        //fetch films from core data store, see if any match url using NSPredicate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Film.itemURL), urlString)
+        
+        var relatedFilms = [Film]()
+        
+        do {
+            relatedFilms = try managedContext.fetch(fetchRequest)
+            //films = try managedContext.fetch(Film.fetchRequest())
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        if relatedFilms.count == 1, let relatedFilm = relatedFilms.first {
+            
+            completion(relatedFilm)
+        
+        //If no films match url, then try downloading
+        } else {
+            //if success downloading, then call addFilm to add to CoreData store
+        }
+        
+        //if no success, return nil
+        completion(nil)
     }
 }

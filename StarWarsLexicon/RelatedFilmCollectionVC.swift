@@ -23,7 +23,7 @@ class RelatedFilmCollectionVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -46,17 +46,17 @@ class RelatedFilmCollectionVC: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return relatedFilms?.count ?? 0 //filmManager.getRelatedFilmCount
+        return relatedFilms?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        //filmManager.getRelatedFilm(at: Film)
-        if let relatedFilm = relatedFilms?[indexPath.row] {
-        // Configure the cell
-    
-            return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? RelatedFilmCell {
+        
+            if let relatedFilm = relatedFilms?[indexPath.row] {
+            // Configure the cell
+                cell.configureCell(relatedFilm)
+                return cell
+            }
         }
         fatalError("Object not found")
     }

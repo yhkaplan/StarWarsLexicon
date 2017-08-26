@@ -2,7 +2,7 @@
 //  Character+CoreDataProperties.swift
 //  StarWarsLexicon
 //
-//  Created by Joshua Kaplan on 2017/07/31.
+//  Created by Joshua Kaplan on 2017/08/26.
 //  Copyright © 2017年 Joshua Kaplan. All rights reserved.
 //
 
@@ -28,5 +28,23 @@ extension Character {
     @NSManaged public var mass: Int32
     @NSManaged public var name: String
     @NSManaged public var skinColor: String
+    @NSManaged public var toFilm: NSSet?
+
+}
+
+// MARK: Generated accessors for toFilm
+extension Character {
+
+    @objc(addToFilmObject:)
+    @NSManaged public func addToToFilm(_ value: Film)
+
+    @objc(removeToFilmObject:)
+    @NSManaged public func removeFromToFilm(_ value: Film)
+
+    @objc(addToFilm:)
+    @NSManaged public func addToToFilm(_ values: NSSet)
+
+    @objc(removeToFilm:)
+    @NSManaged public func removeFromToFilm(_ values: NSSet)
 
 }

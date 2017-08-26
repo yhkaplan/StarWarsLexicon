@@ -11,6 +11,7 @@ import UIKit
 class CharacterDetailVC: UIViewController {
 
     var character: Character!
+    let embeddedRelatedFilmSegueName = "embeddedRelatedFilms"
 //    let planetManager = PlanetManager() //This is to retreive homeworld
     var relatedFilmArray = [Film]()
     //private var homeworld: Planet?
@@ -70,7 +71,7 @@ class CharacterDetailVC: UIViewController {
         case "showRelatedFilm"?:
             if let filmDetailVC = segue.destination as? FilmDetailVC {
                 if let relatedFilm = sender as? Film {
-                    filmDetailVC.film = relatedFilm
+                    filmDetailVC.film = relatedFilm//Selected film
                 }
             }
         case "showHomeworld"?:
@@ -79,7 +80,16 @@ class CharacterDetailVC: UIViewController {
                     planetDetailVC.detailPlanet = homeworld
                 }
             }
-        //ADD HERE FOR OTHER SEGUES
+
+        case embeddedRelatedFilmSegueName?:
+            if let character = character {
+                if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
+                    
+                    //Convert NSSet to NSArray to Array
+                    let relatedFilms = character.toFilm?.allObjects as? [Film]
+                    relatedFilmVC.relatedFilms = relatedFilms
+                }
+            }
         default:
             preconditionFailure("Unexpected segue identifier")
         }

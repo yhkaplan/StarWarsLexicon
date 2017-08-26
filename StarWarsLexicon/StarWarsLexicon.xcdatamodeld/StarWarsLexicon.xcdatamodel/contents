@@ -13,6 +13,7 @@
         <attribute name="mass" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="skinColor" attributeType="String" syncable="YES"/>
+        <relationship name="toFilm" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="toCharacter" inverseEntity="Film" syncable="YES"/>
     </entity>
     <entity name="Film" representedClassName=".Film" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
@@ -24,6 +25,10 @@
         <attribute name="producer" attributeType="String" syncable="YES"/>
         <attribute name="releaseDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="toCharacter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="toFilm" inverseEntity="Character" syncable="YES"/>
+        <relationship name="toPlanet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Planet" inverseName="toFilm" inverseEntity="Planet" syncable="YES"/>
+        <relationship name="toStarship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Starship" inverseName="toFilm" inverseEntity="Starship" syncable="YES"/>
+        <relationship name="toVehicle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="toFilm" inverseEntity="Vehicle" syncable="YES"/>
     </entity>
     <entity name="Planet" representedClassName=".Planet" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
@@ -38,6 +43,7 @@
         <attribute name="rotationPeriod" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="surfaceWater" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="terrain" attributeType="String" syncable="YES"/>
+        <relationship name="toFilm" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="toPlanet" inverseEntity="Film" syncable="YES"/>
     </entity>
     <entity name="Starship" representedClassName=".Starship" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
@@ -53,6 +59,7 @@
         <attribute name="numberOfCrewMembers" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numberOfPassengers" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="starshipClass" attributeType="String" syncable="YES"/>
+        <relationship name="toFilm" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="toStarship" inverseEntity="Film" syncable="YES"/>
     </entity>
     <entity name="Vehicle" representedClassName=".Vehicle" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
@@ -67,12 +74,13 @@
         <attribute name="numberOfCrewMembers" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numberOfPassengers" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="vehicleClass" attributeType="String" syncable="YES"/>
+        <relationship name="toFilm" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="toVehicle" inverseEntity="Film" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Character" positionX="-63" positionY="-18" width="128" height="225"/>
-        <element name="Film" positionX="-63" positionY="72" width="128" height="180"/>
-        <element name="Planet" positionX="-18" positionY="162" width="128" height="225"/>
-        <element name="Starship" positionX="-54" positionY="108" width="128" height="240"/>
-        <element name="Vehicle" positionX="-36" positionY="153" width="128" height="225"/>
+        <element name="Character" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="Film" positionX="-63" positionY="72" width="128" height="240"/>
+        <element name="Planet" positionX="-18" positionY="162" width="128" height="240"/>
+        <element name="Starship" positionX="-54" positionY="108" width="128" height="255"/>
+        <element name="Vehicle" positionX="-36" positionY="153" width="128" height="240"/>
     </elements>
 </model>

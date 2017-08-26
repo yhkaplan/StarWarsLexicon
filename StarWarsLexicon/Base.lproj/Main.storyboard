@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="C40-Po-MLr">
-                                <rect key="frame" x="24" y="80" width="272" height="319"/>
+                                <rect key="frame" x="24" y="80" width="272" height="329"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xzs-ZX-EpN">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="18"/>
@@ -120,7 +120,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0bV-T0-MgG">
-                                        <rect key="frame" x="0.0" y="31.5" width="272" height="34"/>
+                                        <rect key="frame" x="0.0" y="33" width="272" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Homeworld:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1o-hM-JsG">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -137,7 +137,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="FiT-O7-eq9">
-                                        <rect key="frame" x="0.0" y="79.5" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="81.5" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth year:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5p-yi-jCL">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -154,7 +154,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="j0w-IL-PK1">
-                                        <rect key="frame" x="0.0" y="111" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="114.5" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eye color:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAH-uZ-wvL">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -171,7 +171,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2Oy-1G-5CY">
-                                        <rect key="frame" x="0.0" y="142.5" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="147" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skin color:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NB2-Rd-brj">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -188,7 +188,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vqd-So-RhP">
-                                        <rect key="frame" x="0.0" y="174.5" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="180" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair color:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTE-Xu-gpK">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -205,7 +205,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QxM-nz-i0W">
-                                        <rect key="frame" x="0.0" y="206" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="212.5" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrC-kH-1Rb">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -222,7 +222,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="syi-iI-Xxr">
-                                        <rect key="frame" x="0.0" y="237.5" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="245.5" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmP-4U-Ndk">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -239,7 +239,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="OGK-iK-kfT">
-                                        <rect key="frame" x="0.0" y="269.5" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="278" width="272" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mass:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipg-Qs-2h8">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
@@ -256,7 +256,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Films:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ceb-pn-tWs">
-                                        <rect key="frame" x="0.0" y="301" width="272" height="18"/>
+                                        <rect key="frame" x="0.0" y="311" width="272" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -264,7 +264,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcE-zx-JI3">
-                                <rect key="frame" x="160" y="111.5" width="136" height="34"/>
+                                <rect key="frame" x="160" y="113" width="136" height="34"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="showHomeworld:" destination="hmV-yc-QPC" eventType="touchUpInside" id="Eym-0q-JwS"/>
@@ -276,7 +276,7 @@
                                     <constraint firstAttribute="height" constant="100" id="Pc0-U2-v7E"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="1Al-aY-8kJ" kind="embed" id="CvT-3n-9l5"/>
+                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="embeddedRelatedFilms" id="CvT-3n-9l5"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -286,7 +286,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="C40-Po-MLr" secondAttribute="trailing" constant="8" id="JJf-gT-rjO"/>
                             <constraint firstItem="TcE-zx-JI3" firstAttribute="width" secondItem="t1w-et-8Gd" secondAttribute="width" id="MdI-1K-DWY"/>
                             <constraint firstItem="TcE-zx-JI3" firstAttribute="centerX" secondItem="t1w-et-8Gd" secondAttribute="centerX" id="Rds-yb-x8u"/>
-                            <constraint firstItem="RXh-3s-X9r" firstAttribute="top" secondItem="C40-Po-MLr" secondAttribute="bottom" constant="10" id="U09-eN-S7c"/>
+                            <constraint firstItem="RXh-3s-X9r" firstAttribute="top" secondItem="C40-Po-MLr" secondAttribute="bottom" id="U09-eN-S7c"/>
                             <constraint firstItem="RXh-3s-X9r" firstAttribute="leading" secondItem="3Ie-aE-Sos" secondAttribute="leadingMargin" id="Vbm-Ra-8JV"/>
                             <constraint firstItem="6F3-Rz-6Ki" firstAttribute="top" secondItem="RXh-3s-X9r" secondAttribute="bottom" constant="10" id="YHn-Pv-f2d"/>
                             <constraint firstItem="TcE-zx-JI3" firstAttribute="height" secondItem="t1w-et-8Gd" secondAttribute="height" id="ecF-Kl-AD6"/>
@@ -314,28 +314,56 @@
             </objects>
             <point key="canvasLocation" x="3592.5" y="160.56338028169014"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Related Film CollectionVC-->
         <scene sceneID="YcE-9U-jDj">
             <objects>
-                <collectionViewController id="1Al-aY-8kJ" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EIS-G0-YFC">
+                <collectionViewController id="1Al-aY-8kJ" customClass="RelatedFilmCollectionVC" customModule="StarWarsLexicon" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="EIS-G0-YFC">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sag-lO-HuR">
-                            <size key="itemSize" width="50" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sag-lO-HuR">
+                            <size key="itemSize" width="65" height="85"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RelatedFilmCell" id="yhN-BF-Jro" customClass="RelatedFilmCell" customModule="StarWarsLexicon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="7.5" width="65" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="65" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lkx-uz-clX" customClass="CircularImage" customModule="StarWarsLexicon" customModuleProvider="target">
+                                            <rect key="frame" x="2" y="0.0" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="Afx-a0-63r"/>
+                                                <constraint firstAttribute="width" constant="60" id="leP-I1-F2H"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long film title that cannot fit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNR-1I-UWT">
+                                            <rect key="frame" x="0.0" y="60" width="65" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JNR-1I-UWT" secondAttribute="trailing" id="1PA-k2-zRf"/>
+                                    <constraint firstItem="JNR-1I-UWT" firstAttribute="leading" secondItem="yhN-BF-Jro" secondAttribute="leading" id="Eh9-Rz-qIt"/>
+                                    <constraint firstItem="Lkx-uz-clX" firstAttribute="top" secondItem="yhN-BF-Jro" secondAttribute="top" id="Lol-mE-d5L"/>
+                                    <constraint firstAttribute="bottom" secondItem="JNR-1I-UWT" secondAttribute="bottom" id="bTN-IH-y2X"/>
+                                    <constraint firstItem="JNR-1I-UWT" firstAttribute="top" secondItem="Lkx-uz-clX" secondAttribute="bottom" id="ym9-3v-1UP"/>
+                                    <constraint firstItem="Lkx-uz-clX" firstAttribute="centerX" secondItem="yhN-BF-Jro" secondAttribute="centerX" id="yo5-bW-zxO"/>
+                                </constraints>
+                                <size key="customSize" width="65" height="85"/>
+                                <connections>
+                                    <outlet property="filmCoverImg" destination="Lkx-uz-clX" id="1u4-cG-mZQ"/>
+                                    <outlet property="titleLbl" destination="JNR-1I-UWT" id="6Xd-JD-1t6"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -348,7 +376,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMl-To-jbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4754" y="-305"/>
+            <point key="canvasLocation" x="4752.1875" y="-305.28169014084506"/>
         </scene>
         <!--Films-->
         <scene sceneID="nHu-4I-aMF">
@@ -383,7 +411,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="I6b-uV-RLr">
-                                                    <rect key="frame" x="84" y="20" width="242" height="40"/>
+                                                    <rect key="frame" x="84" y="20" width="187" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECx-bj-xAj">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="21.5"/>
@@ -403,7 +431,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7jd-Un-40k">
-                                                    <rect key="frame" x="152.5" y="22" width="37" height="37"/>
+                                                    <rect key="frame" x="125" y="22" width="37" height="37"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1186,7 +1214,7 @@
                                     <constraint firstAttribute="height" constant="100" id="MUg-re-oKa"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="embeddedRelatedFilms" id="NuP-rQ-XAl"/>
+                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="" id="NuP-rQ-XAl"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -1390,9 +1418,9 @@
         <image name="Vader" width="31" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0ae-aT-E1O"/>
-        <segue reference="so7-Ts-ype"/>
-        <segue reference="aMs-AE-ueD"/>
         <segue reference="KA5-1g-Xo9"/>
+        <segue reference="CvT-3n-9l5"/>
+        <segue reference="aMs-AE-ueD"/>
+        <segue reference="0ae-aT-E1O"/>
     </inferredMetricsTieBreakers>
 </document>
