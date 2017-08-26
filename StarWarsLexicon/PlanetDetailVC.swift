@@ -11,6 +11,7 @@ import UIKit
 class PlanetDetailVC: UIViewController {
 
     var detailPlanet: Planet!
+    let embeddedRelatedFilmSegueName = "embeddedRelatedFilms"
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var populationLbl: UILabel!
@@ -63,6 +64,20 @@ class PlanetDetailVC: UIViewController {
             } else {
                 orbitalPeriodLbl.text = nilLabel
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case embeddedRelatedFilmSegueName?:
+            if let planet = detailPlanet {
+                if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
+//                    let relatedFilmsArray = planet.relatedFilms
+//                    relatedFilmVC.relatedFilms = relatedFilmsArray
+                }
+            }
+        default:
+            fatalError("Unidentified segue name")
         }
     }
 }

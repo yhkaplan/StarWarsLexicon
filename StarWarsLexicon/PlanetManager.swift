@@ -171,3 +171,10 @@ class PlanetManager {
         }
     }
 }
+
+//MARK: - Functions for getting, setting, and working with related films
+//used to support RelatedFilmCollectionVC wherever it's embedded
+
+extension FilmManager {
+
+}

@@ -181,7 +181,7 @@ class FilmManager {
                 return
             }
             
-            print("Download url is \(url)")
+            //print("Download url is \(url)")
             dataService.fetchItem(at: url, completion: { (result) in
                 switch result {
                 case let .success(filmJSON):

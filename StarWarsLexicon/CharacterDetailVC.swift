@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CharacterDetailVC: UIViewController {
 
     var character: Character!
 //    let planetManager = PlanetManager() //This is to retreive homeworld
@@ -31,9 +31,6 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        filmCollectionView.dataSource = self
-        filmCollectionView.delegate = self
         
         homeworldButton.isEnabled = false
         let nilLabel = "Unknown"
@@ -68,32 +65,6 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
 //        }
 //    }
     
-    
-//    func initializeRelatedFilms() {
-//        //guard for 1. empty url arrays and 2. urls that are nil
-//        if character.filmURLArray.isEmpty {
-//            //Display message saying not found in films
-//        } else {
-//            for filmURL in character.filmURLArray {
-//                if let filmURL = filmURL {
-//                    dataService.fetchRelatedFilm(from: filmURL, completion: { (result) in
-//                        switch result {
-//                        case let .success(relatedFilm):
-//                            DispatchQueue.main.async {
-//                                print("Retrieved \(relatedFilm)")
-//                                self.relatedFilmArray.append(relatedFilm)
-//                                self.filmCollectionView.reloadData()
-//                            }
-//                        case let .failure(error):
-//                            print("Error: \(error)")
-//                            break
-//                        }
-//                    })
-//                }
-//            }
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showRelatedFilm"?:
@@ -112,28 +83,5 @@ class CharacterDetailVC: UIViewController, UICollectionViewDelegate, UICollectio
         default:
             preconditionFailure("Unexpected segue identifier")
         }
-    }
-
-    //Relocate to embedded view!
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedFilm = relatedFilmArray[indexPath.row]
-        performSegue(withIdentifier: "showRelatedFilm", sender: selectedFilm)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 65.0, height: 85.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = filmCollectionView.dequeueReusableCell(withReuseIdentifier: "RelatedFilmCell", for: indexPath) as? RelatedFilmCell {
-            cell.configureCell(relatedFilmArray[indexPath.row])
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return relatedFilmArray.count
     }
 }
