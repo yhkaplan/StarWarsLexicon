@@ -5,9 +5,6 @@
 > [SWAPI - The Star Wars API](https://swapi.co)  
 
 ### 画面キャプチャー
-1.
-![Film画面](Images/film_screen.png)
-2.
 ![Character画面](Images/character_screen.png)
 
 ### ステータス
