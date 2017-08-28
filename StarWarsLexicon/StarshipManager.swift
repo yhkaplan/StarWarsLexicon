@@ -11,6 +11,7 @@ import CoreData
 
 class StarshipManager {
     let dataService = DataService()
+    let filmManager = FilmManager()
     
     private var starshipURLCache = [String]()
     private var starshipURLCount: Int { return starshipURLCache.count }
@@ -90,6 +91,14 @@ class StarshipManager {
         
         starship.itemName = name
         starship.category = "starship"
+        
+        //MARK: - Setting related films
+        if let filmURLStrings = json["films"] as? [String] {
+            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
+                //Set value
+                starship.toFilm = relatedFilmSet
+            }
+        }
         
         if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
             starship.costInCredits = costInCredits

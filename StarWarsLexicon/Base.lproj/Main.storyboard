@@ -276,7 +276,7 @@
                                     <constraint firstAttribute="height" constant="100" id="Pc0-U2-v7E"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="embeddedRelatedFilms" id="CvT-3n-9l5"/>
+                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="embeddedRelatedFilmsInCharacterDetailVC" id="CvT-3n-9l5"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -565,17 +565,17 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1Z-H1-07f">
                                 <rect key="frame" x="16" y="409" width="288" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="LaC-DZ-Ev9"/>
+                                    <constraint firstAttribute="height" constant="100" id="dsa-2o-XnX"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="1Al-aY-8kJ" kind="embed" id="so7-Ts-ype"/>
+                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="embeddedRelatedFilmsInStarshipDetailVC" id="so7-Ts-ype"/>
                                 </connections>
                             </containerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-Uq-otA">
-                                <rect key="frame" x="16" y="74" width="288" height="325"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="m1W-Uq-otA">
+                                <rect key="frame" x="16" y="74" width="288" height="335"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="aNM-BD-CES">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peh-Xu-MOa">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -592,7 +592,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="MRp-zN-IMw">
-                                        <rect key="frame" x="0.0" y="25" width="288" height="25"/>
+                                        <rect key="frame" x="0.0" y="30" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31q-0p-hKF">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -609,7 +609,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eu5-EI-fA7">
-                                        <rect key="frame" x="0.0" y="50" width="288" height="49"/>
+                                        <rect key="frame" x="0.0" y="60" width="288" height="31.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbW-t8-Gcc">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -626,7 +626,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kMX-l9-yDg">
-                                        <rect key="frame" x="0.0" y="99" width="288" height="49"/>
+                                        <rect key="frame" x="0.0" y="105.5" width="288" height="31.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manufacturer:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0z-aZ-zKe">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -643,7 +643,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="irK-Bi-zhb">
-                                        <rect key="frame" x="0.0" y="148" width="288" height="25"/>
+                                        <rect key="frame" x="0.0" y="151" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyJ-Ec-L3m">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -660,7 +660,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zak-CU-gkj">
-                                        <rect key="frame" x="0.0" y="173" width="288" height="25"/>
+                                        <rect key="frame" x="0.0" y="181.5" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grY-zD-gdo">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -677,7 +677,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3yW-Ej-NUM">
-                                        <rect key="frame" x="0.0" y="198" width="288" height="25"/>
+                                        <rect key="frame" x="0.0" y="211.5" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Crew Members:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS4-hz-rLr">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -694,7 +694,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IfG-kZ-KzS">
-                                        <rect key="frame" x="0.0" y="223" width="288" height="25"/>
+                                        <rect key="frame" x="0.0" y="241.5" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Passengers:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-Ku-Q8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -711,7 +711,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="c5a-EO-n3O">
-                                        <rect key="frame" x="0.0" y="248" width="288" height="49"/>
+                                        <rect key="frame" x="0.0" y="271.5" width="288" height="31.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Atmospheric Speed:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqH-GX-fyI">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="31.5"/>
@@ -728,7 +728,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LjV-BZ-BEh">
-                                        <rect key="frame" x="0.0" y="297" width="288" height="28"/>
+                                        <rect key="frame" x="0.0" y="317" width="288" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hyperdrive Rating:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4Q-hZ-NKT">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="18"/>
@@ -754,7 +754,7 @@
                             <constraint firstItem="D1Z-H1-07f" firstAttribute="leading" secondItem="vOG-sh-DHp" secondAttribute="leadingMargin" id="FoE-ne-5x8"/>
                             <constraint firstItem="m1W-Uq-otA" firstAttribute="leading" secondItem="vOG-sh-DHp" secondAttribute="leading" constant="16" id="RIc-Au-RC6"/>
                             <constraint firstAttribute="trailing" secondItem="m1W-Uq-otA" secondAttribute="trailing" constant="16" id="c15-eZ-qKT"/>
-                            <constraint firstItem="D1Z-H1-07f" firstAttribute="top" secondItem="m1W-Uq-otA" secondAttribute="bottom" constant="10" id="i8k-KP-WHe"/>
+                            <constraint firstItem="D1Z-H1-07f" firstAttribute="top" secondItem="m1W-Uq-otA" secondAttribute="bottom" id="i8k-KP-WHe"/>
                             <constraint firstItem="s7C-7x-RqW" firstAttribute="top" secondItem="D1Z-H1-07f" secondAttribute="bottom" constant="10" id="tXp-oM-EOF"/>
                         </constraints>
                     </view>
@@ -1214,7 +1214,7 @@
                                     <constraint firstAttribute="height" constant="100" id="MUg-re-oKa"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="" id="NuP-rQ-XAl"/>
+                                    <segue destination="1Al-aY-8kJ" kind="embed" identifier="embeddedRelatedFilmsInPlanetDetailVC" id="NuP-rQ-XAl"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -1418,9 +1418,9 @@
         <image name="Vader" width="31" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KA5-1g-Xo9"/>
-        <segue reference="CvT-3n-9l5"/>
-        <segue reference="aMs-AE-ueD"/>
         <segue reference="0ae-aT-E1O"/>
+        <segue reference="aMs-AE-ueD"/>
+        <segue reference="KA5-1g-Xo9"/>
+        <segue reference="so7-Ts-ype"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -120,30 +120,10 @@ class CharacterManager {
         
         character.itemName = name
         character.category = "character"
-
-        //Optional values
         
         //MARK: - Setting related films
         if let filmURLStrings = json["films"] as? [String] {
-
-            //Loop through each url, adding CoreData relationship for each one
-            var relatedFilms = [Film]()
-            
-            //Refactor w/ functional programming map or flatmap
-            for urlString in filmURLStrings {
-                filmManager.getFilmWithURL(urlString, completion: { (result) in
-                    if let film = result {
-                        relatedFilms.append(film)
-                    }
-                })
-            }
-            
-            if relatedFilms.count > 0 {
-                //print("Related films are: \(relatedFilms)")
-                
-                //Convert array to NSArray, then NSSet
-                let relatedFilmsNSArray = relatedFilms as NSArray
-                let relatedFilmSet = NSSet(array: relatedFilmsNSArray as! [Any])
+            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
                 //Set value
                 character.toFilm = relatedFilmSet
             }

@@ -11,7 +11,7 @@ import UIKit
 class PlanetDetailVC: UIViewController {
 
     var detailPlanet: Planet!
-    let embeddedRelatedFilmSegueName = "embeddedRelatedFilms"
+    let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInPlanetDetailVC"
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var populationLbl: UILabel!
@@ -72,12 +72,14 @@ class PlanetDetailVC: UIViewController {
         case embeddedRelatedFilmSegueName?:
             if let planet = detailPlanet {
                 if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
-//                    let relatedFilmsArray = planet.relatedFilms
-//                    relatedFilmVC.relatedFilms = relatedFilmsArray
+
+                    //Convert NSSet to NSArray to array
+                    let relatedFilms = planet.toFilm?.allObjects as? [Film]
+                    relatedFilmVC.relatedFilms = relatedFilms
                 }
             }
         default:
-            fatalError("Unidentified segue name")
+            preconditionFailure("Unidentified segue name")
         }
     }
 }

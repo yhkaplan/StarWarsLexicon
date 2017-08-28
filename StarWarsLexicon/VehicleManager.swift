@@ -11,6 +11,7 @@ import CoreData
 
 class VehicleManager {
     let dataService = DataService()
+    let filmManager = FilmManager()
     
     private var vehicleURLCache = [String]()
     private var vehicleURLCount: Int { return vehicleURLCache.count }
@@ -92,6 +93,14 @@ class VehicleManager {
         
         vehicle.itemName = name
         vehicle.category = "vehicle"
+        
+        //MARK: - Setting related films
+        if let filmURLStrings = json["films"] as? [String] {
+            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
+                //Set value
+                vehicle.toFilm = relatedFilmSet
+            }
+        }
         
         if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
             vehicle.costInCredits = costInCredits

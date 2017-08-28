@@ -203,7 +203,36 @@ class FilmManager {
     
     //MARK: - For fetching films to set relationships
     
-    func getFilmWithURL(_ urlString: String, completion: @escaping (Film?) -> Void) {
+    func getFilmWith(urlStringArray: [String]) -> NSSet? {
+        //MARK: - Setting related films
+            
+        //Loop through each url, adding CoreData relationship for each one
+        var relatedFilms = [Film]()
+        
+        //Refactor w/ functional programming map or flatmap
+        for urlString in urlStringArray {
+            getFilmWithURL(urlString, completion: { (result) in
+                if let film = result {
+                    relatedFilms.append(film)
+                }
+            })
+        }
+        
+        if relatedFilms.count > 0 {
+            //print("Related films are: \(relatedFilms)")
+            
+            //Convert array to NSArray, then NSSet
+            let relatedFilmsNSArray = relatedFilms as NSArray
+            let relatedFilmSet = NSSet(array: relatedFilmsNSArray as! [Any])
+            //Return value
+            return relatedFilmSet
+        }
+        
+        return nil
+    }
+    
+    //Helper function for method above
+    private func getFilmWithURL(_ urlString: String, completion: @escaping (Film?) -> Void) {
         //fetch films from core data store, see if any match url using NSPredicate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -229,6 +258,7 @@ class FilmManager {
         
         //If no films match url, then try downloading
         } else {
+            //!!TO IMPLEMENT
             //if success downloading, then call addFilm to add to CoreData store
         }
         

@@ -11,6 +11,7 @@ import CoreData
 
 class PlanetManager {
     let dataService = DataService()
+    let filmManager = FilmManager()
     
     private var planetURLCache = [String]()
     private var planetURLCount: Int { return planetURLCache.count }
@@ -86,6 +87,13 @@ class PlanetManager {
         planet.category = "planet"
         planet.itemName = name
         
+        //MARK: - Setting related films
+        if let filmURLStrings = json["films"] as? [String] {
+            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
+                //Set value
+                planet.toFilm = relatedFilmSet
+            }
+        }
         
         if let diameterString = json["diameter"] as? String, let diameter = Double(diameterString) {
             planet.diameter = diameter

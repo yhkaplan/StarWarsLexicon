@@ -12,6 +12,7 @@ class StarshipAndVehicleDetailVC: UIViewController {
 
     var starship: Starship!
     var vehicle: Vehicle!
+    let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInStarshipDetailVC"
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var modelLbl: UILabel!
@@ -100,6 +101,27 @@ class StarshipAndVehicleDetailVC: UIViewController {
             } else {
                 maxAtmosphericSpeedLbl.text = nilLabel
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case embeddedRelatedFilmSegueName?:
+            if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
+                
+                if let starship = starship {
+                    //Convert NSSet to NSArray to Array
+                    let relatedFilms = starship.toFilm?.allObjects as? [Film]
+                    relatedFilmVC.relatedFilms = relatedFilms
+                    
+                } else if let vehicle = vehicle {
+                    //Convert NSSet to NSArray to Array
+                    let relatedFilms = vehicle.toFilm?.allObjects as? [Film]
+                    relatedFilmVC.relatedFilms = relatedFilms
+                }
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier")
         }
     }
 }

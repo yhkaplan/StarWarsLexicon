@@ -11,7 +11,7 @@ import UIKit
 class CharacterDetailVC: UIViewController {
 
     var character: Character!
-    let embeddedRelatedFilmSegueName = "embeddedRelatedFilms"
+    let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInCharacterDetailVC"
 //    let planetManager = PlanetManager() //This is to retreive homeworld
     var relatedFilmArray = [Film]()
     //private var homeworld: Planet?
