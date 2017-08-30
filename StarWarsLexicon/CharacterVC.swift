@@ -56,9 +56,10 @@ extension CharacterVC: UICollectionViewDelegateFlowLayout {
 
 extension CharacterVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
+            
             if let character = character {
-
                 self.performSegue(withIdentifier: self.characterSegueName, sender: character)
             }
         })

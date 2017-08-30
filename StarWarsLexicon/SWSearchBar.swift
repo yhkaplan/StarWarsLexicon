@@ -28,5 +28,6 @@ class SWSearchBar: UISearchBar {
         self.keyboardAppearance = .dark
         self.returnKeyType = .search
         self.showsCancelButton = true
+        self.tintColor = UIColor.white
     }
 }

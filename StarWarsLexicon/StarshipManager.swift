@@ -44,7 +44,7 @@ class StarshipManager {
         }
     }
     
-    private func loadLocalStarships() {
+    func loadLocalStarships() {
         do {
             starships = try moc.fetch(Starship.fetchRequest())
         } catch let error as NSError {
@@ -145,6 +145,26 @@ class StarshipManager {
             print("Could not save \(error), \(error)")
             print("Could not save starship at index \(index)")
             return nil
+        }
+    }
+    
+    //MARK: - Used for search 
+    
+    func loadStarships(with text: String) {
+        //Create fetch request
+        let fetchRequest: NSFetchRequest<Starship> = Starship.fetchRequest()
+        
+        //Add predicate with text string
+        //C in CD means case insensitive, d means diacritic insensitive
+        //"%K CONTAINS[cd] %@" = search for keypath containing input
+        fetchRequest.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Starship.itemName), text)
+        
+        fetchRequest.sortDescriptors = [sortByName]
+        
+        do {
+            starships = try moc.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error)
         }
     }
     

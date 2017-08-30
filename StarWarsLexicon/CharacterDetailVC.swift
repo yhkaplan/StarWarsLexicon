@@ -14,10 +14,10 @@ class CharacterDetailVC: UIViewController {
     let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInCharacterDetailVC"
     let relatedFilmSegue = "showRelatedFilmFromCharacterVC"
 //    let planetManager = PlanetManager() //This is to retreive homeworld
-    var relatedFilmArray = [Film]()
+    //var relatedFilmArray = [Film]()
     //private var homeworld: Planet?
     
-    let dataService = DataService()
+    //let dataService = DataService()
     
     @IBOutlet weak var filmCollectionView: UICollectionView!
     @IBOutlet weak var homeworldButton: UIButton!

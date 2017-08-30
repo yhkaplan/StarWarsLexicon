@@ -10,9 +10,10 @@ import UIKit
 
 class StarshipAndVehicleDetailVC: UIViewController {
 
-    var starship: Starship!
-    var vehicle: Vehicle!
+    var starship: Starship?
+    var vehicle: Vehicle?
     let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInStarshipDetailVC"
+    let relatedFilmSegue = "showRelatedFilmFromStarshipVC"
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var modelLbl: UILabel!
@@ -106,9 +107,20 @@ class StarshipAndVehicleDetailVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+            
+        case relatedFilmSegue?:
+            if let filmDetailVC = segue.destination as? FilmDetailVC {
+                if let relatedFilm = sender as? Film {
+                    filmDetailVC.film = relatedFilm//Selected film
+                }
+            }
+            
         case embeddedRelatedFilmSegueName?:
             if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
+                //Set segue delegate
+                relatedFilmVC.segueDelegate = self
                 
+                //Set related films
                 if let starship = starship {
                     //Convert NSSet to NSArray to Array
                     let relatedFilms = starship.toFilm?.allObjects as? [Film]
@@ -123,5 +135,11 @@ class StarshipAndVehicleDetailVC: UIViewController {
         default:
             preconditionFailure("Unexpected segue identifier")
         }
+    }
+}
+
+extension StarshipAndVehicleDetailVC: SegueDelegate {
+    func segueToRelatedFilm(_ film: Film) {
+        performSegue(withIdentifier: relatedFilmSegue, sender: film)
     }
 }

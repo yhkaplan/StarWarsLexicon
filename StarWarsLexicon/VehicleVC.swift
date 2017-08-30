@@ -15,7 +15,6 @@ class VehicleVC: UIViewController {
     
     let dataService = DataService()
     var vehicleManager: VehicleManager?
-    var searchMode = false
     
     let vehicleSegueName = "showVehicle"
     let vehicleCellReuseIdentifier = "VehicleCell"
@@ -28,7 +27,7 @@ class VehicleVC: UIViewController {
         searchBar.delegate = self
         vehicleManager = VehicleManager()
         
-        searchBar.returnKeyType = UIReturnKeyType.done
+        self.hideKeyboardUponTouch()
     }
     
     //MARK: Segue function
@@ -57,10 +56,9 @@ extension VehicleVC: UICollectionViewDelegateFlowLayout {
 extension VehicleVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vehicleManager?.getVehicle(at: indexPath.row, completion: { (vehicle) in
+            
             if let vehicle = vehicle {
-                //DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: self.vehicleSegueName, sender: vehicle)
-                //}
+                self.performSegue(withIdentifier: self.vehicleSegueName, sender: vehicle)
             }
         })
     }
@@ -89,25 +87,27 @@ extension VehicleVC: UICollectionViewDataSource {
     }
 }
 
+//MARK: Search bar
+
 extension VehicleVC: UISearchBarDelegate {
-    //MARK: Search bar
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let searchTerm = searchBar.text, searchTerm != "" {
-            searchMode = true
-//            filteredVehicleArray = vehicleArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
-            collectionView.reloadData()
-        } else {
-            searchMode = false
-            collectionView.reloadData()
-        }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //TO implement: placeholder text turning white, etc
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        //tapGestureRecognizer.isEnabled = true
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        vehicleManager?.loadLocalVehicles()
+        collectionView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+        
+        if let searchTerm = searchBar.text, searchTerm != "" {
+            vehicleManager?.loadVehicles(with: searchTerm)
+        } else {
+            vehicleManager?.loadLocalVehicles()
+        }
+        collectionView.reloadData()
     }
 }

@@ -15,7 +15,6 @@ class StarshipVC: UIViewController {
     
     let dataService = DataService()
     var starshipManager: StarshipManager?
-    var searchMode = false
     
     let starshipSegueName = "showStarship"
     let starshipCellReuseIdentifier = "StarshipCell"
@@ -28,7 +27,7 @@ class StarshipVC: UIViewController {
         searchBar.delegate = self
         starshipManager = StarshipManager()
         
-        searchBar.returnKeyType = UIReturnKeyType.done
+        self.hideKeyboardUponTouch()
     }
     
     //MARK: Segue function
@@ -58,10 +57,9 @@ extension StarshipVC: UICollectionViewDelegateFlowLayout {
 extension StarshipVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         starshipManager?.getStarship(at: indexPath.row, completion: { (starship) in
+            
             if let starship = starship {
-                //DispatchQueue.main.async {
                     self.performSegue(withIdentifier: self.starshipSegueName, sender: starship)
-                //}
             }
         })
     }
@@ -79,7 +77,7 @@ extension StarshipVC: UICollectionViewDataSource {
                     }
                 }
             })
-            return cell //Is this return in the right place?
+            return cell
         } else {
             return UICollectionViewCell()
         }
@@ -92,22 +90,24 @@ extension StarshipVC: UICollectionViewDataSource {
 
 //MARK: Search Bar Functions
 extension StarshipVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let searchTerm = searchBar.text, searchTerm != "" {
-            searchMode = true
-//            filteredStarshipArray = starshipArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
-            collectionView.reloadData()
-        } else {
-            searchMode = false
-            collectionView.reloadData()
-        }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //To implement placeholder text color changing etc
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        //tapGestureRecognizer.isEnabled = true
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        starshipManager?.loadLocalStarships()
+        collectionView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+        
+        if let searchTerm = searchBar.text, searchTerm != "" {
+            starshipManager?.loadStarships(with: searchTerm)
+        } else {
+            starshipManager?.loadLocalStarships()
+        }
+        collectionView.reloadData()
     }
 }

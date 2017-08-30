@@ -312,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ocp-Uq-XVR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.5" y="160.56338028169014"/>
+            <point key="canvasLocation" x="3593" y="161"/>
         </scene>
         <!--Related Film CollectionVC-->
         <scene sceneID="YcE-9U-jDj">
@@ -376,7 +376,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMl-To-jbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4743" y="-289"/>
+            <point key="canvasLocation" x="5588" y="-424"/>
         </scene>
         <!--Films-->
         <scene sceneID="nHu-4I-aMF">
@@ -474,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2bG-NA-Mvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661.5999999999999" y="866.71664167916049"/>
+            <point key="canvasLocation" x="2663" y="882"/>
         </scene>
         <!--Starships-->
         <scene sceneID="XJb-a9-XgV">
@@ -592,7 +592,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="MRp-zN-IMw">
-                                        <rect key="frame" x="0.0" y="30" width="288" height="16"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31q-0p-hKF">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -609,7 +609,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eu5-EI-fA7">
-                                        <rect key="frame" x="0.0" y="60" width="288" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="60.5" width="288" height="31.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbW-t8-Gcc">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -626,7 +626,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kMX-l9-yDg">
-                                        <rect key="frame" x="0.0" y="105.5" width="288" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="106.5" width="288" height="31.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manufacturer:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0z-aZ-zKe">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -643,7 +643,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="irK-Bi-zhb">
-                                        <rect key="frame" x="0.0" y="151" width="288" height="16"/>
+                                        <rect key="frame" x="0.0" y="152" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyJ-Ec-L3m">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -660,7 +660,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zak-CU-gkj">
-                                        <rect key="frame" x="0.0" y="181.5" width="288" height="16"/>
+                                        <rect key="frame" x="0.0" y="182.5" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grY-zD-gdo">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -677,7 +677,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3yW-Ej-NUM">
-                                        <rect key="frame" x="0.0" y="211.5" width="288" height="16"/>
+                                        <rect key="frame" x="0.0" y="212.5" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Crew Members:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS4-hz-rLr">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -694,7 +694,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="IfG-kZ-KzS">
-                                        <rect key="frame" x="0.0" y="241.5" width="288" height="16"/>
+                                        <rect key="frame" x="0.0" y="243" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of Passengers:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-Ku-Q8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
@@ -711,7 +711,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="c5a-EO-n3O">
-                                        <rect key="frame" x="0.0" y="271.5" width="288" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="273" width="288" height="31.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Atmospheric Speed:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqH-GX-fyI">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="31.5"/>
@@ -728,17 +728,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LjV-BZ-BEh">
-                                        <rect key="frame" x="0.0" y="317" width="288" height="18"/>
+                                        <rect key="frame" x="0.0" y="319" width="288" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hyperdrive Rating:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4Q-hZ-NKT">
-                                                <rect key="frame" x="0.0" y="0.0" width="144" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OI-m0-dpZ">
-                                                <rect key="frame" x="144" y="0.0" width="144" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <rect key="frame" x="144" y="0.0" width="144" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -754,7 +754,7 @@
                             <constraint firstItem="D1Z-H1-07f" firstAttribute="leading" secondItem="vOG-sh-DHp" secondAttribute="leadingMargin" id="FoE-ne-5x8"/>
                             <constraint firstItem="m1W-Uq-otA" firstAttribute="leading" secondItem="vOG-sh-DHp" secondAttribute="leading" constant="16" id="RIc-Au-RC6"/>
                             <constraint firstAttribute="trailing" secondItem="m1W-Uq-otA" secondAttribute="trailing" constant="16" id="c15-eZ-qKT"/>
-                            <constraint firstItem="D1Z-H1-07f" firstAttribute="top" secondItem="m1W-Uq-otA" secondAttribute="bottom" id="i8k-KP-WHe"/>
+                            <constraint firstItem="D1Z-H1-07f" firstAttribute="top" secondItem="m1W-Uq-otA" secondAttribute="bottom" id="ema-zW-qpD"/>
                             <constraint firstItem="s7C-7x-RqW" firstAttribute="top" secondItem="D1Z-H1-07f" secondAttribute="bottom" constant="10" id="tXp-oM-EOF"/>
                         </constraints>
                     </view>
@@ -770,11 +770,12 @@
                         <outlet property="nameLbl" destination="ztL-qk-zzA" id="kd0-7x-4vf"/>
                         <outlet property="numberOfCrewMembersLbl" destination="93a-wU-B7q" id="oeD-42-4ie"/>
                         <outlet property="numberOfPassengersLbl" destination="EMd-pk-1xe" id="gwn-cw-oYC"/>
+                        <segue destination="J6v-nx-Tcu" kind="show" identifier="showRelatedFilmFromStarshipVC" id="sSC-qL-pm9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O24-GH-Tpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.5" y="1961.6197183098591"/>
+            <point key="canvasLocation" x="3593" y="1963"/>
         </scene>
         <!--Film DetailVC-->
         <scene sceneID="Mfv-vI-qlZ">
@@ -900,7 +901,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0x4-bl-1qn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.8000000000002" y="866.71664167916049"/>
+            <point key="canvasLocation" x="5383" y="2458"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cWm-Im-U2J">
@@ -956,7 +957,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1P-CH-ERQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724" y="867"/>
+            <point key="canvasLocation" x="1723" y="883"/>
         </scene>
         <!--Planets-->
         <scene sceneID="zsN-zb-a7Y">
@@ -1239,11 +1240,12 @@
                         <outlet property="rotationPeriodLbl" destination="1qv-NP-e0t" id="zX4-KO-81r"/>
                         <outlet property="surfaceWaterLbl" destination="ory-ax-Yii" id="PMS-gj-EzN"/>
                         <outlet property="terrainLbl" destination="uIy-ad-3mz" id="iY1-Zv-g55"/>
+                        <segue destination="J6v-nx-Tcu" kind="show" identifier="showRelatedFilmFromPlanetVC" id="HEd-sB-FdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bO-Jq-LZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.8000000000002" y="-536.58170914542734"/>
+            <point key="canvasLocation" x="3593" y="-537"/>
         </scene>
         <!--Characters-->
         <scene sceneID="jf5-zS-iIf">
@@ -1418,9 +1420,9 @@
         <image name="Vader" width="31" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="sSC-qL-pm9"/>
         <segue reference="0ae-aT-E1O"/>
-        <segue reference="IFJ-qu-xmN"/>
-        <segue reference="aMs-AE-ueD"/>
+        <segue reference="KA5-1g-Xo9"/>
         <segue reference="so7-Ts-ype"/>
     </inferredMetricsTieBreakers>
 </document>

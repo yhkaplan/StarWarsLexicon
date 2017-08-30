@@ -15,7 +15,6 @@ class PlanetVC: UIViewController {
     
     let dataService = DataService()
     var planetManager: PlanetManager?
-    var searchMode = false
     
     let planetSegueName = "showPlanet"
     let planetCellReuseIdentifier = "PlanetCell"
@@ -28,7 +27,7 @@ class PlanetVC: UIViewController {
         searchBar.delegate = self
         planetManager = PlanetManager()
         
-        searchBar.returnKeyType = UIReturnKeyType.done
+        self.hideKeyboardUponTouch()
     }
     
     //MARK: Segue function
@@ -59,11 +58,11 @@ extension PlanetVC: UICollectionViewDelegateFlowLayout {
 //Segue currently crashing for some reason
 extension PlanetVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         planetManager?.getPlanet(at: indexPath.row, completion: { (planet) in
+            
             if let planet = planet {
-                //DispatchQueue.main.async {
                     self.performSegue(withIdentifier: self.planetSegueName, sender: planet)
-                //}
             }
         })
     }
@@ -94,23 +93,24 @@ extension PlanetVC: UICollectionViewDataSource {
 
 //MARK: Search Bar Functions
 extension PlanetVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let searchTerm = searchBar.text, searchTerm != "" {
-            searchMode = true
-            
-//            filteredPlanetArray = planetArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
-            collectionView.reloadData()
-        } else {
-            searchMode = false
-            collectionView.reloadData()
-        }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        To implement
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        tapGestureRecognizer.isEnabled = true
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        planetManager?.loadLocalPlanets()
+        collectionView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+        
+        if let searchTerm = searchBar.text, searchTerm != "" {
+            planetManager?.loadPlanets(with: searchTerm)
+        } else {
+            planetManager?.loadLocalPlanets()
+        }
+        collectionView.reloadData()
     }
 }

@@ -12,6 +12,7 @@ class PlanetDetailVC: UIViewController {
 
     var detailPlanet: Planet!
     let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInPlanetDetailVC"
+    let relatedFilmSegue = "showRelatedFilmFromPlanetVC"
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var populationLbl: UILabel!
@@ -69,10 +70,20 @@ class PlanetDetailVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+            
+        case relatedFilmSegue?:
+            if let filmDetailVC = segue.destination as? FilmDetailVC {
+                if let relatedFilm = sender as? Film {
+                    filmDetailVC.film = relatedFilm//The selected film
+                }
+            }
+            
         case embeddedRelatedFilmSegueName?:
             if let planet = detailPlanet {
                 if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
-
+                    //Set segue delegate
+                    relatedFilmVC.segueDelegate = self
+                    
                     //Convert NSSet to NSArray to array
                     let relatedFilms = planet.toFilm?.allObjects as? [Film]
                     relatedFilmVC.relatedFilms = relatedFilms
@@ -81,5 +92,11 @@ class PlanetDetailVC: UIViewController {
         default:
             preconditionFailure("Unidentified segue name")
         }
+    }
+}
+
+extension PlanetDetailVC: SegueDelegate {
+    func segueToRelatedFilm(_ film: Film) {
+        performSegue(withIdentifier: relatedFilmSegue, sender: film)
     }
 }

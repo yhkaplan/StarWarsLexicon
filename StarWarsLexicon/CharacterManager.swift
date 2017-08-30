@@ -161,27 +161,27 @@ class CharacterManager {
         }
     }
     
+    //MARK: - Used for search
+    
     func loadCharacters(with text: String) {
         //Create fetch request
         let fetchRequest: NSFetchRequest<Character> = Character.fetchRequest()
         
         //Add predicate with text string
         //C in CD means case insensitive, d means diacritic insensitive
-        //%K CONTAINS[cd] %@
+        //"%K CONTAINS[cd] %@" = search for keypath containing input
         fetchRequest.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Character.itemName), text)
         
         fetchRequest.sortDescriptors = [sortByName]
         
         do {
             //Make array equal to fetched contents
-            characters = try moc.fetch(fetchRequest)//Add () to end of fetchreqest?
+            characters = try moc.fetch(fetchRequest)
         } catch let error as NSError {
             print(error)
         }
     }
     
-    //One character is not downloading correctly: 17 Details not found
-    //Put this on main thread??
     func getCharacter(at index: Int, completion: @escaping (Character?) -> Void) {
         guard index < characters.count, index >= 0 else {
             completion(nil)

@@ -16,6 +16,8 @@ class VehicleManager {
     //MOC = Managed Object Context
     var moc: NSManagedObjectContext
     
+    let sortByName = NSSortDescriptor(key: "itemName", ascending: true)
+    
     private var vehicleURLCache = [String]()
     private var vehicleURLCount: Int { return vehicleURLCache.count }
     
@@ -42,7 +44,7 @@ class VehicleManager {
         }
     }
     
-    private func loadLocalVehicles() {
+    func loadLocalVehicles() {
         do {
             vehicles = try moc.fetch(Vehicle.fetchRequest())
         } catch let error as NSError {
@@ -140,6 +142,26 @@ class VehicleManager {
             print("Could not save \(error), \(error)")
             print("Could not save vehicle at index \(index)")
             return nil
+        }
+    }
+    
+    //MARK: - Used for search 
+    
+    func loadVehicles(with text: String) {
+        //Create fetch request
+        let fetchRequest: NSFetchRequest<Vehicle> = Vehicle.fetchRequest()
+        
+        //Add predicate with text string
+        //C in CD means case insensitive, d means diacritic insensitive
+        //"%K CONTAINS[cd] %@" = search for keypath containing input
+        fetchRequest.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Vehicle.itemName), text)
+        
+        fetchRequest.sortDescriptors = [sortByName]
+        
+        do {
+            vehicles = try moc.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error)
         }
     }
     

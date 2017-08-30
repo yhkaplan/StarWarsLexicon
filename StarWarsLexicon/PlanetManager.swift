@@ -44,7 +44,7 @@ class PlanetManager {
         }
     }
     
-    private func loadLocalPlanets() {
+    func loadLocalPlanets() {
         do {
             //Make array equal to fetched contents
             planets = try moc.fetch(Planet.fetchRequest())
@@ -140,6 +140,26 @@ class PlanetManager {
             print("Could not save \(error), \(error.userInfo)")
             print("Could not save planet at index \(planet)")
             return nil
+        }
+    }
+    
+    //MARK: - Used for search
+    
+    func loadPlanets(with text: String) {
+        //Create fetch request
+        let fetchRequest: NSFetchRequest<Planet> = Planet.fetchRequest()
+        
+        //Search predicate
+        //C in CD means case insensitive, d means diacritic insensitive
+        //"%K CONTAINS[cd] %@" = search for keypath containing input
+        fetchRequest.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Planet.itemName), text)
+        
+        fetchRequest.sortDescriptors = [sortByName]
+        
+        do {
+            planets = try moc.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error)
         }
     }
     
