@@ -25,8 +25,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXO-4w-CGV" customClass="CellBackgroundView" customModule="StarWarsLexicon" customModuleProvider="target">
                                 <rect key="frame" x="12" y="74" width="296" height="45"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="EoQ-OK-ecJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="45"/>
+                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="EoQ-OK-ecJ" customClass="SWSearchBar" customModule="StarWarsLexicon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="45"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -39,7 +39,7 @@
                                     <constraint firstItem="EoQ-OK-ecJ" firstAttribute="top" secondItem="MXO-4w-CGV" secondAttribute="top" id="Gjw-Ou-bsc"/>
                                     <constraint firstAttribute="height" constant="45" id="UHd-tQ-NeL"/>
                                     <constraint firstItem="EoQ-OK-ecJ" firstAttribute="leading" secondItem="MXO-4w-CGV" secondAttribute="leading" id="dWq-db-fgM"/>
-                                    <constraint firstAttribute="trailing" secondItem="EoQ-OK-ecJ" secondAttribute="trailing" id="sNu-Qi-9Op"/>
+                                    <constraint firstAttribute="trailing" secondItem="EoQ-OK-ecJ" secondAttribute="trailing" constant="4" id="sNu-Qi-9Op"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKE-eT-O8p">
@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Characters" id="owX-rl-nOu"/>
                     <connections>
                         <outlet property="collectionView" destination="EKE-eT-O8p" id="t8y-os-Yqb"/>
-                        <outlet property="searchBar" destination="EoQ-OK-ecJ" id="s8t-qy-qAF"/>
+                        <outlet property="searchBar" destination="EoQ-OK-ecJ" id="vF1-6a-rO7"/>
                         <segue destination="hmV-yc-QPC" kind="show" identifier="showCharacter" id="IC6-HU-CQw"/>
                     </connections>
                 </viewController>
@@ -306,7 +306,7 @@
                         <outlet property="massLbl" destination="LTq-C8-HTD" id="qtR-ey-yfM"/>
                         <outlet property="nameLbl" destination="VjE-Il-2iR" id="jtB-dG-Tr1"/>
                         <outlet property="skinColorLbl" destination="lxO-sW-rh0" id="lik-Gq-HNG"/>
-                        <segue destination="J6v-nx-Tcu" kind="show" identifier="showRelatedFilm" id="aMs-AE-ueD"/>
+                        <segue destination="J6v-nx-Tcu" kind="show" identifier="showRelatedFilmFromCharacterVC" id="aMs-AE-ueD"/>
                         <segue destination="vAD-F6-Slm" kind="show" identifier="showHomeworld" id="KA5-1g-Xo9"/>
                     </connections>
                 </viewController>
@@ -318,7 +318,7 @@
         <scene sceneID="YcE-9U-jDj">
             <objects>
                 <collectionViewController id="1Al-aY-8kJ" customClass="RelatedFilmCollectionVC" customModule="StarWarsLexicon" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="EIS-G0-YFC">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EIS-G0-YFC">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -376,7 +376,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMl-To-jbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4752.1875" y="-305.28169014084506"/>
+            <point key="canvasLocation" x="4743" y="-289"/>
         </scene>
         <!--Films-->
         <scene sceneID="nHu-4I-aMF">
@@ -512,15 +512,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PjJ-iX-NFr" customClass="CellBackgroundView" customModule="StarWarsLexicon" customModuleProvider="target">
                                 <rect key="frame" x="12" y="74" width="296" height="45"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Hvi-hu-l6G">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="45"/>
+                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Hvi-hu-l6G" customClass="SWSearchBar" customModule="StarWarsLexicon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="45"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Hvi-hu-l6G" firstAttribute="top" secondItem="PjJ-iX-NFr" secondAttribute="top" id="3KF-2f-zIe"/>
-                                    <constraint firstAttribute="trailing" secondItem="Hvi-hu-l6G" secondAttribute="trailing" id="F4r-ka-y8O"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hvi-hu-l6G" secondAttribute="trailing" constant="4" id="F4r-ka-y8O"/>
                                     <constraint firstAttribute="bottom" secondItem="Hvi-hu-l6G" secondAttribute="bottom" id="Tpi-7P-HV7"/>
                                     <constraint firstItem="Hvi-hu-l6G" firstAttribute="leading" secondItem="PjJ-iX-NFr" secondAttribute="leading" id="qJ4-Ep-zMq"/>
                                     <constraint firstAttribute="height" constant="45" id="sVH-fX-hOh"/>
@@ -973,8 +973,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cng-lc-OYh" customClass="CellBackgroundView" customModule="StarWarsLexicon" customModuleProvider="target">
                                 <rect key="frame" x="12" y="74" width="296" height="45"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="6hN-MC-YhP">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="45"/>
+                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="6hN-MC-YhP" customClass="SWSearchBar" customModule="StarWarsLexicon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="45"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
@@ -982,7 +982,7 @@
                                 <constraints>
                                     <constraint firstItem="6hN-MC-YhP" firstAttribute="top" secondItem="cng-lc-OYh" secondAttribute="top" id="79G-9J-N0s"/>
                                     <constraint firstAttribute="height" constant="45" id="LiA-hy-j3E"/>
-                                    <constraint firstAttribute="trailing" secondItem="6hN-MC-YhP" secondAttribute="trailing" id="Zrz-fQ-VOl"/>
+                                    <constraint firstAttribute="trailing" secondItem="6hN-MC-YhP" secondAttribute="trailing" constant="4" id="Zrz-fQ-VOl"/>
                                     <constraint firstAttribute="bottom" secondItem="6hN-MC-YhP" secondAttribute="bottom" id="mh2-oq-Wjz"/>
                                     <constraint firstItem="6hN-MC-YhP" firstAttribute="leading" secondItem="cng-lc-OYh" secondAttribute="leading" id="tny-df-C8I"/>
                                 </constraints>
@@ -1329,14 +1329,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9e-jn-bca" customClass="CellBackgroundView" customModule="StarWarsLexicon" customModuleProvider="target">
                                 <rect key="frame" x="12" y="74" width="296" height="45"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="c6I-Rs-Azv">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="45"/>
+                                    <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="c6I-Rs-Azv" customClass="SWSearchBar" customModule="StarWarsLexicon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="292" height="45"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="c6I-Rs-Azv" secondAttribute="trailing" id="B50-TA-PPX"/>
+                                    <constraint firstAttribute="trailing" secondItem="c6I-Rs-Azv" secondAttribute="trailing" constant="4" id="B50-TA-PPX"/>
                                     <constraint firstItem="c6I-Rs-Azv" firstAttribute="leading" secondItem="b9e-jn-bca" secondAttribute="leading" id="I4d-Xi-ddc"/>
                                     <constraint firstAttribute="height" constant="45" id="LkQ-gb-kqs"/>
                                     <constraint firstItem="c6I-Rs-Azv" firstAttribute="top" secondItem="b9e-jn-bca" secondAttribute="top" id="PQu-e7-Rbg"/>
@@ -1419,8 +1419,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0ae-aT-E1O"/>
+        <segue reference="IFJ-qu-xmN"/>
         <segue reference="aMs-AE-ueD"/>
-        <segue reference="KA5-1g-Xo9"/>
         <segue reference="so7-Ts-ype"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,6 +12,11 @@ import CoreData
 class CharacterManager {
     let dataService = DataService()
     let filmManager = FilmManager()
+    
+    //MOC = Managed Object Context
+    var moc: NSManagedObjectContext
+    
+    let sortByName = NSSortDescriptor(key: "itemName", ascending: true)
 
     private var characterURLCache = [String]()
     private var characterURLCount: Int { return characterURLCache.count }
@@ -23,8 +28,15 @@ class CharacterManager {
     
     //init: loads from CoreData
     init() {
+        //Set NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not set Managed Object Context")
+        }
+        self.moc = appDelegate.persistentContainer.viewContext
+        
+        //Initialize characterURL data
         characterURLCache = APIService.sharedInstance.getURLStringCache(for: .character)
-
+        
         //Make sure to persist cell count as well!
         
         //This just retreives existing data from Core Data stack if it exists
@@ -47,16 +59,10 @@ class CharacterManager {
     }
 
     //This just retreives existing data from Core Data stack if it exists
-    private func loadLocalCharacters() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
+    func loadLocalCharacters() {
         do {
             //Make array equal to fetched contents
-            characters = try managedContext.fetch(Character.fetchRequest())
+            characters = try moc.fetch(Character.fetchRequest())
         } catch let error as NSError {
             print(error)
         }
@@ -103,12 +109,7 @@ class CharacterManager {
         }
 
         //JSON guards cleared so CoreData is available
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let character = Character(entity: Character.entity(), insertInto: managedContext)
+        let character = Character(entity: Character.entity(), insertInto: moc)
 
         character.name = name
         character.hairColor = hairColor
@@ -150,13 +151,32 @@ class CharacterManager {
         //print(character.description)
         
         do {
-            try managedContext.save()
+            try moc.save()
             characters[index] = character
             return character
         } catch let error as NSError {
             print("Could not save \(error), \(error.userInfo)")
             print("Could not save character at index \(index)")
             return nil
+        }
+    }
+    
+    func loadCharacters(with text: String) {
+        //Create fetch request
+        let fetchRequest: NSFetchRequest<Character> = Character.fetchRequest()
+        
+        //Add predicate with text string
+        //C in CD means case insensitive, d means diacritic insensitive
+        //%K CONTAINS[cd] %@
+        fetchRequest.predicate = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(Character.itemName), text)
+        
+        fetchRequest.sortDescriptors = [sortByName]
+        
+        do {
+            //Make array equal to fetched contents
+            characters = try moc.fetch(fetchRequest)//Add () to end of fetchreqest?
+        } catch let error as NSError {
+            print(error)
         }
     }
     

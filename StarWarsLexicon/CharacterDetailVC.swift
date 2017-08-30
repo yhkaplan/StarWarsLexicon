@@ -12,6 +12,7 @@ class CharacterDetailVC: UIViewController {
 
     var character: Character!
     let embeddedRelatedFilmSegueName = "embeddedRelatedFilmsInCharacterDetailVC"
+    let relatedFilmSegue = "showRelatedFilmFromCharacterVC"
 //    let planetManager = PlanetManager() //This is to retreive homeworld
     var relatedFilmArray = [Film]()
     //private var homeworld: Planet?
@@ -68,7 +69,7 @@ class CharacterDetailVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "showRelatedFilm"?:
+        case relatedFilmSegue?:
             if let filmDetailVC = segue.destination as? FilmDetailVC {
                 if let relatedFilm = sender as? Film {
                     filmDetailVC.film = relatedFilm//Selected film
@@ -84,7 +85,10 @@ class CharacterDetailVC: UIViewController {
         case embeddedRelatedFilmSegueName?:
             if let character = character {
                 if let relatedFilmVC = segue.destination as? RelatedFilmCollectionVC {
+                    //Set segue delegate
+                    relatedFilmVC.segueDelegate = self
                     
+                    //Set films to show
                     //Convert NSSet to NSArray to Array
                     let relatedFilms = character.toFilm?.allObjects as? [Film]
                     relatedFilmVC.relatedFilms = relatedFilms
@@ -93,5 +97,11 @@ class CharacterDetailVC: UIViewController {
         default:
             preconditionFailure("Unexpected segue identifier")
         }
+    }
+}
+
+extension CharacterDetailVC: SegueDelegate {
+    func segueToRelatedFilm(_ film: Film) {
+        performSegue(withIdentifier: relatedFilmSegue, sender: film)
     }
 }

@@ -21,6 +21,8 @@
 		A34289401F30066F00256EA2 /* Starship+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342893E1F30066F00256EA2 /* Starship+CoreDataClass.swift */; };
 		A344DB811F4FEA570012636D /* RelatedFilmCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344DB801F4FEA570012636D /* RelatedFilmCollectionVC.swift */; };
 		A34FCD481F0263A0001008EB /* CellBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34FCD471F0263A0001008EB /* CellBackgroundView.swift */; };
+		A35AF1681F568D410005AE9E /* SWSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AF1671F568D410005AE9E /* SWSearchBar.swift */; };
+		A35AF16A1F5695020005AE9E /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */; };
 		A36AE52D1F04E438000EC896 /* PlanetDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */; };
 		A387D4541F1C58E400874EF1 /* StarWarsLexiconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */; };
 		A387D4621F1C58F400874EF1 /* StarWarsLexiconUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */; };
@@ -83,6 +85,8 @@
 		A342893E1F30066F00256EA2 /* Starship+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Starship+CoreDataClass.swift"; path = "../Starship+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A344DB801F4FEA570012636D /* RelatedFilmCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFilmCollectionVC.swift; sourceTree = "<group>"; };
 		A34FCD471F0263A0001008EB /* CellBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellBackgroundView.swift; sourceTree = "<group>"; };
+		A35AF1671F568D410005AE9E /* SWSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSearchBar.swift; sourceTree = "<group>"; };
+		A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
 		A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetDetailVC.swift; sourceTree = "<group>"; };
 		A387D4511F1C58E400874EF1 /* StarWarsLexiconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsLexiconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsLexiconTests.swift; sourceTree = "<group>"; };
@@ -371,11 +375,13 @@
 		A3A4CFBD1EE2A0D800DB97C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A35AF1671F568D410005AE9E /* SWSearchBar.swift */,
 				A3A4CFBA1EE29C2C00DB97C2 /* SWCell.swift */,
 				A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */,
 				A313AF221F00A90D006EA7EC /* CircularImage.swift */,
 				A3065B251F22CE970048C996 /* CircularImageWithBorder.swift */,
 				A34FCD471F0263A0001008EB /* CellBackgroundView.swift */,
+				A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -594,9 +600,11 @@
 				A34FCD481F0263A0001008EB /* CellBackgroundView.swift in Sources */,
 				A3A4CFB91EE297BB00DB97C2 /* CharacterVC.swift in Sources */,
 				A3AAB9401EBF302800AE53E5 /* DataService.swift in Sources */,
+				A35AF1681F568D410005AE9E /* SWSearchBar.swift in Sources */,
 				A36AE52D1F04E438000EC896 /* PlanetDetailVC.swift in Sources */,
 				A3B69EE01F2F164400ABD0A9 /* VehicleManager.swift in Sources */,
 				A39FEBFA1F515010001A7141 /* Planet+CoreDataProperties.swift in Sources */,
+				A35AF16A1F5695020005AE9E /* KeyboardDismisser.swift in Sources */,
 				A3CCAF421F24456B00994F57 /* CharacterManager.swift in Sources */,
 				A3B69ED41F2EA8CD00ABD0A9 /* Character+CoreDataClass.swift in Sources */,
 				A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */,

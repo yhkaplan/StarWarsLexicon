@@ -13,6 +13,9 @@ class VehicleManager {
     let dataService = DataService()
     let filmManager = FilmManager()
     
+    //MOC = Managed Object Context
+    var moc: NSManagedObjectContext
+    
     private var vehicleURLCache = [String]()
     private var vehicleURLCount: Int { return vehicleURLCache.count }
     
@@ -20,6 +23,12 @@ class VehicleManager {
     var vehicleCount: Int { return vehicles.count }
     
     init() {
+        //Set NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not set Managed Object Context")
+        }
+        self.moc = appDelegate.persistentContainer.viewContext
+        
         vehicleURLCache = APIService.sharedInstance.getURLStringCache(for: .vehicle)
         
         loadLocalVehicles()
@@ -34,15 +43,8 @@ class VehicleManager {
     }
     
     private func loadLocalVehicles() {
-        //CoreData initializers
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         do {
-            vehicles = try managedContext.fetch(Vehicle.fetchRequest())
+            vehicles = try moc.fetch(Vehicle.fetchRequest())
         } catch let error as NSError {
             print(error)
         }
@@ -78,12 +80,7 @@ class VehicleManager {
         }
         
         //JSON guards cleared, so test for CoreData prerequisite
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let vehicle = Vehicle(entity: Vehicle.entity(), insertInto: managedContext)
+        let vehicle = Vehicle(entity: Vehicle.entity(), insertInto: moc)
         
         vehicle.name = name
         vehicle.model = model
@@ -136,7 +133,7 @@ class VehicleManager {
         
         //vehicle 62 crashing, not reproducible
         do {
-            try managedContext.save()
+            try moc.save()
             vehicles[index] = vehicle
             return vehicle
         } catch let error as NSError {

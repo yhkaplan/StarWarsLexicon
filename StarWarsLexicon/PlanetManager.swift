@@ -13,6 +13,11 @@ class PlanetManager {
     let dataService = DataService()
     let filmManager = FilmManager()
     
+    //MOC = Managed Object Context
+    var moc: NSManagedObjectContext
+    
+    let sortByName = NSSortDescriptor(key: "itemName", ascending: true)
+    
     private var planetURLCache = [String]()
     private var planetURLCount: Int { return planetURLCache.count }
     
@@ -20,6 +25,12 @@ class PlanetManager {
     var planetCount: Int { return planets.count }
     
     init() {
+        //Set NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not set Managed Object Context")
+        }
+        self.moc = appDelegate.persistentContainer.viewContext
+        
         planetURLCache = APIService.sharedInstance.getURLStringCache(for: .planet)
         
         loadLocalPlanets()
@@ -34,16 +45,9 @@ class PlanetManager {
     }
     
     private func loadLocalPlanets() {
-        //CoreData initializers
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         do {
             //Make array equal to fetched contents
-            planets = try managedContext.fetch(Planet.fetchRequest())
+            planets = try moc.fetch(Planet.fetchRequest())
         } catch let error as NSError {
             print(error)
         }
@@ -72,12 +76,7 @@ class PlanetManager {
         }
         
         //JSON guards cleared, so test for CoreData prerequisite
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let planet = Planet(entity: Planet.entity(), insertInto: managedContext)
+        let planet = Planet(entity: Planet.entity(), insertInto: moc)
         
         planet.name = name
         planet.climate = climate
@@ -134,7 +133,7 @@ class PlanetManager {
         //print(planet.description)
         
         do {
-            try managedContext.save()
+            try moc.save()
             planets[index] = planet
             return planet
         } catch let error as NSError {
@@ -178,11 +177,4 @@ class PlanetManager {
             completion(nil)
         }
     }
-}
-
-//MARK: - Functions for getting, setting, and working with related films
-//used to support RelatedFilmCollectionVC wherever it's embedded
-
-extension FilmManager {
-
 }

@@ -13,6 +13,11 @@ class StarshipManager {
     let dataService = DataService()
     let filmManager = FilmManager()
     
+    //MOC = Managed Object Context
+    var moc: NSManagedObjectContext
+    
+    let sortByName = NSSortDescriptor(key: "itemName", ascending: true)
+    
     private var starshipURLCache = [String]()
     private var starshipURLCount: Int { return starshipURLCache.count }
     
@@ -20,6 +25,12 @@ class StarshipManager {
     var starshipCount: Int { return starships.count }
     
     init() {
+        //Set NSManaged Object Context
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not set Managed Object Context")
+        }
+        self.moc = appDelegate.persistentContainer.viewContext
+        
         starshipURLCache = APIService.sharedInstance.getURLStringCache(for: .starship)
         
         loadLocalStarships()
@@ -34,15 +45,8 @@ class StarshipManager {
     }
     
     private func loadLocalStarships() {
-        //CoreData initializers
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         do {
-            starships = try managedContext.fetch(Starship.fetchRequest())
+            starships = try moc.fetch(Starship.fetchRequest())
         } catch let error as NSError {
             print(error)
         }
@@ -76,12 +80,7 @@ class StarshipManager {
         }
         
         //JSON guards cleared, so test for CoreData prerequisite
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let starship = Starship(entity: Starship.entity(), insertInto: managedContext)
+        let starship = Starship(entity: Starship.entity(), insertInto: moc)
         
         starship.name = name
         starship.model = model
@@ -139,7 +138,7 @@ class StarshipManager {
         //print(starship.description)
         
         do {
-            try managedContext.save()
+            try moc.save()
             starships[index] = starship
             return starship
         } catch let error as NSError {

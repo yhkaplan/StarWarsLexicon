@@ -16,6 +16,11 @@ protocol FilmVCDelegate {
 class FilmManager {
     let dataService = DataService()
     
+    //MOC = Managed Object Context
+    var moc: NSManagedObjectContext
+    
+    let sortByEpisodeID = NSSortDescriptor(key: "episodeID", ascending: true)
+    
     private var films = [Film?]()
     var filmVCDelegate: FilmVCDelegate?
     
@@ -26,6 +31,11 @@ class FilmManager {
     }
     
     init(filmVCDelegate: FilmVCDelegate? = nil) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not set managed object context")
+        }
+        self.moc = appDelegate.persistentContainer.viewContext
+        
         if filmVCDelegate != nil {
             self.filmVCDelegate = filmVCDelegate
 
@@ -134,12 +144,7 @@ class FilmManager {
         APIService.sharedInstance.appendURLStringArray(vehicleURLStrings, to: .vehicle)
         
         //MARK: - JSON guards cleared, so test for CoreData prerequisite
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let film = Film(entity: Film.entity(), insertInto: managedContext)
+        let film = Film(entity: Film.entity(), insertInto: moc)
         
         film.title = title
         film.episodeID = episodeID
@@ -155,7 +160,7 @@ class FilmManager {
         //print(film.description)
         
         do {
-            try managedContext.save()
+            try moc.save()
             films[index] = film
             return film
         } catch let error as NSError {

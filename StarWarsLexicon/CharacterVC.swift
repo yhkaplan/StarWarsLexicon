@@ -8,21 +8,17 @@
 
 import UIKit
 
-//Conforms to too many things: must seperate out
 class CharacterVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: SWSearchBar!
     
     let dataService = DataService()
     var characterManager: CharacterManager?
-//    var characterURLCache = [String]()
-    var searchMode = false
     
     let characterSegueName = "showCharacter"
     let characterCellReuseIdentifier = "CharacterCell"
     
-    //Cache then deinitialize everything in viewDidDisappear??
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +27,7 @@ class CharacterVC: UIViewController {
         searchBar.delegate = self
         characterManager = CharacterManager()
         
-        searchBar.returnKeyType = UIReturnKeyType.done
+        self.hideKeyboardUponTouch()
     }
     
     //MARK: Segue function
@@ -62,9 +58,8 @@ extension CharacterVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         characterManager?.getCharacter(at: indexPath.row, completion: { (character) in
             if let character = character {
-                //DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: self.characterSegueName, sender: character)
-                //}
+
+                self.performSegue(withIdentifier: self.characterSegueName, sender: character)
             }
         })
     }
@@ -82,7 +77,7 @@ extension CharacterVC: UICollectionViewDataSource {
                     }
                 }
             })
-            return cell //Is this return in the right place?
+            return cell
         } else {
             return UICollectionViewCell()
         }
@@ -95,23 +90,28 @@ extension CharacterVC: UICollectionViewDataSource {
 
 //MARK: Search bar
 
-extension CharacterVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let searchTerm = searchBar.text, searchTerm != "" {
-            searchMode = true
-            //filteredCharacterArray = characterArray.filter({$0.name.localizedStandardRange(of: searchTerm) != nil})
-            collectionView.reloadData()
-        } else {
-            searchMode = false
-            collectionView.reloadData()
-        }
+extension CharacterVC: UISearchBarDelegate {    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //Change text color to white
+//        searchBar.textColor = UIColor.white
+        
+        //Change keyboard hiding settingsc
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        //tapGestureRecognizer.isEnabled = true
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        characterManager?.loadLocalCharacters()
+        collectionView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
+        
+        if let searchTerm = searchBar.text, searchTerm != "" {
+            characterManager?.loadCharacters(with: searchTerm)
+        } else {
+            characterManager?.loadLocalCharacters()
+        }
+        collectionView.reloadData()
     }
 }

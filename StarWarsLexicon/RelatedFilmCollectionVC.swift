@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol SegueDelegate {
+    func segueToRelatedFilm(_ film: Film)
+}
+
 private let reuseIdentifier = "RelatedFilmCell"
 
 class RelatedFilmCollectionVC: UICollectionViewController {
+    
+    var segueDelegate: SegueDelegate?
     
     //Related film array is filled via dependency injection from embedded segue 
     //which takes the NSSet of related Film objects from Planet/Character/Vehicle/Starship
@@ -30,12 +36,13 @@ class RelatedFilmCollectionVC: UICollectionViewController {
 
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedFilm = relatedFilms?[indexPath.row]
-        performSegue(withIdentifier: "showRelatedFilm", sender: selectedFilm)
+        if let selectedFilm = relatedFilms?[indexPath.row]  {
+            //Tell parent to segue to related film
+            segueDelegate?.segueToRelatedFilm(selectedFilm)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
