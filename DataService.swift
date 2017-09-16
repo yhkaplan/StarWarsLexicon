@@ -17,87 +17,54 @@ enum Category {
     case vehicle
 }
 
-enum relatedFilmResult {
-    case success(Film)
-    case failure(Error)
-}
-
-enum homeworldResult {
-    case success(Planet)
-    case failure(Error)
-}
-
-enum CharacterResult {
-    case success([String : Any])
-    case failure(Error)
-}
-
 class DataService {
+
+    enum FilmResult {
+        case success(FilmService)
+        case failure(Error)
+    }
+    
+    enum SWResult {
+        case success([String : Any])
+        case failure(Error)
+    }
     
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
     
-    func fetchRelatedFilm(from filmURL: URL, completion: @escaping (relatedFilmResult) -> Void) {
-        
-        let request = URLRequest(url: filmURL)
+    func fetchFilm(at url: URL, completion: @escaping (FilmResult) -> Void) {
+        let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             
-            if let error = error {
-                completion(.failure(error))
-            }
-            
-            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
-                //JSON structure is different from expected format
-                print("JSON structure is different from expected format")
+            guard error == nil else {
+                completion(.failure(error!))
+                print(error!)
                 return
             }
             
-            guard !json.isEmpty else {
-                print("Data error")
+            guard let data = data else {
+                //Add in actual error handling here
+                completion(.failure("No Data" as! Error))
+                print("No data return")
                 return
             }
             
-//            if let film = Film(json: json) {
-//                completion(.success(film))
-//            } else {
-//                print("Data error")
-//                return
-//            }
+            let decoder = JSONDecoder()
+            do {
+                let filmObject = try decoder.decode(FilmService.self, from: data)
+                completion(.success(filmObject))
+            } catch {
+                //Error handling
+                print("Big ol' error")
+                completion(.failure("No JSON" as! Error))
+            }
         }
         task.resume()
     }
     
-    func fetchHomeworld(from planetURL: URL, completion: @escaping (homeworldResult) -> Void) {
-        
-        let request = URLRequest(url: planetURL)
-        let task = session.dataTask(with: request) { (data, response, error) -> Void in
-            if let error = error {
-                completion(.failure(error))
-            }
-            
-            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
-                print("JSON structure is different from expected format")
-                return
-            }
-            
-            guard !json.isEmpty else {
-                print("Data error")
-                return
-            }
-            
-//            if let homeworld = Planet(json: json) {
-//                completion(.success(homeworld))
-//            } else {
-//                print("Parsing error")
-//                return
-//            }
-        }
-        task.resume()
-    }
-    
-    func fetchItem(at url: URL, completion: @escaping (CharacterResult) -> Void) {
+    func fetchItem(at url: URL, completion: @escaping (SWResult) -> Void) {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             

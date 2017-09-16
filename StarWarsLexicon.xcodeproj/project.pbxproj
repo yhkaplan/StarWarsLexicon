@@ -27,6 +27,7 @@
 		A387D4541F1C58E400874EF1 /* StarWarsLexiconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */; };
 		A387D4621F1C58F400874EF1 /* StarWarsLexiconUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */; };
 		A38ACE1A1F12D20400ABCEA2 /* VehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38ACE191F12D20400ABCEA2 /* VehicleVC.swift */; };
+		A39D5E6D1F6D442B00E1B5BA /* FilmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */; };
 		A39FEBF71F515010001A7141 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FEBF21F515010001A7141 /* Character+CoreDataProperties.swift */; };
 		A39FEBF81F515010001A7141 /* Starship+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FEBF31F515010001A7141 /* Starship+CoreDataProperties.swift */; };
 		A39FEBF91F515010001A7141 /* Film+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FEBF41F515010001A7141 /* Film+CoreDataProperties.swift */; };
@@ -95,6 +96,7 @@
 		A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsLexiconUITests.swift; sourceTree = "<group>"; };
 		A387D4631F1C58F400874EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A38ACE191F12D20400ABCEA2 /* VehicleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleVC.swift; sourceTree = "<group>"; };
+		A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmService.swift; sourceTree = "<group>"; };
 		A39FEBF21F515010001A7141 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+CoreDataProperties.swift"; path = "../Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A39FEBF31F515010001A7141 /* Starship+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Starship+CoreDataProperties.swift"; path = "../Starship+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A39FEBF41F515010001A7141 /* Film+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Film+CoreDataProperties.swift"; path = "../Film+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				A39FEBF41F515010001A7141 /* Film+CoreDataProperties.swift */,
 				A34289321F30062E00256EA2 /* Film+CoreDataClass.swift */,
+				A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -491,24 +494,27 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Joshua Kaplan";
 				TargetAttributes = {
 					A387D4501F1C58E400874EF1 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 3EFBU2355T;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A3AAB9271EBF2EE900AE53E5;
 					};
 					A387D45E1F1C58F400874EF1 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 3EFBU2355T;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A3AAB9271EBF2EE900AE53E5;
 					};
 					A3AAB9271EBF2EE900AE53E5 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3EFBU2355T;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -610,6 +616,7 @@
 				A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */,
 				A3065B261F22CE970048C996 /* CircularImageWithBorder.swift in Sources */,
 				A3B69ED71F2EAD0D00ABD0A9 /* APIService.swift in Sources */,
+				A39D5E6D1F6D442B00E1B5BA /* FilmService.swift in Sources */,
 				A39FEBF81F515010001A7141 /* Starship+CoreDataProperties.swift in Sources */,
 				A342893C1F30065D00256EA2 /* Vehicle+CoreDataClass.swift in Sources */,
 				A34289341F30062E00256EA2 /* Film+CoreDataClass.swift in Sources */,
@@ -667,7 +674,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarWarsLexicon.app/StarWarsLexicon";
 			};
 			name = Debug;
@@ -681,7 +689,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarWarsLexicon.app/StarWarsLexicon";
 			};
 			name = Release;
@@ -694,7 +703,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = StarWarsLexicon;
 			};
 			name = Debug;
@@ -707,7 +717,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = StarWarsLexicon;
 			};
 			name = Release;
@@ -722,7 +733,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -730,7 +743,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -753,7 +770,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -773,7 +790,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -781,7 +800,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -798,7 +821,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -816,7 +839,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexicon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -830,7 +854,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexicon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
