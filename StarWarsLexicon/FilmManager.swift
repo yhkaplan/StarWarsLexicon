@@ -81,7 +81,7 @@ class FilmManager {
         let film = Film(entity: Film.entity(), insertInto: moc)
         
         film.title = service.title
-        film.episodeID = service.episodeID
+        film.episodeID = Int16(service.episodeID)
         film.openingCrawl = service.openingCrawl
         film.director = service.director
         film.producer = service.producer

@@ -18,6 +18,12 @@ enum Category {
 }
 
 class DataService {
+    
+    //Error handling structure for JSON errors
+    private enum SWAPIError: Error {
+        case noData
+        case jsonParsingError(details: String?)
+    }
 
     enum FilmResult {
         case success(FilmService)
@@ -29,6 +35,7 @@ class DataService {
         case failure(Error)
     }
     
+    //Reusable url session for the methods here
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
@@ -46,19 +53,22 @@ class DataService {
             
             guard let data = data else {
                 //Add in actual error handling here
-                completion(.failure("No Data" as! Error))
-                print("No data return")
+                completion(.failure(SWAPIError.noData))
                 return
             }
             
             let decoder = JSONDecoder()
+            
+            //This line helps support the proper date format of 2017-03-01 etc
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            
             do {
                 let filmObject = try decoder.decode(FilmService.self, from: data)
                 completion(.success(filmObject))
             } catch {
-                //Error handling
-                print("Big ol' error")
-                completion(.failure("No JSON" as! Error))
+                completion(.failure(SWAPIError.jsonParsingError(details: nil)))
             }
         }
         task.resume()
@@ -74,15 +84,12 @@ class DataService {
             }
             
             guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
-                //JSON structure is different from expected format
-                print("JSON structure is different from expected format")
-                //completion(.failure(Error("JSON off")))
+                completion(.failure(SWAPIError.jsonParsingError(details: "JSON structure is different from expected format")))
                 return
             }
             
             guard !json.isEmpty else {
-                print("Data error")
-                completion(.failure("No JSON" as! Error))
+                completion(.failure(SWAPIError.jsonParsingError(details: nil)))
                 return
             }
             
@@ -96,8 +103,11 @@ class DataService {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
         
+            //Refactor for Swift 4.0 JSON handling w/ Codable 
             guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any], let itemCount = json["count"] as? Int else {
+                //Refactor for better error handling
                 print("JSON structure differed so count could not be established")
+                completion(nil)
                 return
             }
             completion(itemCount)

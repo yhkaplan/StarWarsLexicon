@@ -10,7 +10,7 @@ import Foundation
 
 struct FilmService: Decodable {
     let director: String
-    let episodeID: Int16
+    let episodeID: Int
     let itemURL: String
     let openingCrawl: String
     let producer: String
