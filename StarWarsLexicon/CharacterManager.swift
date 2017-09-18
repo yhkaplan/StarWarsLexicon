@@ -71,83 +71,33 @@ class CharacterManager {
     //Save new items func
     //This is needed for serializing the data when CoreData is integrated
     //Add new item func
-    private func addCharacter(_ json: [String : Any], to index: Int) -> Character? {
-        
-        guard let name = json["name"] as? String else {
-            print("Parsing error with character name")
-            return nil
-        }
-
-        guard let hairColor = json["hair_color"] as? String else {
-            print("Parsing error with character hair color")
-            return nil
-        }
-
-        guard let skinColor = json["skin_color"] as? String else {
-            print("Parsing error with character skin color")
-            return nil
-        }
-
-        guard let eyeColor = json["eye_color"] as? String else {
-            print("Parsing error with character eye color")
-            return nil
-        }
-
-        guard let birthYear = json["birth_year"] as? String else {
-            print("Parsing error with character birth year")
-            return nil
-        }
-
-        guard let gender = json["gender"] as? String else {
-            print("Parsing error with character gender")
-            return nil
-        }
-
-        guard let url = json["url"] as? String else {
-            print("Parsing error with url")
-            return nil
-        }
-
+    private func addCharacter(_ service: CharacterService, to index: Int) -> Character? {
         //JSON guards cleared so CoreData is available
         let character = Character(entity: Character.entity(), insertInto: moc)
 
-        character.name = name
-        character.hairColor = hairColor
-        character.skinColor = skinColor
-        character.eyeColor = eyeColor
-        character.birthYear = birthYear
-        character.gender = gender
-        character.itemURL = url
+        character.name = service.name
+        character.hairColor = service.hairColor
+        character.skinColor = service.skinColor
+        character.eyeColor = service.eyeColor
+        character.birthYear = service.birthYear
+        character.gender = service.gender
+        character.itemURL = service.url
         
-        character.itemName = name
+        character.itemName = service.name
         character.category = "character"
         
+        //Double check this. It likely needs improvement
+        character.height = Int16(service.height) ?? Int16(-1)
+        character.mass = Int32(service.mass) ?? Int32(-1)
+        character.homeworldURL = service.homeworldURL
+        
         //MARK: - Setting related films
-        if let filmURLStrings = json["films"] as? [String] {
+        if let filmURLStrings = service.filmURLs {
             if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
                 //Set value
                 character.toFilm = relatedFilmSet
             }
         }
-        
-        if let heightString = json["height"] as? String, let height = Int16(heightString) {
-            character.height = height
-        } else {
-            character.height = Int16(-1)
-        }
-
-        if let massString = json["mass"] as? String, let mass = Int32(massString) {
-            character.mass = mass
-        } else {
-            character.mass = Int32(-1)
-        }
-
-        if let homeworldURL = json["homeworld"] as? String {
-            character.homeworldURL = homeworldURL
-        } else {
-            character.homeworldURL = "Unknown"
-        }
-
         //print(character.description)
         
         do {
@@ -203,18 +153,20 @@ class CharacterManager {
                 return
             }
             
-            dataService.fetchItem(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .character, completion: { (result) in
                 switch result {
                 
                 //Success cases
-                case let .success(characterJSON):
-                    if let character = self.addCharacter(characterJSON, to: index) {
-                        completion(character)
-               
+                case let .success(characterService):
+                    if let characterService = characterService as? CharacterService {
+                        if let character = self.addCharacter(characterService, to: index) {
+                            completion(character)
+                            
                 //Error cases
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)

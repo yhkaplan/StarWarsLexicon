@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CharacterService: Decodable {
+struct CharacterService: Decodable, SWService {
     //Parameters
     let name: String
     let hairColor: String
@@ -22,7 +22,7 @@ struct CharacterService: Decodable {
     let mass: String
     
     let homeworldURL: String?
-    let filmURLs: String
+    let filmURLs: [String]?
     //Enum to help codable convert json to objects
     private enum CodingKeys: String, CodingKey {
         case name

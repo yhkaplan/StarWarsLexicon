@@ -13,7 +13,6 @@ enum Category {
     case character
     case starship
     case planet
-    case species
     case vehicle
 }
 
@@ -24,14 +23,9 @@ class DataService {
         case noData
         case jsonParsingError(details: String?)
     }
-
-    enum FilmResult {
-        case success(FilmService)
-        case failure(Error)
-    }
     
     enum SWResult {
-        case success([String : Any])
+        case success(SWService)
         case failure(Error)
     }
     
@@ -41,7 +35,7 @@ class DataService {
         return URLSession(configuration: config)
     }()
     
-    func fetchFilm(at url: URL, completion: @escaping (FilmResult) -> Void) {
+    func fetchItem(at url: URL, for category: Category, completion: @escaping (SWResult) -> Void) {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             
@@ -65,36 +59,28 @@ class DataService {
             decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
             do {
-                let filmObject = try decoder.decode(FilmService.self, from: data)
-                completion(.success(filmObject))
+                //Handles object differently depending on category
+                switch category {
+                case .character:
+                    let characterService = try decoder.decode(CharacterService.self, from: data)
+                    completion(.success(characterService))
+                case .film:
+                    let filmService = try decoder.decode(FilmService.self, from: data)
+                    completion(.success(filmService))
+                case .planet:
+                    let planetService = try decoder.decode(PlanetService.self, from: data)
+                    completion(.success(planetService))
+                case .starship:
+                    let starshipService = try decoder.decode(StarshipService.self, from: data)
+                    completion(.success(starshipService))
+                case .vehicle:
+                    let vehicleService = try decoder.decode(VehicleService.self, from: data)
+                    completion(.success(vehicleService))
+                }
+                
             } catch {
                 completion(.failure(SWAPIError.jsonParsingError(details: nil)))
             }
-        }
-        task.resume()
-    }
-    
-    func fetchItem(at url: URL, completion: @escaping (SWResult) -> Void) {
-        let request = URLRequest(url: url)
-        let task = session.dataTask(with: request) { (data, response, error) -> Void in
-            
-            if let error = error {
-                completion(.failure(error))
-                print(error)
-            }
-            
-            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any] else {
-                completion(.failure(SWAPIError.jsonParsingError(details: "JSON structure is different from expected format")))
-                return
-            }
-            
-            guard !json.isEmpty else {
-                completion(.failure(SWAPIError.jsonParsingError(details: nil)))
-                return
-            }
-            
-            completion(.success(json))
-            
         }
         task.resume()
     }

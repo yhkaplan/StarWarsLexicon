@@ -53,7 +53,9 @@ class PlanetManager {
         }
     }
     
-    private func addPlanet(_ json: [String : Any], to index: Int) -> Planet? {
+    private func addPlanet(_ service: PlanetService, to index: Int) -> Planet? {
+        
+        let json = [String:String]() //Temp for testing
         
         guard let name = json["name"] as? String else {
             print("Parsing error with planet name")
@@ -181,14 +183,16 @@ class PlanetManager {
             }
             
             //print("Download URL is \(url)")
-            dataService.fetchItem(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .planet, completion: { (result) in
                 switch result {
-                case let .success(planetJSON):
-                    if let planet = self.addPlanet(planetJSON, to: index) {
-                        completion(planet)
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                case let .success(planetService):
+                    if let planetService = planetService as? PlanetService {
+                        if let planet = self.addPlanet(planetService, to: index) {
+                            completion(planet)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)

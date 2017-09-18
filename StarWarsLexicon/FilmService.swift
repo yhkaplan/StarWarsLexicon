@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FilmService: Decodable {
+struct FilmService: Decodable, SWService {
     let director: String
     let episodeID: Int
     let itemURL: String

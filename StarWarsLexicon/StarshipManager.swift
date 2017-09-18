@@ -52,7 +52,9 @@ class StarshipManager {
         }
     }
     
-    private func addStarship(_ json: [String : Any], to index: Int) -> Starship? {
+    private func addStarship(_ service: StarshipService, to index: Int) -> Starship? {
+        
+        let json = [String : Any]()//temp
         
         guard let name = json["name"] as? String else {
             print("Parsing error with starship name")
@@ -185,15 +187,16 @@ class StarshipManager {
             }
             
             //print("Download url is \(url)")
-            dataService.fetchItem(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .starship, completion: { (result) in
                 switch result {
-                case let .success(starshipJSON):
-                    //switch to main thread?
-                    if let starship = self.addStarship(starshipJSON, to: index) {
-                        completion(starship)
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                case let .success(starshipService):
+                    if let starshipService = starshipService as? StarshipService {
+                        if let starship = self.addStarship(starshipService, to: index) {
+                            completion(starship)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)

@@ -123,14 +123,16 @@ class FilmManager {
             }
             
             //print("Download url is \(url)")
-            dataService.fetchFilm(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .film, completion: { (result) in
                 switch result {
                 case let .success(filmService):
-                    if let film = self.addFilm(filmService, to: index) {
-                        completion(film)
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                    if let filmService = filmService as? FilmService {
+                        if let film = self.addFilm(filmService, to: index) {
+                            completion(film)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)

@@ -54,8 +54,10 @@ class VehicleManager {
     
     //There appears to be a large number of vehicles that don't actually load properly on the APIs end
     //Think of workaround using pages containing items
-    private func addVehicle(_ json: [String : Any], to index: Int) -> Vehicle? {
+    private func addVehicle(_ service: VehicleService, to index: Int) -> Vehicle? {
 
+        let json = [String : Any]()//temp
+        
         guard let name = json["name"] as? String else {
             print("Parsing error with vehicle name")
             return nil
@@ -182,15 +184,16 @@ class VehicleManager {
             }
             
             //print("Download url is \(url)")
-            dataService.fetchItem(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .vehicle, completion: { (result) in
                 switch result {
-                case let .success(vehicleJSON):
-                    //switch to main thread?
-                    if let vehicle = self.addVehicle(vehicleJSON, to: index) {
-                        completion(vehicle)
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                case let .success(vehicleService):
+                    if let vehicleService = vehicleService as? VehicleService {
+                        if let vehicle = self.addVehicle(vehicleService, to: index) {
+                            completion(vehicle)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)

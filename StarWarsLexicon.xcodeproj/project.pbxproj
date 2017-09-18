@@ -11,6 +11,9 @@
 		A3065B261F22CE970048C996 /* CircularImageWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3065B251F22CE970048C996 /* CircularImageWithBorder.swift */; };
 		A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313AF221F00A90D006EA7EC /* CircularImage.swift */; };
 		A318030B1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A31803091F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld */; };
+		A32044711F6FEFC300D7FCFA /* PlanetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32044701F6FEFC300D7FCFA /* PlanetService.swift */; };
+		A32044731F6FF0C600D7FCFA /* StarshipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32044721F6FF0C600D7FCFA /* StarshipService.swift */; };
+		A32044751F6FF18100D7FCFA /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32044741F6FF18100D7FCFA /* VehicleService.swift */; };
 		A3257B0A1EC1E36D0067C282 /* SWCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3257B091EC1E36D0067C282 /* SWCategory.swift */; };
 		A32B07771F498B7500BEAD9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32B07761F498B7500BEAD9A /* Constants.swift */; };
 		A331AD7A1EFE3FA1004DBC51 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331AD791EFE3FA1004DBC51 /* FilmCell.swift */; };
@@ -77,6 +80,9 @@
 		A3065B251F22CE970048C996 /* CircularImageWithBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageWithBorder.swift; sourceTree = "<group>"; };
 		A313AF221F00A90D006EA7EC /* CircularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
 		A318030A1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StarWarsLexicon.xcdatamodel; sourceTree = "<group>"; };
+		A32044701F6FEFC300D7FCFA /* PlanetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetService.swift; sourceTree = "<group>"; };
+		A32044721F6FF0C600D7FCFA /* StarshipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipService.swift; sourceTree = "<group>"; };
+		A32044741F6FF18100D7FCFA /* VehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
 		A3257B091EC1E36D0067C282 /* SWCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCategory.swift; sourceTree = "<group>"; };
 		A32B07761F498B7500BEAD9A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A331AD791EFE3FA1004DBC51 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
@@ -280,6 +286,7 @@
 			children = (
 				A39FEBF51F515010001A7141 /* Planet+CoreDataProperties.swift */,
 				A34289361F30064500256EA2 /* Planet+CoreDataClass.swift */,
+				A32044701F6FEFC300D7FCFA /* PlanetService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +313,7 @@
 			children = (
 				A39FEBF31F515010001A7141 /* Starship+CoreDataProperties.swift */,
 				A342893E1F30066F00256EA2 /* Starship+CoreDataClass.swift */,
+				A32044721F6FF0C600D7FCFA /* StarshipService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -348,6 +356,7 @@
 			children = (
 				A39FEBF61F515010001A7141 /* Vehicle+CoreDataProperties.swift */,
 				A342893A1F30065D00256EA2 /* Vehicle+CoreDataClass.swift */,
+				A32044741F6FF18100D7FCFA /* VehicleService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -590,6 +599,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32044751F6FF18100D7FCFA /* VehicleService.swift in Sources */,
 				A3AAB92E1EBF2EE900AE53E5 /* FilmVC.swift in Sources */,
 				A3B69EDB1F2EFCD200ABD0A9 /* StarshipManager.swift in Sources */,
 				A39FEBF71F515010001A7141 /* Character+CoreDataProperties.swift in Sources */,
@@ -600,6 +610,7 @@
 				A38ACE1A1F12D20400ABCEA2 /* VehicleVC.swift in Sources */,
 				A3F2C8FB1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift in Sources */,
 				A3B69ED91F2EF0A400ABD0A9 /* PlanetManager.swift in Sources */,
+				A32044731F6FF0C600D7FCFA /* StarshipService.swift in Sources */,
 				A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */,
 				A318030B1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld in Sources */,
 				A3FBD4621F15FCAF0069AC3E /* RelatedFilmCell.swift in Sources */,
@@ -623,6 +634,7 @@
 				A39D5E6D1F6D442B00E1B5BA /* FilmService.swift in Sources */,
 				A39FEBF81F515010001A7141 /* Starship+CoreDataProperties.swift in Sources */,
 				A342893C1F30065D00256EA2 /* Vehicle+CoreDataClass.swift in Sources */,
+				A32044711F6FEFC300D7FCFA /* PlanetService.swift in Sources */,
 				A34289341F30062E00256EA2 /* Film+CoreDataClass.swift in Sources */,
 				A3B69EDE1F2F0AA800ABD0A9 /* FilmManager.swift in Sources */,
 				A3CE5E9A1F064CB30047C771 /* CharacterDetailVC.swift in Sources */,

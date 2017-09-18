@@ -1,7 +1,7 @@
 # Star Wars Lexicon
 (English translation planned)
 ### 目的
-下記リンク先のStar Wars APIと連携したアプリです。
+下記リンク先のStar Wars APIと連携するアプリです。
 > [SWAPI - The Star Wars API](https://swapi.co)  
 
 ### 画面キャプチャー
@@ -9,7 +9,7 @@
 
 ### ステータス
 検索や関連映画などの機能はまだバグ修正中です。
-Swift 4.0は現在、別のブランチで移行予定です。
+現在、別のブランチでSwift 4.0に移行予定です。
 また、エラー処理は一部実装中です。
 
 ### 使用技術・特徴
