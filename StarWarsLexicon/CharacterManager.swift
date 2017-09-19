@@ -32,6 +32,7 @@ class CharacterManager {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Could not set Managed Object Context")
         }
+        //SWITCH THIS TO BACKGROUND CONTEXT?
         self.moc = appDelegate.persistentContainer.viewContext
         
         //Initialize characterURL data

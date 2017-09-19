@@ -1,7 +1,7 @@
 # Star Wars Lexicon
 (English translation planned)
 ### 目的
-下記リンク先のStar Wars APIと連携するアプリです。
+下記リンク先のStar Wars APIと連携するSwift 4のiOSアプリです。
 > [SWAPI - The Star Wars API](https://swapi.co)  
 
 ### 画面キャプチャー
@@ -9,16 +9,15 @@
 
 ### ステータス
 検索や関連映画などの機能はまだバグ修正中です。
-現在、別のブランチでSwift 4.0に移行予定です。
-また、エラー処理は一部実装中です。
+また、エラー処理は一部まだ実装中です。
 
 ### 使用技術・特徴
 * **Core Data**
 Core Dataはデータ保存のために使っており、接続がない場合でもStar Wars Lexiconが利用可能です。
 * **JSON parsing**
-Swift 3.1の標準的なJSONからオブジェクト変換方法からSwift 4.0の方法に移行中です。
+Swift 4の標準的なJSONからオブジェクトに変換する方法を活用しております。いわゆる、Codable/Decodableプロトコルを使っています。
 * **Swiftの正規ネットワーキングフレームワーク**
-Alamofireなど、外部フレームワークが多く存在しているのですが、このプロジェクトにおいては正規の方法で十分だと判断しました。
+Alamofireなど、外部フレームワークが多く存在するのですが、このプロジェクトにおいては正規の方法で十分だと判断しました。
 * **Protocol delegate pattern**
 * **Singleton pattern**
 誤用されがちのSingleton。使うべきパターンを検討した結果、Singletonに決めました。理由はいくつかありますが、簡単に言えば、Film以外のデータはFilmの関連Person・関連Starship・関連VehicleからURLを取得するので、別Manager ClassにURLデータを渡すことで、ネットワークアクセスを減らせます。

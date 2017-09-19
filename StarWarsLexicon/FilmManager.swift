@@ -43,6 +43,7 @@ class FilmManager {
                 return
             }
             
+            //SWITCH THIS TO BACKGROUND CONTEXT?
             let managedContext = appDelegate.persistentContainer.viewContext
             
             do {
@@ -174,21 +175,15 @@ class FilmManager {
     
     //Helper function for method above
     private func getFilmWithURL(_ urlString: String, completion: @escaping (Film?) -> Void) {
+        
         //fetch films from core data store, see if any match url using NSPredicate
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Film.itemURL), urlString)
         
         var relatedFilms = [Film]()
         
         do {
-            relatedFilms = try managedContext.fetch(fetchRequest)
-            //films = try managedContext.fetch(Film.fetchRequest())
+            relatedFilms = try moc.fetch(fetchRequest)
         } catch let error as NSError {
             print(error)
         }
