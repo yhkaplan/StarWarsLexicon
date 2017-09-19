@@ -55,82 +55,28 @@ class PlanetManager {
     
     private func addPlanet(_ service: PlanetService, to index: Int) -> Planet? {
         
-        let json = [String:String]() //Temp for testing
-        
-        guard let name = json["name"] as? String else {
-            print("Parsing error with planet name")
-            return nil
-        }
-        
-        guard let climate = json["climate"] as? String else {
-            print("Parsing error with planet climate")
-            return nil
-        }
-        
-        guard let terrain = json["terrain"] as? String else {
-            print("Parsing error with planet terrain")
-            return nil
-        }
-        
-        guard let url = json["url"] as? String else {
-            print("Parsing error with planet url")
-            return nil
-        }
-        
-        //JSON guards cleared, so test for CoreData prerequisite
         let planet = Planet(entity: Planet.entity(), insertInto: moc)
         
-        planet.name = name
-        planet.climate = climate
-        planet.terrain = terrain
-        planet.itemURL = url
+        planet.name = service.name
+        planet.climate = service.climate
+        planet.terrain = service.terrain
+        planet.itemURL = service.url
         
         planet.category = "planet"
-        planet.itemName = name
+        planet.itemName = service.name
         
         //MARK: - Setting related films
-        if let filmURLStrings = json["films"] as? [String] {
-            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
-                //Set value
-                planet.toFilm = relatedFilmSet
-            }
+        if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: service.toFilm) {
+            //Set value
+            planet.toFilm = relatedFilmSet
         }
-        
-        if let diameterString = json["diameter"] as? String, let diameter = Double(diameterString) {
-            planet.diameter = diameter
-        } else {
-            planet.diameter = Double(-1)
-        }
-        
-        if let rotationPeriodString = json["rotation_period"] as? String, let rotationPeriod = Double(rotationPeriodString) {
-            planet.rotationPeriod = rotationPeriod
-        } else {
-            planet.rotationPeriod = Double(-1)
-        }
-        
-        if let orbitalPeriodString = json["orbital_period"] as? String, let orbitalPeriod = Int16(orbitalPeriodString) {
-            planet.orbitalPeriod = orbitalPeriod
-        } else {
-            planet.orbitalPeriod = Int16(-1)
-        }
-        
-        if let gravityString = json["gravity"] as? String, let gravity = Double(gravityString) {
-            planet.gravity = gravity
-        } else {
-            planet.gravity = Double(-1)
-        }
-        
-        if let populationString = json["population"] as? String, let population = Double(populationString) {
-            planet.population = population
-        } else {
-            planet.population = Double(-1)
-        }
-        
-        if let surfaceWaterString = json["surface_water"] as? String, let surfaceWater = Double(surfaceWaterString) {
-            planet.surfaceWater = surfaceWater
-        } else {
-            planet.surfaceWater = Double(-1)
-        }
+    
+        planet.diameter = Double(service.diameter) ?? Double(-1)
+        planet.rotationPeriod = Double(service.rotationPeriod) ?? Double(-1)
+        planet.orbitalPeriod = Int16(service.orbitalPeriod) ?? Int16(-1)
+        planet.gravity = Double(service.gravity) ?? Double(-1)
+        planet.population = Double(service.population) ?? Double(-1)
+        planet.surfaceWater = Double(service.surfaceWater) ?? Double(-1)
         
         //print(planet.description)
         

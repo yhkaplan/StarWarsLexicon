@@ -54,88 +54,29 @@ class StarshipManager {
     
     private func addStarship(_ service: StarshipService, to index: Int) -> Starship? {
         
-        let json = [String : Any]()//temp
-        
-        guard let name = json["name"] as? String else {
-            print("Parsing error with starship name")
-            return nil
-        }
-        
-        guard let model = json["model"] as? String else {
-            print("Parsing error with starship model")
-            return nil
-        }
-        
-        guard let starshipClass = json["starship_class"] as? String else {
-            print("Parsing error with starship class")
-            return nil
-        }
-        
-        guard let manufacturer = json["manufacturer"] as? String else {
-            print("Parsing error with starship manufacturer")
-            return nil
-        }
-        
-        guard let url = json["url"] as? String else {
-            print("Parsing error with starship url")
-            return nil
-        }
-        
-        //JSON guards cleared, so test for CoreData prerequisite
         let starship = Starship(entity: Starship.entity(), insertInto: moc)
         
-        starship.name = name
-        starship.model = model
-        starship.starshipClass = starshipClass
-        starship.manufacturer = manufacturer
-        starship.itemURL = url
+        starship.name = service.name
+        starship.model = service.model
+        starship.starshipClass = service.starshipClass
+        starship.manufacturer = service.manufacturer
+        starship.itemURL = service.url
         
-        starship.itemName = name
+        starship.itemName = service.name
         starship.category = "starship"
         
         //MARK: - Setting related films
-        if let filmURLStrings = json["films"] as? [String] {
-            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
-                //Set value
-                starship.toFilm = relatedFilmSet
-            }
+        if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: service.toFilm) {
+            //Set value
+            starship.toFilm = relatedFilmSet
         }
         
-        if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
-            starship.costInCredits = costInCredits
-        } else {
-            starship.costInCredits = Double(-1)
-        }
-        
-        if let lengthString = json["length"] as? String, let length = Double(lengthString) {
-            starship.length = length
-        } else {
-            starship.length = Double(-1)
-        }
-        
-        if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Double(numberOfCrewMembersString) {
-            starship.numberOfCrewMembers = numberOfCrewMembers
-        } else {
-            starship.numberOfCrewMembers = Double(-1)
-        }
-        
-        if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Double(numberOfPassengersString) {
-            starship.numberOfPassengers = numberOfPassengers
-        } else {
-            starship.numberOfPassengers = Double(-1)
-        }
-        
-        if let maxAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maxAtmosphericSpeed = Double(maxAtmosphericSpeedString) {
-            starship.maxAtmosphericSpeed = maxAtmosphericSpeed
-        } else {
-            starship.maxAtmosphericSpeed = Double(-1)
-        }
-        
-        if let hyperdriveRatingString = json["hyperdrive_rating"] as? String, let hyperdriveRating = Double(hyperdriveRatingString) {
-            starship.hyperdriveRating = hyperdriveRating
-        } else {
-            starship.hyperdriveRating = Double(-1)
-        }
+        starship.costInCredits = Double(service.costInCredits) ?? Double(-1)
+        starship.length = Double(service.length) ?? Double(-1)
+        starship.numberOfCrewMembers = Double(service.numberOfCrewMembers) ?? Double(-1)
+        starship.numberOfPassengers = Double(service.numberOfPassengers) ?? Double(-1)
+        starship.maxAtmosphericSpeed = Double(service.maxAtmosphericSpeed) ?? Double(-1)
+        starship.hyperdriveRating = Double(service.hyperDriveRating) ?? Double(-1)
         
         //print(starship.description)
         

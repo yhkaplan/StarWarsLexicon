@@ -19,10 +19,20 @@ struct PlanetService: Decodable, SWService {
     let rotationPeriod: String
     let surfaceWater: String
     let terrain: String
-    let toFilm: String
+    let toFilm: [String]
     
     //Enum to help codable convert json to objects
-//    private enum CodingKeys: String, CodingKey {
-//
-//    }
+    private enum CodingKeys: String, CodingKey {
+        case climate
+        case diameter
+        case gravity
+        case url
+        case name
+        case orbitalPeriod = "orbital_period"
+        case population
+        case rotationPeriod = "rotation_period"
+        case surfaceWater = "surface_water"
+        case terrain
+        case toFilm = "films"
+    }
 }

@@ -23,6 +23,7 @@ struct CharacterService: Decodable, SWService {
     
     let homeworldURL: String?
     let filmURLs: [String]?
+    
     //Enum to help codable convert json to objects
     private enum CodingKeys: String, CodingKey {
         case name
