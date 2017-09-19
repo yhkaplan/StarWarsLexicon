@@ -14,3 +14,7 @@ import CoreData
     var itemName: String { get }
     var itemURL: String { get }
 }
+
+//A protocol to provide generic access inside of DataService to each supporting SW Service data model
+protocol SWService {
+}

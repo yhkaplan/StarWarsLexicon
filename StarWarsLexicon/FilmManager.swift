@@ -43,6 +43,7 @@ class FilmManager {
                 return
             }
             
+            //SWITCH THIS TO BACKGROUND CONTEXT?
             let managedContext = appDelegate.persistentContainer.viewContext
             
             do {
@@ -69,93 +70,27 @@ class FilmManager {
         }
     }
     
-    private func convertToDate(from string: String) -> NSDate? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        return formatter.date(from: string) as NSDate?
-    }
-    
-    private func addFilm(_ json: [String : Any], to index: Int) -> Film? {
-        
-        guard let title = json["title"] as? String else {
-            print("Parsing error with title ")
-            return nil
-        }
-        
-        guard let episodeID = json["episode_id"] as? Int16 else {
-            print("Parsing error with episode id")
-            return nil
-        }
-        
-        guard let openingCrawl = json["opening_crawl"] as? String else {
-            print("Parsing error with opening crawl")
-            return nil
-        }
-        
-        guard let director = json["director"] as? String else {
-            print("Parsing error with director")
-            return nil
-        }
-        
-        guard let producer = json["producer"] as? String else {
-            print("Parsing error with producer")
-            return nil
-        }
-        
-        guard let url = json["url"] as? String else {
-            print("Parsing error with url")
-            return nil
-        }
-        
-        guard let releaseDateString = json["release_date"] as? String, let releaseDate = convertToDate(from: releaseDateString) else {
-            print("Parsing error with release date")
-            return nil
-        }
-        
-        //MARK: - Checks for other objects. This url data is then passed to other areas
-        
-        guard let characterURLStrings = json["characters"] as? [String] else {
-            print("Parsing error with character URLs")
-            return nil
-        }
-        
-        guard let planetURLStrings = json["planets"] as? [String] else {
-            print("Parsing error with planet URLs")
-            return nil
-        }
-        
-        guard let starshipURLStrings = json["starships"] as? [String] else {
-            print("Parsing error with starship URLs")
-            return nil
-        }
-        
-        guard let vehicleURLStrings = json["vehicles"] as? [String] else {
-            print("Parsing error with vehicle URLs")
-            return nil
-        }
+    private func addFilm(_ service: FilmService, to index: Int) -> Film? {
         
         //Appending new info APIService singleton, using a custom method to avoid duplicates
-        APIService.sharedInstance.appendURLStringArray(characterURLStrings, to: .character)
-        APIService.sharedInstance.appendURLStringArray(planetURLStrings, to: .planet)
-        APIService.sharedInstance.appendURLStringArray(starshipURLStrings, to: .starship)
-        APIService.sharedInstance.appendURLStringArray(vehicleURLStrings, to: .vehicle)
+        APIService.sharedInstance.appendURLStringArray(service.characterURLs, to: .character)
+        APIService.sharedInstance.appendURLStringArray(service.planetURLs, to: .planet)
+        APIService.sharedInstance.appendURLStringArray(service.starshipURLs, to: .starship)
+        APIService.sharedInstance.appendURLStringArray(service.vehicleURLs, to: .vehicle)
         
         //MARK: - JSON guards cleared, so test for CoreData prerequisite
         let film = Film(entity: Film.entity(), insertInto: moc)
         
-        film.title = title
-        film.episodeID = episodeID
-        film.openingCrawl = openingCrawl
-        film.director = director
-        film.producer = producer
-        film.itemURL = url
-        film.releaseDate = releaseDate
+        film.title = service.title
+        film.episodeID = Int16(service.episodeID)
+        film.openingCrawl = service.openingCrawl
+        film.director = service.director
+        film.producer = service.producer
+        film.itemURL = service.itemURL
+        film.releaseDate = service.releaseDate as NSDate
         
         film.category = "film"
-        film.itemName = title
+        film.itemName = service.title
         
         //print(film.description)
         
@@ -189,14 +124,16 @@ class FilmManager {
             }
             
             //print("Download url is \(url)")
-            dataService.fetchItem(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .film, completion: { (result) in
                 switch result {
-                case let .success(filmJSON):
-                    if let film = self.addFilm(filmJSON, to: index) {
-                        completion(film)
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                case let .success(filmService):
+                    if let filmService = filmService as? FilmService {
+                        if let film = self.addFilm(filmService, to: index) {
+                            completion(film)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)
@@ -238,21 +175,15 @@ class FilmManager {
     
     //Helper function for method above
     private func getFilmWithURL(_ urlString: String, completion: @escaping (Film?) -> Void) {
+        
         //fetch films from core data store, see if any match url using NSPredicate
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest: NSFetchRequest<Film> = Film.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Film.itemURL), urlString)
         
         var relatedFilms = [Film]()
         
         do {
-            relatedFilms = try managedContext.fetch(fetchRequest)
-            //films = try managedContext.fetch(Film.fetchRequest())
+            relatedFilms = try moc.fetch(fetchRequest)
         } catch let error as NSError {
             print(error)
         }

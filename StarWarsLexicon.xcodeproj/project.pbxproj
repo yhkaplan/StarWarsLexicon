@@ -11,6 +11,9 @@
 		A3065B261F22CE970048C996 /* CircularImageWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3065B251F22CE970048C996 /* CircularImageWithBorder.swift */; };
 		A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313AF221F00A90D006EA7EC /* CircularImage.swift */; };
 		A318030B1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A31803091F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld */; };
+		A32044711F6FEFC300D7FCFA /* PlanetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32044701F6FEFC300D7FCFA /* PlanetService.swift */; };
+		A32044731F6FF0C600D7FCFA /* StarshipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32044721F6FF0C600D7FCFA /* StarshipService.swift */; };
+		A32044751F6FF18100D7FCFA /* VehicleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32044741F6FF18100D7FCFA /* VehicleService.swift */; };
 		A3257B0A1EC1E36D0067C282 /* SWCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3257B091EC1E36D0067C282 /* SWCategory.swift */; };
 		A32B07771F498B7500BEAD9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32B07761F498B7500BEAD9A /* Constants.swift */; };
 		A331AD7A1EFE3FA1004DBC51 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A331AD791EFE3FA1004DBC51 /* FilmCell.swift */; };
@@ -27,6 +30,7 @@
 		A387D4541F1C58E400874EF1 /* StarWarsLexiconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */; };
 		A387D4621F1C58F400874EF1 /* StarWarsLexiconUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */; };
 		A38ACE1A1F12D20400ABCEA2 /* VehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38ACE191F12D20400ABCEA2 /* VehicleVC.swift */; };
+		A39D5E6D1F6D442B00E1B5BA /* FilmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */; };
 		A39FEBF71F515010001A7141 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FEBF21F515010001A7141 /* Character+CoreDataProperties.swift */; };
 		A39FEBF81F515010001A7141 /* Starship+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FEBF31F515010001A7141 /* Starship+CoreDataProperties.swift */; };
 		A39FEBF91F515010001A7141 /* Film+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FEBF41F515010001A7141 /* Film+CoreDataProperties.swift */; };
@@ -47,6 +51,7 @@
 		A3B69EDE1F2F0AA800ABD0A9 /* FilmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B69EDD1F2F0AA800ABD0A9 /* FilmManager.swift */; };
 		A3B69EE01F2F164400ABD0A9 /* VehicleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B69EDF1F2F164400ABD0A9 /* VehicleManager.swift */; };
 		A3CCAF421F24456B00994F57 /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCAF411F24456B00994F57 /* CharacterManager.swift */; };
+		A3CD0ED61F6EB20B007CDE19 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CD0ED51F6EB20B007CDE19 /* CharacterService.swift */; };
 		A3CE5E9A1F064CB30047C771 /* CharacterDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CE5E991F064CB30047C771 /* CharacterDetailVC.swift */; };
 		A3F2C8FB1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */; };
 		A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */; };
@@ -75,6 +80,9 @@
 		A3065B251F22CE970048C996 /* CircularImageWithBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageWithBorder.swift; sourceTree = "<group>"; };
 		A313AF221F00A90D006EA7EC /* CircularImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
 		A318030A1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StarWarsLexicon.xcdatamodel; sourceTree = "<group>"; };
+		A32044701F6FEFC300D7FCFA /* PlanetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetService.swift; sourceTree = "<group>"; };
+		A32044721F6FF0C600D7FCFA /* StarshipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipService.swift; sourceTree = "<group>"; };
+		A32044741F6FF18100D7FCFA /* VehicleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleService.swift; sourceTree = "<group>"; };
 		A3257B091EC1E36D0067C282 /* SWCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWCategory.swift; sourceTree = "<group>"; };
 		A32B07761F498B7500BEAD9A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A331AD791EFE3FA1004DBC51 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
@@ -95,6 +103,7 @@
 		A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsLexiconUITests.swift; sourceTree = "<group>"; };
 		A387D4631F1C58F400874EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A38ACE191F12D20400ABCEA2 /* VehicleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleVC.swift; sourceTree = "<group>"; };
+		A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmService.swift; sourceTree = "<group>"; };
 		A39FEBF21F515010001A7141 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+CoreDataProperties.swift"; path = "../Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A39FEBF31F515010001A7141 /* Starship+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Starship+CoreDataProperties.swift"; path = "../Starship+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A39FEBF41F515010001A7141 /* Film+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Film+CoreDataProperties.swift"; path = "../Film+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		A3B69EDD1F2F0AA800ABD0A9 /* FilmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmManager.swift; sourceTree = "<group>"; };
 		A3B69EDF1F2F164400ABD0A9 /* VehicleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleManager.swift; sourceTree = "<group>"; };
 		A3CCAF411F24456B00994F57 /* CharacterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
+		A3CD0ED51F6EB20B007CDE19 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		A3CE5E991F064CB30047C771 /* CharacterDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailVC.swift; sourceTree = "<group>"; };
 		A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipAndVehicleDetailVC.swift; sourceTree = "<group>"; };
 		A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
@@ -209,6 +219,7 @@
 			children = (
 				A39FEBF41F515010001A7141 /* Film+CoreDataProperties.swift */,
 				A34289321F30062E00256EA2 /* Film+CoreDataClass.swift */,
+				A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -218,6 +229,7 @@
 			children = (
 				A39FEBF21F515010001A7141 /* Character+CoreDataProperties.swift */,
 				A3B69ED21F2EA8CD00ABD0A9 /* Character+CoreDataClass.swift */,
+				A3CD0ED51F6EB20B007CDE19 /* CharacterService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -274,6 +286,7 @@
 			children = (
 				A39FEBF51F515010001A7141 /* Planet+CoreDataProperties.swift */,
 				A34289361F30064500256EA2 /* Planet+CoreDataClass.swift */,
+				A32044701F6FEFC300D7FCFA /* PlanetService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,6 +313,7 @@
 			children = (
 				A39FEBF31F515010001A7141 /* Starship+CoreDataProperties.swift */,
 				A342893E1F30066F00256EA2 /* Starship+CoreDataClass.swift */,
+				A32044721F6FF0C600D7FCFA /* StarshipService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -342,6 +356,7 @@
 			children = (
 				A39FEBF61F515010001A7141 /* Vehicle+CoreDataProperties.swift */,
 				A342893A1F30065D00256EA2 /* Vehicle+CoreDataClass.swift */,
+				A32044741F6FF18100D7FCFA /* VehicleService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -491,24 +506,27 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Joshua Kaplan";
 				TargetAttributes = {
 					A387D4501F1C58E400874EF1 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 3EFBU2355T;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A3AAB9271EBF2EE900AE53E5;
 					};
 					A387D45E1F1C58F400874EF1 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 3EFBU2355T;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A3AAB9271EBF2EE900AE53E5;
 					};
 					A3AAB9271EBF2EE900AE53E5 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3EFBU2355T;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -581,15 +599,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32044751F6FF18100D7FCFA /* VehicleService.swift in Sources */,
 				A3AAB92E1EBF2EE900AE53E5 /* FilmVC.swift in Sources */,
 				A3B69EDB1F2EFCD200ABD0A9 /* StarshipManager.swift in Sources */,
 				A39FEBF71F515010001A7141 /* Character+CoreDataProperties.swift in Sources */,
 				A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */,
 				A3394E231F040D55007BAA96 /* PlanetVC.swift in Sources */,
+				A3CD0ED61F6EB20B007CDE19 /* CharacterService.swift in Sources */,
 				A34289401F30066F00256EA2 /* Starship+CoreDataClass.swift in Sources */,
 				A38ACE1A1F12D20400ABCEA2 /* VehicleVC.swift in Sources */,
 				A3F2C8FB1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift in Sources */,
 				A3B69ED91F2EF0A400ABD0A9 /* PlanetManager.swift in Sources */,
+				A32044731F6FF0C600D7FCFA /* StarshipService.swift in Sources */,
 				A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */,
 				A318030B1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld in Sources */,
 				A3FBD4621F15FCAF0069AC3E /* RelatedFilmCell.swift in Sources */,
@@ -610,8 +631,10 @@
 				A3A4CFBB1EE29C2C00DB97C2 /* SWCell.swift in Sources */,
 				A3065B261F22CE970048C996 /* CircularImageWithBorder.swift in Sources */,
 				A3B69ED71F2EAD0D00ABD0A9 /* APIService.swift in Sources */,
+				A39D5E6D1F6D442B00E1B5BA /* FilmService.swift in Sources */,
 				A39FEBF81F515010001A7141 /* Starship+CoreDataProperties.swift in Sources */,
 				A342893C1F30065D00256EA2 /* Vehicle+CoreDataClass.swift in Sources */,
+				A32044711F6FEFC300D7FCFA /* PlanetService.swift in Sources */,
 				A34289341F30062E00256EA2 /* Film+CoreDataClass.swift in Sources */,
 				A3B69EDE1F2F0AA800ABD0A9 /* FilmManager.swift in Sources */,
 				A3CE5E9A1F064CB30047C771 /* CharacterDetailVC.swift in Sources */,
@@ -667,7 +690,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarWarsLexicon.app/StarWarsLexicon";
 			};
 			name = Debug;
@@ -681,7 +705,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarWarsLexicon.app/StarWarsLexicon";
 			};
 			name = Release;
@@ -694,7 +719,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = StarWarsLexicon;
 			};
 			name = Debug;
@@ -707,7 +733,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexiconUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = StarWarsLexicon;
 			};
 			name = Release;
@@ -722,7 +749,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -730,7 +759,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -753,7 +786,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -773,7 +806,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -781,7 +816,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -798,7 +837,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -816,7 +855,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexicon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -830,7 +870,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josh.StarWarsLexicon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

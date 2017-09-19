@@ -54,82 +54,31 @@ class VehicleManager {
     
     //There appears to be a large number of vehicles that don't actually load properly on the APIs end
     //Think of workaround using pages containing items
-    private func addVehicle(_ json: [String : Any], to index: Int) -> Vehicle? {
-
-        guard let name = json["name"] as? String else {
-            print("Parsing error with vehicle name")
-            return nil
-        }
-        
-        guard let model = json["model"] as? String else {
-            print("Parsing error with vehicle model")
-            return nil
-        }
-        
-        guard let vehicleClass = json["vehicle_class"] as? String else {
-            print("Parsing error with vehicle class")
-            return nil
-        }
-        
-        guard let manufacturer = json["manufacturer"] as? String else {
-            print("Parsing error with vehicle manufacturer")
-            return nil
-        }
-        
-        guard let url = json["url"] as? String else {
-            print("Parsing error with vehicle url")
-            return nil
-        }
+    private func addVehicle(_ service: VehicleService, to index: Int) -> Vehicle? {
         
         //JSON guards cleared, so test for CoreData prerequisite
         let vehicle = Vehicle(entity: Vehicle.entity(), insertInto: moc)
         
-        vehicle.name = name
-        vehicle.model = model
-        vehicle.vehicleClass = vehicleClass
-        vehicle.manufacturer = manufacturer
-        vehicle.itemURL = url
+        vehicle.name = service.name
+        vehicle.model = service.model
+        vehicle.vehicleClass = service.vehicleClass
+        vehicle.manufacturer = service.manufacturer
+        vehicle.itemURL = service.url
         
-        vehicle.itemName = name
+        vehicle.itemName = service.name
         vehicle.category = "vehicle"
         
         //MARK: - Setting related films
-        if let filmURLStrings = json["films"] as? [String] {
-            if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
-                //Set value
-                vehicle.toFilm = relatedFilmSet
-            }
+        if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: service.toFilm) {
+            //Set value
+            vehicle.toFilm = relatedFilmSet
         }
         
-        if let costInCreditsString = json["cost_in_credits"] as? String, let costInCredits = Double(costInCreditsString) {
-            vehicle.costInCredits = costInCredits
-        } else {
-            vehicle.costInCredits = Double(-1)
-        }
-        
-        if let lengthString = json["length"] as? String, let length = Double(lengthString) {
-            vehicle.length = length
-        } else {
-            vehicle.length = Double(-1)
-        }
-        
-        if let numberOfCrewMembersString = json["crew"] as? String, let numberOfCrewMembers = Int64(numberOfCrewMembersString) {
-            vehicle.numberOfCrewMembers = numberOfCrewMembers
-        } else {
-            vehicle.numberOfCrewMembers = Int64(-1)
-        }
-        
-        if let numberOfPassengersString = json["passengers"] as? String, let numberOfPassengers = Int64(numberOfPassengersString) {
-            vehicle.numberOfPassengers = numberOfPassengers
-        } else {
-            vehicle.numberOfPassengers = Int64(-1)
-        }
-        
-        if let maxAtmosphericSpeedString = json["max_atmosphering_speed"] as? String, let maxAtmosphericSpeed = Double(maxAtmosphericSpeedString) {
-            vehicle.maximumAtmosphericSpeed = maxAtmosphericSpeed
-        } else {
-            vehicle.maximumAtmosphericSpeed = Double(-1)
-        }
+        vehicle.costInCredits = Double(service.costInCredits) ?? Double(-1)
+        vehicle.length = Double(service.length) ?? Double(-1)
+        vehicle.numberOfCrewMembers = Int64(service.numberOfCrewMembers) ?? Int64(-1)
+        vehicle.numberOfPassengers = Int64(service.numberOfPassengers) ?? Int64(-1)
+        vehicle.maximumAtmosphericSpeed = Double(service.maxAtmosphericSpeed) ?? Double(-1)
         
         //print(vehicle.description)
         
@@ -182,15 +131,16 @@ class VehicleManager {
             }
             
             //print("Download url is \(url)")
-            dataService.fetchItem(at: url, completion: { (result) in
+            dataService.fetchItem(at: url, for: .vehicle, completion: { (result) in
                 switch result {
-                case let .success(vehicleJSON):
-                    //switch to main thread?
-                    if let vehicle = self.addVehicle(vehicleJSON, to: index) {
-                        completion(vehicle)
-                    } else {
-                        print("JSON parsing error")
-                        completion(nil)
+                case let .success(vehicleService):
+                    if let vehicleService = vehicleService as? VehicleService {
+                        if let vehicle = self.addVehicle(vehicleService, to: index) {
+                            completion(vehicle)
+                        } else {
+                            print("JSON parsing error")
+                            completion(nil)
+                        }
                     }
                 case let .failure(error):
                     print(error)

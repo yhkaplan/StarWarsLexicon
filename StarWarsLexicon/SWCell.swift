@@ -29,12 +29,11 @@ class SWCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        textLbl.text = nil
         textLbl.isHidden = true
         activitySpinner.startAnimating()
     }
 
-    //    func configureCell<T: SWCategory> (_ item: T) {
-    //Turning of generics for testing purposes
     func configureCell<T: NSManagedObject> (_ item: T) where T: SWCategory {
         activitySpinner.stopAnimating()
         textLbl.isHidden = false
