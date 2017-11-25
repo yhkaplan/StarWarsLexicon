@@ -57,6 +57,7 @@
 		A3CCAF421F24456B00994F57 /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CCAF411F24456B00994F57 /* CharacterManager.swift */; };
 		A3CD0ED61F6EB20B007CDE19 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CD0ED51F6EB20B007CDE19 /* CharacterService.swift */; };
 		A3CE5E9A1F064CB30047C771 /* CharacterDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CE5E991F064CB30047C771 /* CharacterDetailVC.swift */; };
+		A3DF7F191FC932C0006DF99D /* TestFilm.json in Resources */ = {isa = PBXBuildFile; fileRef = A3DF7F181FC932C0006DF99D /* TestFilm.json */; };
 		A3F2C8FB1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */; };
 		A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */; };
 		A3FBD4621F15FCAF0069AC3E /* RelatedFilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */; };
@@ -142,6 +143,7 @@
 		A3CE5E991F064CB30047C771 /* CharacterDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailVC.swift; sourceTree = "<group>"; };
 		A3DB7B081FC804BE001791B4 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DB7B091FC804BE001791B4 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3DF7F181FC932C0006DF99D /* TestFilm.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestFilm.json; sourceTree = "<group>"; };
 		A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipAndVehicleDetailVC.swift; sourceTree = "<group>"; };
 		A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
 		A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFilmCell.swift; sourceTree = "<group>"; };
@@ -407,9 +409,10 @@
 		A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */ = {
 			isa = PBXGroup;
 			children = (
-				A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */,
+				A3DF7F181FC932C0006DF99D /* TestFilm.json */,
 				A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */,
 				A387D4551F1C58E400874EF1 /* Info.plist */,
+				A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */,
 			);
 			path = StarWarsLexiconTests;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3DF7F191FC932C0006DF99D /* TestFilm.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

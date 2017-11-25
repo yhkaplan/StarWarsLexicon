@@ -58,6 +58,30 @@ class RealmFilmTests: QuickSpec {
                     expect(Array(testFilm.vehicleURLs)).to(equal(vehicleURLs))
                 }
             }
+
+            context("When Decodable is used to parse a JSON file") {
+                it("is successfully converted to Swift then Realm objects") {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                    
+                    guard let path = Bundle.main.path(forResource: "TestFilm", ofType: "json") else {
+                        fail("JSON file could not be loaded")
+                        return
+                    }
+                    
+                    do {
+                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    } catch let error {
+                        fail("Test failed with following error: \(error)")
+                    }
+                    
+                    let testFilm = try! decoder.decode(RealmFilm.self, from: data)
+                    expect(testFilm.title).to(equal("A New Hope"))
+                }
+            }
         }
     }
 }
@@ -67,7 +91,6 @@ extension String {
     func getDate() -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
-//        formatter.locale = Locale(identifier: "en_US_POSIX")
         
         return formatter.date(from: self)
     }

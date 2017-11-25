@@ -38,6 +38,11 @@
                BlueprintName = "StarWarsLexiconTests"
                ReferencedContainer = "container:StarWarsLexicon.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "StarWarsLexiconTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
@@ -48,6 +53,11 @@
                BlueprintName = "StarWarsLexiconUITests"
                ReferencedContainer = "container:StarWarsLexicon.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "StarWarsLexiconUITests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
