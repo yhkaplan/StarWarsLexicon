@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5FFD315EB57E0A3440DFFE49 /* Pods_StarWarsLexicon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C0EFB957130B8F6A9E1974 /* Pods_StarWarsLexicon.framework */; };
+		2FB144F3BDE71EAAC11265AD /* Pods_StarWarsLexicon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A08981A65AA6C383E340D66 /* Pods_StarWarsLexicon.framework */; };
+		9747C7627A81E4129BD1D8BF /* Pods_StarWarsLexiconTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39624B502D7EEFB531E51AA0 /* Pods_StarWarsLexiconTests.framework */; };
 		A30012001F0395E5003AC485 /* StarshipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30011FF1F0395E5003AC485 /* StarshipVC.swift */; };
 		A3065B261F22CE970048C996 /* CircularImageWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3065B251F22CE970048C996 /* CircularImageWithBorder.swift */; };
 		A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A313AF221F00A90D006EA7EC /* CircularImage.swift */; };
@@ -59,7 +60,6 @@
 		A3F2C8FB1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */; };
 		A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */; };
 		A3FBD4621F15FCAF0069AC3E /* RelatedFilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */; };
-		CB61003F4D77E6BB2920BC7A /* Pods_StarWarsLexiconTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102D49533B83A0162410A644 /* Pods_StarWarsLexiconTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,9 +80,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		102D49533B83A0162410A644 /* Pods_StarWarsLexiconTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsLexiconTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		37C0EFB957130B8F6A9E1974 /* Pods_StarWarsLexicon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsLexicon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A83FF5408ED6EFA69FE1EC1 /* Pods-StarWarsLexicon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexicon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon.debug.xcconfig"; sourceTree = "<group>"; };
+		1BD874E65F826059D007B1A4 /* Pods-StarWarsLexiconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexiconTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests.release.xcconfig"; sourceTree = "<group>"; };
+		39624B502D7EEFB531E51AA0 /* Pods_StarWarsLexiconTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsLexiconTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A08981A65AA6C383E340D66 /* Pods_StarWarsLexicon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StarWarsLexicon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DFCBA2B14720268A7B02A8E /* Pods-StarWarsLexicon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexicon.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon.release.xcconfig"; sourceTree = "<group>"; };
 		A30011FF1F0395E5003AC485 /* StarshipVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipVC.swift; sourceTree = "<group>"; };
 		A30039661FC806D900F0D34F /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30039671FC806D900F0D34F /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,9 +145,8 @@
 		A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipAndVehicleDetailVC.swift; sourceTree = "<group>"; };
 		A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
 		A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFilmCell.swift; sourceTree = "<group>"; };
-		A547AD82CE14759C528A4FDC /* Pods-StarWarsLexiconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexiconTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests.release.xcconfig"; sourceTree = "<group>"; };
-		CC71D130BBC8AC487E737C24 /* Pods-StarWarsLexicon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexicon.release.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon.release.xcconfig"; sourceTree = "<group>"; };
-		EC61EA355BD2717BFF367E72 /* Pods-StarWarsLexiconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexiconTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C7B8B97666A36204657D15C3 /* Pods-StarWarsLexiconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexiconTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F08A61DE985A71EB61CEBB8D /* Pods-StarWarsLexicon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexicon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB61003F4D77E6BB2920BC7A /* Pods_StarWarsLexiconTests.framework in Frameworks */,
+				9747C7627A81E4129BD1D8BF /* Pods_StarWarsLexiconTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,13 +169,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FFD315EB57E0A3440DFFE49 /* Pods_StarWarsLexicon.framework in Frameworks */,
+				2FB144F3BDE71EAAC11265AD /* Pods_StarWarsLexicon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C455352431DBC7E323EA1FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F08A61DE985A71EB61CEBB8D /* Pods-StarWarsLexicon.debug.xcconfig */,
+				3DFCBA2B14720268A7B02A8E /* Pods-StarWarsLexicon.release.xcconfig */,
+				C7B8B97666A36204657D15C3 /* Pods-StarWarsLexiconTests.debug.xcconfig */,
+				1BD874E65F826059D007B1A4 /* Pods-StarWarsLexiconTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5F8D86E2A49A59F595868B86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,21 +194,10 @@
 				A30039671FC806D900F0D34F /* Quick.framework */,
 				A3DB7B081FC804BE001791B4 /* Nimble.framework */,
 				A3DB7B091FC804BE001791B4 /* Quick.framework */,
-				37C0EFB957130B8F6A9E1974 /* Pods_StarWarsLexicon.framework */,
-				102D49533B83A0162410A644 /* Pods_StarWarsLexiconTests.framework */,
+				3A08981A65AA6C383E340D66 /* Pods_StarWarsLexicon.framework */,
+				39624B502D7EEFB531E51AA0 /* Pods_StarWarsLexiconTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A0E8F4FEE924FF54A03B8AD3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4A83FF5408ED6EFA69FE1EC1 /* Pods-StarWarsLexicon.debug.xcconfig */,
-				CC71D130BBC8AC487E737C24 /* Pods-StarWarsLexicon.release.xcconfig */,
-				EC61EA355BD2717BFF367E72 /* Pods-StarWarsLexiconTests.debug.xcconfig */,
-				A547AD82CE14759C528A4FDC /* Pods-StarWarsLexiconTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		A32B07611F49803D00BEAD9A /* Entire Project */ = {
@@ -461,8 +461,8 @@
 				A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */,
 				A387D4601F1C58F400874EF1 /* StarWarsLexiconUITests */,
 				A3AAB9291EBF2EE900AE53E5 /* Products */,
-				A0E8F4FEE924FF54A03B8AD3 /* Pods */,
 				5F8D86E2A49A59F595868B86 /* Frameworks */,
+				3C455352431DBC7E323EA1FB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -496,12 +496,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A387D45A1F1C58E400874EF1 /* Build configuration list for PBXNativeTarget "StarWarsLexiconTests" */;
 			buildPhases = (
-				BBA04500A790DDECCDB3929B /* [CP] Check Pods Manifest.lock */,
+				A9EAF382CD556974B3163F23 /* [CP] Check Pods Manifest.lock */,
 				A387D44D1F1C58E400874EF1 /* Sources */,
 				A387D44E1F1C58E400874EF1 /* Frameworks */,
 				A387D44F1F1C58E400874EF1 /* Resources */,
-				F13573C4E13C9FF686B70028 /* [CP] Embed Pods Frameworks */,
-				57AE718615EB2EA18F3E97D1 /* [CP] Copy Pods Resources */,
+				EE310D0A6855AC818595A615 /* [CP] Embed Pods Frameworks */,
+				41B738BA1EAE975C5D72B7E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -535,12 +535,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3AAB93A1EBF2EE900AE53E5 /* Build configuration list for PBXNativeTarget "StarWarsLexicon" */;
 			buildPhases = (
-				1582BE7BBA1D9BB97997825B /* [CP] Check Pods Manifest.lock */,
+				E03B8EDEFAB0A9D05F1A834C /* [CP] Check Pods Manifest.lock */,
 				A3AAB9241EBF2EE900AE53E5 /* Sources */,
 				A3AAB9251EBF2EE900AE53E5 /* Frameworks */,
 				A3AAB9261EBF2EE900AE53E5 /* Resources */,
-				4660DAA6493014C600AC2A32 /* [CP] Embed Pods Frameworks */,
-				87675EA10DAF7AE98BE9369F /* [CP] Copy Pods Resources */,
+				A494FAB25977038A40D5C055 /* [CP] Embed Pods Frameworks */,
+				F1E3645BF4E525E93522A95B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -631,25 +631,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1582BE7BBA1D9BB97997825B /* [CP] Check Pods Manifest.lock */ = {
+		41B738BA1EAE975C5D72B7E5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StarWarsLexicon-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4660DAA6493014C600AC2A32 /* [CP] Embed Pods Frameworks */ = {
+		A494FAB25977038A40D5C055 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -669,37 +666,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		57AE718615EB2EA18F3E97D1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87675EA10DAF7AE98BE9369F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBA04500A790DDECCDB3929B /* [CP] Check Pods Manifest.lock */ = {
+		A9EAF382CD556974B3163F23 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -717,24 +684,61 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F13573C4E13C9FF686B70028 /* [CP] Embed Pods Frameworks */ = {
+		E03B8EDEFAB0A9D05F1A834C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StarWarsLexicon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE310D0A6855AC818595A615 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1E3645BF4E525E93522A95B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -846,7 +850,7 @@
 /* Begin XCBuildConfiguration section */
 		A387D4581F1C58E400874EF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC61EA355BD2717BFF367E72 /* Pods-StarWarsLexiconTests.debug.xcconfig */;
+			baseConfigurationReference = C7B8B97666A36204657D15C3 /* Pods-StarWarsLexiconTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 3EFBU2355T;
@@ -862,7 +866,7 @@
 		};
 		A387D4591F1C58E400874EF1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A547AD82CE14759C528A4FDC /* Pods-StarWarsLexiconTests.release.xcconfig */;
+			baseConfigurationReference = 1BD874E65F826059D007B1A4 /* Pods-StarWarsLexiconTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 3EFBU2355T;
@@ -1013,7 +1017,7 @@
 		};
 		A3AAB93B1EBF2EE900AE53E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A83FF5408ED6EFA69FE1EC1 /* Pods-StarWarsLexicon.debug.xcconfig */;
+			baseConfigurationReference = F08A61DE985A71EB61CEBB8D /* Pods-StarWarsLexicon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3EFBU2355T;
@@ -1029,7 +1033,7 @@
 		};
 		A3AAB93C1EBF2EE900AE53E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC71D130BBC8AC487E737C24 /* Pods-StarWarsLexicon.release.xcconfig */;
+			baseConfigurationReference = 3DFCBA2B14720268A7B02A8E /* Pods-StarWarsLexicon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3EFBU2355T;
