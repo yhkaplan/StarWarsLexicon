@@ -31,7 +31,6 @@
 		A36AE52D1F04E438000EC896 /* PlanetDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */; };
 		A36F70FB1FC7F9280036CCAF /* FilmModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */; };
 		A36F70FD1FC7FA8D0036CCAF /* RealmFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F70FC1FC7FA8D0036CCAF /* RealmFilm.swift */; };
-		A387D4541F1C58E400874EF1 /* StarWarsLexiconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */; };
 		A387D4621F1C58F400874EF1 /* StarWarsLexiconUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */; };
 		A38ACE1A1F12D20400ABCEA2 /* VehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38ACE191F12D20400ABCEA2 /* VehicleVC.swift */; };
 		A39D5E6D1F6D442B00E1B5BA /* FilmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39D5E6C1F6D442B00E1B5BA /* FilmService.swift */; };
@@ -110,7 +109,6 @@
 		A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModelTests.swift; sourceTree = "<group>"; };
 		A36F70FC1FC7FA8D0036CCAF /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
 		A387D4511F1C58E400874EF1 /* StarWarsLexiconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsLexiconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsLexiconTests.swift; sourceTree = "<group>"; };
 		A387D4551F1C58E400874EF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A387D45F1F1C58F400874EF1 /* StarWarsLexiconUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsLexiconUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A387D4611F1C58F400874EF1 /* StarWarsLexiconUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsLexiconUITests.swift; sourceTree = "<group>"; };
@@ -406,13 +404,20 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */ = {
+		A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */ = {
 			isa = PBXGroup;
 			children = (
 				A3DF7F181FC932C0006DF99D /* TestFilm.json */,
 				A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */,
+			);
+			path = RealmFilmModel;
+			sourceTree = "<group>";
+		};
+		A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */ = {
+			isa = PBXGroup;
+			children = (
+				A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */,
 				A387D4551F1C58E400874EF1 /* Info.plist */,
-				A387D4531F1C58E400874EF1 /* StarWarsLexiconTests.swift */,
 			);
 			path = StarWarsLexiconTests;
 			sourceTree = "<group>";
@@ -659,11 +664,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexicon/Pods-StarWarsLexicon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -715,6 +722,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -722,6 +730,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -752,7 +761,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A387D4541F1C58E400874EF1 /* StarWarsLexiconTests.swift in Sources */,
 				A36F70FB1FC7F9280036CCAF /* FilmModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
