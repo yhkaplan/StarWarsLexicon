@@ -80,13 +80,6 @@ class RealmFilmTests: QuickSpec {
     
     override func spec() {
         describe("Testing if data is saved to mock store") {
-            beforeEach {
-                //Set up
-            }
-            afterEach {
-                //tear down
-            }
-            
             context("When objects are initialized in code") {
                 it("They should exist in memory with their properties as set") {
                     let testFilm = RealmFilm(director: self.director, episodeID: self.episodeID, itemURL: self.itemURL, openingCrawl: self.openingCrawl, producer: self.producer, releaseDate: self.releaseDate, title: self.title, characterURLs: self.charURLs, planetURLs: self.planetURLs, starshipURLs: self.starshipURLs, vehicleURLs: self.vehicleURLs)
