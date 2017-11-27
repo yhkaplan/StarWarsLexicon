@@ -101,11 +101,36 @@ class RealmFilmTests: QuickSpec {
                     
                     do {
                         let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                        let testFilm = try decoder.decode(RealmFilm.self, from: data)//Removed "!" from try
+                        let testFilm = try decoder.decode(RealmFilm.self, from: data)
                         
                         expect(testFilm).toNot(beNil())
-                        
                         testProperties(of: testFilm)
+                    } catch let error {
+                        fail("Test failed with following error: \(error)")
+                    }
+                }
+            }
+            
+            context("When a FilmList (results array) json is processed") {
+                it("is parsed successfully with Decodable") {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                    
+                    guard let path = Bundle(for: type(of: self)).path(forResource: "TestFilmList", ofType: "json") else {
+                        fail("JSON file could not be loaded")
+                        return
+                    }
+                    
+                    do {
+                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                        let testFilmList = try decoder.decode(FilmList.self, from: data)
+                        
+                        expect(testFilmList).toNot(beNil())
+                        //The first film happens to be a New Hope
+                        testProperties(of: testFilmList.films[0])
                     } catch let error {
                         fail("Test failed with following error: \(error)")
                     }

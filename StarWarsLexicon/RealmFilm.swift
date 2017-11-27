@@ -9,6 +9,20 @@
 import Foundation
 import RealmSwift
 
+/*
+ This struct is to account for the API format.
+ All objects on a given page are located in an array with the dict key: "results"
+*/
+struct FilmList: Decodable {
+    let films: [RealmFilm]
+    let nextPage: String? //This is to both grab the next page and see if it is nil
+    
+    private enum CodingKeys: String, CodingKey {
+        case films = "results"
+        case nextPage = "next"
+    }
+}
+
 //Make this conform to Decodable and test w/ a JSON file
 //Also make this conform to SWService or SWCategory
 class RealmFilm: Object, Decodable {
