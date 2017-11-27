@@ -26,6 +26,10 @@
 		A34289401F30066F00256EA2 /* Starship+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342893E1F30066F00256EA2 /* Starship+CoreDataClass.swift */; };
 		A344DB811F4FEA570012636D /* RelatedFilmCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A344DB801F4FEA570012636D /* RelatedFilmCollectionVC.swift */; };
 		A34FCD481F0263A0001008EB /* CellBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34FCD471F0263A0001008EB /* CellBackgroundView.swift */; };
+		A35653211FCBCAC5008D6CD9 /* URLSession+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35653201FCBCAC5008D6CD9 /* URLSession+Rx.swift */; };
+		A35653231FCBCAF1008D6CD9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35653221FCBCAF1008D6CD9 /* NetworkingService.swift */; };
+		A35653261FCBD024008D6CD9 /* URLSession+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35653251FCBD024008D6CD9 /* URLSession+RxTests.swift */; };
+		A35653281FCBD033008D6CD9 /* NWServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35653271FCBD033008D6CD9 /* NWServiceTests.swift */; };
 		A35AF1681F568D410005AE9E /* SWSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AF1671F568D410005AE9E /* SWSearchBar.swift */; };
 		A35AF16A1F5695020005AE9E /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */; };
 		A36AE52D1F04E438000EC896 /* PlanetDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */; };
@@ -103,6 +107,10 @@
 		A342893E1F30066F00256EA2 /* Starship+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Starship+CoreDataClass.swift"; path = "../Starship+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A344DB801F4FEA570012636D /* RelatedFilmCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFilmCollectionVC.swift; sourceTree = "<group>"; };
 		A34FCD471F0263A0001008EB /* CellBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellBackgroundView.swift; sourceTree = "<group>"; };
+		A35653201FCBCAC5008D6CD9 /* URLSession+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Rx.swift"; sourceTree = "<group>"; };
+		A35653221FCBCAF1008D6CD9 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		A35653251FCBD024008D6CD9 /* URLSession+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+RxTests.swift"; sourceTree = "<group>"; };
+		A35653271FCBD033008D6CD9 /* NWServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWServiceTests.swift; sourceTree = "<group>"; };
 		A35AF1671F568D410005AE9E /* SWSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSearchBar.swift; sourceTree = "<group>"; };
 		A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
 		A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetDetailVC.swift; sourceTree = "<group>"; };
@@ -404,6 +412,24 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A356531F1FCBCA8B008D6CD9 /* NW Service + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A35653201FCBCAC5008D6CD9 /* URLSession+Rx.swift */,
+				A35653221FCBCAF1008D6CD9 /* NetworkingService.swift */,
+			);
+			path = "NW Service + Extension";
+			sourceTree = "<group>";
+		};
+		A35653241FCBCFE2008D6CD9 /* NWService+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A35653251FCBD024008D6CD9 /* URLSession+RxTests.swift */,
+				A35653271FCBD033008D6CD9 /* NWServiceTests.swift */,
+			);
+			path = "NWService+Extension";
+			sourceTree = "<group>";
+		};
 		A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +442,7 @@
 		A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */ = {
 			isa = PBXGroup;
 			children = (
+				A35653241FCBCFE2008D6CD9 /* NWService+Extension */,
 				A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */,
 				A387D4551F1C58E400874EF1 /* Info.plist */,
 			);
@@ -487,6 +514,7 @@
 		A3AAB92A1EBF2EE900AE53E5 /* StarWarsLexicon */ = {
 			isa = PBXGroup;
 			children = (
+				A356531F1FCBCA8B008D6CD9 /* NW Service + Extension */,
 				A32B07611F49803D00BEAD9A /* Entire Project */,
 				A32B07621F49804800BEAD9A /* Film Tab */,
 				A32B07631F49805400BEAD9A /* Character Tab */,
@@ -725,6 +753,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -733,6 +763,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -761,6 +793,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35653281FCBD033008D6CD9 /* NWServiceTests.swift in Sources */,
+				A35653261FCBD024008D6CD9 /* URLSession+RxTests.swift in Sources */,
 				A36F70FB1FC7F9280036CCAF /* FilmModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,6 +811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35653211FCBCAC5008D6CD9 /* URLSession+Rx.swift in Sources */,
 				A32044751F6FF18100D7FCFA /* VehicleService.swift in Sources */,
 				A3AAB92E1EBF2EE900AE53E5 /* FilmVC.swift in Sources */,
 				A3B69EDB1F2EFCD200ABD0A9 /* StarshipManager.swift in Sources */,
@@ -792,6 +827,7 @@
 				A32044731F6FF0C600D7FCFA /* StarshipService.swift in Sources */,
 				A313AF231F00A90D006EA7EC /* CircularImage.swift in Sources */,
 				A318030B1F2DCF5A00C8462D /* StarWarsLexicon.xcdatamodeld in Sources */,
+				A35653231FCBCAF1008D6CD9 /* NetworkingService.swift in Sources */,
 				A3FBD4621F15FCAF0069AC3E /* RelatedFilmCell.swift in Sources */,
 				A39FEBF91F515010001A7141 /* Film+CoreDataProperties.swift in Sources */,
 				A34289381F30064500256EA2 /* Planet+CoreDataClass.swift in Sources */,

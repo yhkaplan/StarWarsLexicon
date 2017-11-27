@@ -15,11 +15,17 @@ end
 target 'StarWarsLexiconTests' do
     use_frameworks!
     platform :ios, '11.0'
+    
+    # Tools used in the app
     pod 'RxSwift', '4.0.0'
-    # pod 'RxNimble'??
-    # pod 'RxBlocking', '~> 4.0'
-    # pod 'RxTest'??
     pod 'RealmSwift', '3.0.2'
-    pod 'Nimble', '7.0.2'
+    
+    # General testing tools
+    pod 'Nimble', '7.0.3'
     pod 'Quick', '1.2.0'
+    
+    # Rx Testing tools
+    #pod 'RxNimble' not working...
+    pod 'RxBlocking', '~> 4.0'
+    pod 'RxTest', '~> 4.0'
 end

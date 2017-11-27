@@ -76,8 +76,6 @@ class RealmFilmTests: QuickSpec {
     
     //MARK: - Actual test code
     
-    
-    
     override func spec() {
         describe("Testing if data is saved to mock store") {
             context("When objects are initialized in code") {
@@ -103,7 +101,7 @@ class RealmFilmTests: QuickSpec {
                     
                     do {
                         let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                        let testFilm = try! decoder.decode(RealmFilm.self, from: data)
+                        let testFilm = try decoder.decode(RealmFilm.self, from: data)//Removed "!" from try
                         
                         expect(testFilm).toNot(beNil())
                         
