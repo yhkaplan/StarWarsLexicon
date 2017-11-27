@@ -9,13 +9,21 @@
 import Foundation
 import RxSwift
 
+public enum SWAPICategory {
+    case film
+    case character
+    case starship
+    case planet
+    case vehicle
+}
+
 class NetworkingService {
     private enum NetworkError: Error {
         case noData
         case jsonParsingError
     }
     
-    func fetchItemsAndNextPage(at url: URL, for category: Category) -> Observable<FilmList> { //To change from FilmList
+    func fetchItemsAndNextPage(at url: URL, for category: SWAPICategory) -> Observable<FilmList> { //To change from FilmList
         let request = URLRequest(url: url)
         return URLSession.shared.rx.data(request: request)
             .map { data in
