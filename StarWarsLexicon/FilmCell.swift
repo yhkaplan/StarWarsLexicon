@@ -37,7 +37,7 @@ class FilmCell: UITableViewCell {
         
     }
     
-    func configureCell(film: Film) {
+    func configureCell(film: RealmFilm) {
         activityIndicator.stopAnimating()
         hideAll(false)
         //Set arrows to visible

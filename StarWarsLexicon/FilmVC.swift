@@ -8,44 +8,42 @@
 
 import UIKit
 
-class FilmVC: UIViewController, FilmVCDelegate {
+class FilmVC: UIViewController {
     
+    //MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
-    let dataService = DataService()
-    var filmManager: FilmManager?
+    @IBOutlet var filmVM: FilmViewModel!
     
-    var rowCount = 7//0
-    let filmSegueName = "showFilm"
-    let filmCellReuseIdentifier = "FilmCell"
+    private let filmSegueName = "showFilm"
+    private let filmCellReuseIdentifier = "FilmCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
-        filmManager = FilmManager(filmVCDelegate: self)
-        filmManager?.getFilmCount()
-        //Call sortByEpisode function here once implemented
-    }
-    
-    func updateCount(_ filmCount: Int) {
-        rowCount = filmCount
-        tableView.reloadData()
+        filmVM.set(delegate: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Move this segue action to a seperate scene coordinator
         switch segue.identifier {
         case filmSegueName?:
             if let row = tableView.indexPathForSelectedRow?.row {
-                filmManager?.getFilm(at: row, completion: { (film) in
-                    if let film = film {
-                            let filmDetailVC = segue.destination as! FilmDetailVC
-                            filmDetailVC.film = film
-                    }
-                })
+                let film = filmVM.getFilm(at: row)
+                let filmDetailVC = segue.destination as! FilmDetailVC
+                //filmDetailVC.film = film Use DI to set filmDetailView as selected film
             }
         default:
             preconditionFailure("Unexpected segue identifier")
+        }
+    }
+}
+
+extension FilmVC: TableViewRefreshDelegate {
+    func refreshTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
@@ -58,18 +56,15 @@ extension FilmVC: UITableViewDelegate {
 
 extension FilmVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowCount
+        return filmVM.getFilmCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        //Refactor for loading cells logic
         if let cell = tableView.dequeueReusableCell(withIdentifier: filmCellReuseIdentifier, for: indexPath) as? FilmCell {
-            filmManager?.getFilm(at: indexPath.row, completion: { (film) in
-                if let film = film {
-                    DispatchQueue.main.async {
-                        cell.configureCell(film: film)
-                    }
-                }
-            })
+            let film = filmVM.getFilm(at: indexPath.row)
+            cell.configureCell(film: film)
             return cell
         } else {
             return FilmCell()

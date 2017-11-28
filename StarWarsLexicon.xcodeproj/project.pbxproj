@@ -439,8 +439,6 @@
 		A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */ = {
 			isa = PBXGroup;
 			children = (
-				A3DF7F181FC932C0006DF99D /* TestFilm.json */,
-				A37B24671FCC0F3D001FFA7F /* TestFilmList.json */,
 				A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */,
 			);
 			path = RealmFilmModel;
@@ -465,6 +463,7 @@
 		A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */ = {
 			isa = PBXGroup;
 			children = (
+				A3EC94C01FCD005E00ECC03C /* TestData */,
 				A37B246C1FCC228D001FFA7F /* ViewModelTests */,
 				A35653241FCBCFE2008D6CD9 /* NWService+Extension */,
 				A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */,
@@ -548,6 +547,15 @@
 				A32B076B1F49811D00BEAD9A /* Vehicle Tab */,
 			);
 			path = StarWarsLexicon;
+			sourceTree = "<group>";
+		};
+		A3EC94C01FCD005E00ECC03C /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				A3DF7F181FC932C0006DF99D /* TestFilm.json */,
+				A37B24671FCC0F3D001FFA7F /* TestFilmList.json */,
+			);
+			path = TestData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
