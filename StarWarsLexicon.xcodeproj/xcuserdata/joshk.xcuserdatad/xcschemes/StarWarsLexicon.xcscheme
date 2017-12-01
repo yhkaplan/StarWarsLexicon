@@ -40,6 +40,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "FilmModelViewTests">
+               </Test>
+               <Test
                   Identifier = "StarWarsLexiconTests">
                </Test>
             </SkippedTests>

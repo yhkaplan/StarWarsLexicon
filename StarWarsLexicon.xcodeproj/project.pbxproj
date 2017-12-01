@@ -33,6 +33,7 @@
 		A35AF1681F568D410005AE9E /* SWSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AF1671F568D410005AE9E /* SWSearchBar.swift */; };
 		A35AF16A1F5695020005AE9E /* KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */; };
 		A36AE52D1F04E438000EC896 /* PlanetDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */; };
+		A36B23791FD12A2600F7E4B1 /* RealmDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B23781FD12A2600F7E4B1 /* RealmDBManager.swift */; };
 		A36F70FB1FC7F9280036CCAF /* FilmModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */; };
 		A36F70FD1FC7FA8D0036CCAF /* RealmFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F70FC1FC7FA8D0036CCAF /* RealmFilm.swift */; };
 		A37B24681FCC0F3D001FFA7F /* TestFilmList.json in Resources */ = {isa = PBXBuildFile; fileRef = A37B24671FCC0F3D001FFA7F /* TestFilmList.json */; };
@@ -65,6 +66,8 @@
 		A3CE5E9A1F064CB30047C771 /* CharacterDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CE5E991F064CB30047C771 /* CharacterDetailVC.swift */; };
 		A3DF7F191FC932C0006DF99D /* TestFilm.json in Resources */ = {isa = PBXBuildFile; fileRef = A3DF7F181FC932C0006DF99D /* TestFilm.json */; };
 		A3F2C8FB1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */; };
+		A3F3DC011FD1310800FCBE57 /* RealmDBManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3DC001FD1310800FCBE57 /* RealmDBManagerTests.swift */; };
+		A3F3DC031FD1355D00FCBE57 /* TestFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F3DC021FD1355D00FCBE57 /* TestFilm.swift */; };
 		A3F5D27D1ED75AFF00007455 /* FilmDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */; };
 		A3FBD4621F15FCAF0069AC3E /* RelatedFilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */; };
 /* End PBXBuildFile section */
@@ -117,6 +120,7 @@
 		A35AF1671F568D410005AE9E /* SWSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSearchBar.swift; sourceTree = "<group>"; };
 		A35AF1691F5695020005AE9E /* KeyboardDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDismisser.swift; sourceTree = "<group>"; };
 		A36AE52C1F04E438000EC896 /* PlanetDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetDetailVC.swift; sourceTree = "<group>"; };
+		A36B23781FD12A2600F7E4B1 /* RealmDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBManager.swift; sourceTree = "<group>"; };
 		A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModelTests.swift; sourceTree = "<group>"; };
 		A36F70FC1FC7FA8D0036CCAF /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
 		A37B24671FCC0F3D001FFA7F /* TestFilmList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestFilmList.json; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 		A3DB7B091FC804BE001791B4 /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DF7F181FC932C0006DF99D /* TestFilm.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestFilm.json; sourceTree = "<group>"; };
 		A3F2C8FA1F0E8E0600792694 /* StarshipAndVehicleDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarshipAndVehicleDetailVC.swift; sourceTree = "<group>"; };
+		A3F3DC001FD1310800FCBE57 /* RealmDBManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDBManagerTests.swift; sourceTree = "<group>"; };
+		A3F3DC021FD1355D00FCBE57 /* TestFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFilm.swift; sourceTree = "<group>"; };
 		A3F5D27C1ED75AFF00007455 /* FilmDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmDetailVC.swift; sourceTree = "<group>"; };
 		A3FBD4611F15FCAF0069AC3E /* RelatedFilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedFilmCell.swift; sourceTree = "<group>"; };
 		C7B8B97666A36204657D15C3 /* Pods-StarWarsLexiconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StarWarsLexiconTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -436,12 +442,20 @@
 			path = "NWService+Extension";
 			sourceTree = "<group>";
 		};
-		A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */ = {
+		A36B23771FD129D700F7E4B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A36B23781FD12A2600F7E4B1 /* RealmDBManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A378ABC51FCBC1F5004BAA82 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A36F70FA1FC7F9280036CCAF /* FilmModelTests.swift */,
 			);
-			path = RealmFilmModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A37B24691FCC1956001FFA7F /* ViewModels */ = {
@@ -463,10 +477,11 @@
 		A387D4521F1C58E400874EF1 /* StarWarsLexiconTests */ = {
 			isa = PBXGroup;
 			children = (
+				A3F3DBFF1FD130C900FCBE57 /* DBManager */,
 				A3EC94C01FCD005E00ECC03C /* TestData */,
 				A37B246C1FCC228D001FFA7F /* ViewModelTests */,
 				A35653241FCBCFE2008D6CD9 /* NWService+Extension */,
-				A378ABC51FCBC1F5004BAA82 /* RealmFilmModel */,
+				A378ABC51FCBC1F5004BAA82 /* Model */,
 				A387D4551F1C58E400874EF1 /* Info.plist */,
 			);
 			path = StarWarsLexiconTests;
@@ -537,6 +552,7 @@
 		A3AAB92A1EBF2EE900AE53E5 /* StarWarsLexicon */ = {
 			isa = PBXGroup;
 			children = (
+				A36B23771FD129D700F7E4B1 /* Model */,
 				A37B24691FCC1956001FFA7F /* ViewModels */,
 				A356531F1FCBCA8B008D6CD9 /* NW Service + Extension */,
 				A32B07611F49803D00BEAD9A /* Entire Project */,
@@ -554,8 +570,17 @@
 			children = (
 				A3DF7F181FC932C0006DF99D /* TestFilm.json */,
 				A37B24671FCC0F3D001FFA7F /* TestFilmList.json */,
+				A3F3DC021FD1355D00FCBE57 /* TestFilm.swift */,
 			);
 			path = TestData;
+			sourceTree = "<group>";
+		};
+		A3F3DBFF1FD130C900FCBE57 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				A3F3DC001FD1310800FCBE57 /* RealmDBManagerTests.swift */,
+			);
+			path = DBManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -827,8 +852,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F3DC011FD1310800FCBE57 /* RealmDBManagerTests.swift in Sources */,
 				A35653281FCBD033008D6CD9 /* NWServiceTests.swift in Sources */,
 				A35653261FCBD024008D6CD9 /* URLSession+RxTests.swift in Sources */,
+				A3F3DC031FD1355D00FCBE57 /* TestFilm.swift in Sources */,
 				A37B246E1FCC22C5001FFA7F /* FilmViewModelTests.swift in Sources */,
 				A36F70FB1FC7F9280036CCAF /* FilmModelTests.swift in Sources */,
 			);
@@ -886,6 +913,7 @@
 				A39FEBF81F515010001A7141 /* Starship+CoreDataProperties.swift in Sources */,
 				A342893C1F30065D00256EA2 /* Vehicle+CoreDataClass.swift in Sources */,
 				A32044711F6FEFC300D7FCFA /* PlanetService.swift in Sources */,
+				A36B23791FD12A2600F7E4B1 /* RealmDBManager.swift in Sources */,
 				A34289341F30062E00256EA2 /* Film+CoreDataClass.swift in Sources */,
 				A3B69EDE1F2F0AA800ABD0A9 /* FilmManager.swift in Sources */,
 				A3CE5E9A1F064CB30047C771 /* CharacterDetailVC.swift in Sources */,

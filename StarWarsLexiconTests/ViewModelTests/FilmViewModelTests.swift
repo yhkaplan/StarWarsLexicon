@@ -19,10 +19,10 @@ class FilmModelViewTests: QuickSpec {
     var filmVM: FilmViewModel?
     
     override func spec() {
-        beforeEach {
-            let mockNWService = MockNetworkingService()
-            self.filmVM = FilmViewModel(nwService: mockNWService)
-        }
+//        beforeEach {
+//            let mockNWService = MockNetworkingService()
+//            self.filmVM = FilmViewModel(nwService: mockNWService)
+//        }
         afterEach {
             self.filmVM = nil
         }
