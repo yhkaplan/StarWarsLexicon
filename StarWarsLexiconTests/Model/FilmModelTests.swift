@@ -16,7 +16,7 @@ import Nimble
 //Tests RealmFilm
 class RealmFilmTests: QuickSpec {
     
-    //MARK: - Actual test code
+    // MARK: - Actual test code
     
     override func spec() {
         describe("Testing if data is saved to mock store") {
@@ -99,7 +99,7 @@ class RealmFilmTests: QuickSpec {
     }
 }
 
-//MARK: - Extension for converting Strings to Dates
+// MARK: - Extension for converting Strings to Dates
 //Must relocate!
 extension String {
     func getDate() -> Date? {

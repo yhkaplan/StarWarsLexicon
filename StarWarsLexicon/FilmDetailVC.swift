@@ -37,6 +37,4 @@ class FilmDetailVC: UIViewController {
         openingCrawlTextView.text = "Opening Crawl: \n" + film.openingCrawl
         filmCoverImageView.image = UIImage(named: "\(film.episodeID)")
     }
-    
-
 }

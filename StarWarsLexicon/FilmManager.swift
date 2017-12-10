@@ -78,7 +78,7 @@ class FilmManager {
         APIService.sharedInstance.appendURLStringArray(service.starshipURLs, to: .starship)
         APIService.sharedInstance.appendURLStringArray(service.vehicleURLs, to: .vehicle)
         
-        //MARK: - JSON guards cleared, so test for CoreData prerequisite
+        // MARK: - JSON guards cleared, so test for CoreData prerequisite
         let film = Film(entity: Film.entity(), insertInto: moc)
         
         film.title = service.title
@@ -116,7 +116,7 @@ class FilmManager {
         } else {
             let urlString = APIService.sharedInstance.generateFilmURLString(for: index)
             //This is to check if URL is equal to the url of any other items in the array before downloading
-            let doublesArray = films.filter{ urlString == $0?.itemURL }
+            let doublesArray = films.filter { urlString == $0?.itemURL }
             
             guard doublesArray.count == 0, let url = URL(string: urlString) else {
                 completion(nil)
@@ -143,10 +143,10 @@ class FilmManager {
         }
     }
     
-    //MARK: - For fetching films to set relationships
+    // MARK: - For fetching films to set relationships
     
     func getFilmWith(urlStringArray: [String]) -> NSSet? {
-        //MARK: - Setting related films
+        // MARK: - Setting related films
             
         //Loop through each url, adding CoreData relationship for each one
         var relatedFilms = [Film]()
@@ -165,6 +165,7 @@ class FilmManager {
             
             //Convert array to NSArray, then NSSet
             let relatedFilmsNSArray = relatedFilms as NSArray
+            //swiftlint:disable force_cast
             let relatedFilmSet = NSSet(array: relatedFilmsNSArray as! [Any])
             //Return value
             return relatedFilmSet

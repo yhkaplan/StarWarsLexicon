@@ -65,7 +65,7 @@ class StarshipManager {
         starship.itemName = service.name
         starship.category = "starship"
         
-        //MARK: - Setting related films
+        // MARK: - Setting related films
         if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: service.toFilm) {
             //Set value
             starship.toFilm = relatedFilmSet
@@ -91,7 +91,7 @@ class StarshipManager {
         }
     }
     
-    //MARK: - Used for search 
+    // MARK: - Used for search 
     
     func loadStarships(with text: String) {
         //Create fetch request

@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Vehicle {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Vehicle> {

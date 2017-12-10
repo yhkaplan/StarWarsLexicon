@@ -34,12 +34,10 @@ class RelatedFilmCollectionVC: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    
     // MARK: - Navigation
     
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let selectedFilm = relatedFilms?[indexPath.row]  {
+        if let selectedFilm = relatedFilms?[indexPath.row] {
             //Tell parent to segue to related film
             segueDelegate?.segueToRelatedFilm(selectedFilm)
         }
@@ -49,7 +47,6 @@ class RelatedFilmCollectionVC: UICollectionViewController {
         return CGSize(width: 65.0, height: 85.0)
     }
     
-
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

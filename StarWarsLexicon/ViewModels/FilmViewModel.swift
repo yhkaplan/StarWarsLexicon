@@ -23,12 +23,12 @@ class FilmViewModel: NSObject {
         case lastPage
     }
     
-    //MARK: - Input
+    // MARK: - Input
     //NetworkingService as singleton?
     var nwService: NetworkingService? //!
     //RealmModelManager (for saving to disk)
     
-    //MARK: - Output
+    // MARK: - Output
     //Films?
     //Page number
     
@@ -54,7 +54,7 @@ class FilmViewModel: NSObject {
         self.delegate = delegate
         self.nwService = NetworkingService()
         //Refresh tableView
-        let _ = getNextPageOfFilms()
+        _ = getNextPageOfFilms()
             .subscribe(onNext: { _ in
                 self.sortFilms()
                 self.delegate?.refreshTableView()

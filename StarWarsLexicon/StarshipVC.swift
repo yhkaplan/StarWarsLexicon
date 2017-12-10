@@ -30,7 +30,7 @@ class StarshipVC: UIViewController {
         self.hideKeyboardUponTouch()
     }
     
-    //MARK: Segue function
+    // MARK: Segue function
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -46,7 +46,7 @@ class StarshipVC: UIViewController {
     }
 }
     
-//MARK: Collection View Functions
+// MARK: Collection View Functions
 
 extension StarshipVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -88,7 +88,7 @@ extension StarshipVC: UICollectionViewDataSource {
     }
 }
 
-//MARK: Search Bar Functions
+// MARK: Search Bar Functions
 extension StarshipVC: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //To implement placeholder text color changing etc

@@ -10,7 +10,7 @@ import UIKit
 
 class FilmVC: UIViewController {
     
-    //MARK: - Properties
+    // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var filmVM: FilmViewModel!
     

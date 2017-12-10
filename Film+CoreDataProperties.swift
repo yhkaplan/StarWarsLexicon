@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Film {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Film> {

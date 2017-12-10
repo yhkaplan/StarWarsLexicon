@@ -635,6 +635,7 @@
 				A3AAB9261EBF2EE900AE53E5 /* Resources */,
 				A494FAB25977038A40D5C055 /* [CP] Embed Pods Frameworks */,
 				F1E3645BF4E525E93522A95B /* [CP] Copy Pods Resources */,
+				A3D5830C1FDD1788003D3C62 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -741,6 +742,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StarWarsLexiconTests/Pods-StarWarsLexiconTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A3D5830C1FDD1788003D3C62 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		A494FAB25977038A40D5C055 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

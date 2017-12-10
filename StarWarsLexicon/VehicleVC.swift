@@ -30,7 +30,7 @@ class VehicleVC: UIViewController {
         self.hideKeyboardUponTouch()
     }
     
-    //MARK: Segue function
+    // MARK: Segue function
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -46,7 +46,7 @@ class VehicleVC: UIViewController {
     }
 }
 
-//MARK: Collection view functions
+// MARK: Collection view functions
 extension VehicleVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 170.0, height: 60.0)
@@ -87,7 +87,7 @@ extension VehicleVC: UICollectionViewDataSource {
     }
 }
 
-//MARK: Search bar
+// MARK: Search bar
 
 extension VehicleVC: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

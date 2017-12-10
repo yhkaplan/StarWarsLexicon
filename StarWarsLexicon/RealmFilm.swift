@@ -105,4 +105,3 @@ class RealmFilm: Object, Decodable {
         case vehicleURLs = "vehicles"
     }
 }
-

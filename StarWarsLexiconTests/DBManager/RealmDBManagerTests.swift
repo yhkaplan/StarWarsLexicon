@@ -39,7 +39,7 @@ class RealmDBManagerTests: QuickSpec {
                         return
                     }
                     
-                    let film = testFilm.film
+                    let film = TestFilm.film
                     let dbManager = RealmDBManager(realm: realm)
                     
                     let result = dbManager.save([film])
@@ -63,7 +63,7 @@ class RealmDBManagerTests: QuickSpec {
                         return
                     }
                     
-                    let film = testFilm.film
+                    let film = TestFilm.film
                     film.title = "Return of the Test"
                     let dbManager = RealmDBManager(realm: realm)
                     

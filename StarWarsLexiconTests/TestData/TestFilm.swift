@@ -12,7 +12,7 @@ import RealmSwift
 @testable import StarWarsLexicon
 
 //Using enum here to make namespace more explicit about using test data
-enum testFilm {
+enum TestFilm {
     static let title = "A New Hope"
     static let director = "George Lucas"
     static let producer = "Gary Kurtz, Rick McCallum"
@@ -71,4 +71,3 @@ enum testFilm {
     
     static let film = RealmFilm(director: director, episodeID: episodeID, itemURL: itemURL, openingCrawl: openingCrawl, producer: producer, releaseDate: releaseDate, title: title, characterURLs: charURLs, planetURLs: planetURLs, starshipURLs: starshipURLs, vehicleURLs: vehicleURLs)
 }
-

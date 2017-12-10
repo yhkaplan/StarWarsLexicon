@@ -30,7 +30,7 @@ class PlanetVC: UIViewController {
         self.hideKeyboardUponTouch()
     }
     
-    //MARK: Segue function
+    // MARK: Segue function
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -47,7 +47,7 @@ class PlanetVC: UIViewController {
     }
 }
 
-//MARK: Collection View Functions
+// MARK: Collection View Functions
 extension PlanetVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -91,7 +91,7 @@ extension PlanetVC: UICollectionViewDataSource {
     }
 }
 
-//MARK: Search Bar Functions
+// MARK: Search Bar Functions
 extension PlanetVC: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
 //        To implement

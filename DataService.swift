@@ -37,7 +37,7 @@ class DataService {
     
     func fetchItem(at url: URL, for category: Category, completion: @escaping (SWResult) -> Void) {
         let request = URLRequest(url: url)
-        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+        let task = session.dataTask(with: request) { (data, _, error) -> Void in
             
             guard error == nil else {
                 completion(.failure(error!))
@@ -87,10 +87,10 @@ class DataService {
     
     func fetchItemCount(_ url: URL, completion: @escaping (Int?) -> Void) {
         let request = URLRequest(url: url)
-        let task = session.dataTask(with: request) { (data, response, error) -> Void in
+        let task = session.dataTask(with: request) { (data, _, _) -> Void in
         
             //Refactor for Swift 4.0 JSON handling w/ Codable 
-            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String : Any], let itemCount = json["count"] as? Int else {
+            guard let data = data, let rawJSON = try? JSONSerialization.jsonObject(with: data), let json = rawJSON as? [String: Any], let itemCount = json["count"] as? Int else {
                 //Refactor for better error handling
                 print("JSON structure differed so count could not be established")
                 completion(nil)

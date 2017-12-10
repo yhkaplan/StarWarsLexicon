@@ -27,6 +27,7 @@ class StarshipAndVehicleDetailVC: UIViewController {
     @IBOutlet weak var hyperdriveRatingLbl: UILabel!
     @IBOutlet weak var hyperdriveDescriptionLbl: UILabel!
     
+    //swiftlint:disable cyclomatic_complexity
     override func viewDidLoad() {
         super.viewDidLoad()
 

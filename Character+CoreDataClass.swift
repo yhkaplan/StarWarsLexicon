@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 public class Character: NSManagedObject, SWCategory {
     //Custom code goes here
 }

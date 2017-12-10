@@ -1,0 +1,9 @@
+disabled_rules:
+  - function_body_length
+  - line_length
+  - trailing_whitespace
+
+force_cast: warning # implicitly
+
+excluded:
+  - Pods

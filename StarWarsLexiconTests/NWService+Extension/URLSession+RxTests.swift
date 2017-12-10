@@ -15,6 +15,7 @@ import RxBlocking
 
 @testable import StarWarsLexicon
 
+//swiftlint:disable force_cast
 class URLSessionRxExtensionTests: QuickSpec {
     private let request = URLRequest(url: URL(string: "https://swapi.co/api/films/1/")!)
     private let errorRequest = URLRequest(url: URL(string: "https://google.com/")!)

@@ -47,7 +47,7 @@ class FilmModelViewTests: QuickSpec {
     
     class MockNetworkingService: NetworkingService {
         enum MockError: Error {
-            case MockError(description: String)
+            case mockError(description: String)
         }
         
         override func fetchItemsAndNextPage(at url: URL, for category: SWAPICategory) -> Observable<FilmList> {
@@ -59,7 +59,7 @@ class FilmModelViewTests: QuickSpec {
             
             guard let path = Bundle(for: type(of: self)).path(forResource: "TestFilmList", ofType: "json") else {
                 return Observable.create { observer in
-                    observer.onError(MockError.MockError(description: "Issue creating test data"))
+                    observer.onError(MockError.mockError(description: "Issue creating test data"))
                     return Disposables.create()
                 }
             }
@@ -75,7 +75,7 @@ class FilmModelViewTests: QuickSpec {
                 }
             } catch let error {
                 return Observable.create { observer in
-                    observer.onError(MockError.MockError(description: "Mock Error: \(error)"))
+                    observer.onError(MockError.mockError(description: "Mock Error: \(error)"))
                     return Disposables.create()
                 }
             }

@@ -68,7 +68,7 @@ class VehicleManager {
         vehicle.itemName = service.name
         vehicle.category = "vehicle"
         
-        //MARK: - Setting related films
+        // MARK: - Setting related films
         if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: service.toFilm) {
             //Set value
             vehicle.toFilm = relatedFilmSet
@@ -94,7 +94,7 @@ class VehicleManager {
         }
     }
     
-    //MARK: - Used for search 
+    // MARK: - Used for search 
     
     func loadVehicles(with text: String) {
         //Create fetch request

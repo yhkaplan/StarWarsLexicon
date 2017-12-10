@@ -30,7 +30,7 @@ class CharacterVC: UIViewController {
         self.hideKeyboardUponTouch()
     }
     
-    //MARK: Segue function
+    // MARK: Segue function
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -46,7 +46,7 @@ class CharacterVC: UIViewController {
     }
 }
 
-//MARK: Collection view functions
+// MARK: Collection view functions
 
 extension CharacterVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -89,7 +89,7 @@ extension CharacterVC: UICollectionViewDataSource {
     }
 }
 
-//MARK: Search bar
+// MARK: Search bar
 
 extension CharacterVC: UISearchBarDelegate {    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

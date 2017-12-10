@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 public class Vehicle: NSManagedObject, SWCategory {
 
 }

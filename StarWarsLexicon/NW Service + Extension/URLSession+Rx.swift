@@ -15,7 +15,7 @@ This is an RxExtension to URLSession so I don't have to rely on external framewo
 */
 
 //Persist this cache w/ Realm?
-fileprivate var internalCache = [String: Data]()
+private var internalCache = [String: Data]()
 
 extension ObservableType where E == (HTTPURLResponse, Data) {
     func cache() -> Observable<E> {
@@ -72,4 +72,3 @@ extension Reactive where Base: URLSession {
         }
     }
 }
-

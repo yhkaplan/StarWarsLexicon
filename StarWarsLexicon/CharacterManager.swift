@@ -92,7 +92,7 @@ class CharacterManager {
         character.mass = Int32(service.mass) ?? Int32(-1)
         character.homeworldURL = service.homeworldURL
         
-        //MARK: - Setting related films
+        // MARK: - Setting related films
         if let filmURLStrings = service.filmURLs {
             if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: filmURLStrings) {
                 //Set value
@@ -112,7 +112,7 @@ class CharacterManager {
         }
     }
     
-    //MARK: - Used for search
+    // MARK: - Used for search
     
     func loadCharacters(with text: String) {
         //Create fetch request

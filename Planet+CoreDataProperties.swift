@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Planet {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Planet> {

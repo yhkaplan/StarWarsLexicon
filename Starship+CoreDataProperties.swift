@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Starship {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Starship> {

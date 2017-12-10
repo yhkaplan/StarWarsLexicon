@@ -65,7 +65,7 @@ class PlanetManager {
         planet.category = "planet"
         planet.itemName = service.name
         
-        //MARK: - Setting related films
+        // MARK: - Setting related films
         if let relatedFilmSet = filmManager.getFilmWith(urlStringArray: service.toFilm) {
             //Set value
             planet.toFilm = relatedFilmSet
@@ -91,7 +91,7 @@ class PlanetManager {
         }
     }
     
-    //MARK: - Used for search
+    // MARK: - Used for search
     
     func loadPlanets(with text: String) {
         //Create fetch request
